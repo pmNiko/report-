@@ -38,6 +38,8 @@ gem 'bootstrap', '~> 4.1.1'
 #Bootstrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
 gem 'jquery-rails'
 
+#gem select2
+gem "select2-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

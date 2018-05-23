@@ -1,5 +1,16 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.js-example-basic-multiple').select2();
+});
+</script>
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
+<select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width:260px">
+  <option value="AL">Alabama</option>
+    ...
+  <option value="WY">Wyoming</option>
+</select>
+
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -17,7 +28,11 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width:260px">
+          <option value="AL">Alabama</option>
+            ...
+          <option value="WY">Wyoming</option>
+        </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
