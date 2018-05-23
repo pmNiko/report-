@@ -19,6 +19,7 @@
 //= require select2
 //= require_tree .
 
-$( "#dropdown" ).select2({
-    theme: "bootstrap"
+
+$(document).ready(function() {
+  $('.js-example-basic-multiple').select2();
 });
