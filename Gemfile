@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #gem Bootstrap for style
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.0.0.alpha3.1'
 #Bootstrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
 gem 'jquery-rails'
 
@@ -54,6 +54,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rails_layout'
+  gem "better_errors"
 end
 
 group :test do
