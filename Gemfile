@@ -33,9 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#gem Bootstrap for style
+#gem Reporttrap for style
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
-#Bootstrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
+#Reporttrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
 gem 'jquery-rails'
 
 #gem select2
@@ -71,3 +71,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Devise Autentication
 gem 'devise'
+#Rename to rails proyect
+gem "rename"
