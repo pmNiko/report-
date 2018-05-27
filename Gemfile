@@ -73,3 +73,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 #Rename to rails proyect
 gem "rename"
+#Manager rails_admin
+gem 'rails_admin'
+#Fix error => relation "active_storage_attachments" does not exist
+gem 'remotipart', '~> 1.4.2'
