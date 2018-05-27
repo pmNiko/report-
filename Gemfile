@@ -71,6 +71,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Devise Autentication
 gem 'devise'
+#Generate Roles
+gem "rolify"
 #Rename to rails proyect
 gem "rename"
 #Manager rails_admin
