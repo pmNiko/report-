@@ -16,6 +16,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require calendar
 //= require select2
 //= require_tree .
 
