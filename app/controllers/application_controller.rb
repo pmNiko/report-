@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery 
+  skip_before_action :verify_authenticity_token, :except => [:update, :create]
   before_action :authenticate_user!
 end
