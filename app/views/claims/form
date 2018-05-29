@@ -1,0 +1,24 @@
+<%= form_for(@claim, remote: true, :html => { :role => "form" }) do |f| %>
+<div id="error_explanation" class="bg-danger text-danger">
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <%= f.label :Responsables, :class => "control-label" %>
+      <%= f.select(:user_ids, User.all.collect {|u| [ u.email, u.id] }, class: "select2-multiple", id: "claim_user_ids") %>
+    </div>
+    <div class="form-group">
+      <%= f.label :ticket, :class => "control-label" %>
+      <%= f.text_field :ticket, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :client, :class => "control-label" %>
+      <%= f.text_field :client, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit  @claim.new_record? ? "Create Create" : "Update Customer", :class => "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+<% end %>

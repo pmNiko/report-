@@ -6,6 +6,27 @@
   = f.input :client
 
   = f.button :submit
-%select.select2-multiple{:multiple => "multiple", :name => "states[]", :style => "width:400px"}
-  - User.all.each do |u|
-    %option{:value => "AL"}= u.email
+
+/ Button trigger modal
+%button.btn.btn-primary{"data-target" => "#exampleModalCenter", "data-toggle" => "modal", :type => "button"}
+  Launch demo modal
+/ Modal
+#exampleModalCenter.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalCenterTitle", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-centered{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalCenterTitle.modal-title Modal title
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = simple_form_for(@claim, html: { class: 'form-inline' }) do |f|
+          = f.input :user_ids, collection: User.all, value_method: :id,
+          label_method: :email, input_html: { multiple: true, class: 'select2-multiple', style:"width:400px" }
+          = f.input :ticket
+
+          = f.input :client
+
+          = f.button :submit
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary{:type => "button"} Save

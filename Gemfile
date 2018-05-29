@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.0.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
@@ -68,3 +68,5 @@ gem 'rails_admin'
 gem 'remotipart', '~> 1.4.2'
 #Simple Form
 gem 'simple_form'
+#Select2SimpleForm is a custom input for SimpleForm
+gem 'select2_simple_form', github: 'lndl/select2_simple_form'

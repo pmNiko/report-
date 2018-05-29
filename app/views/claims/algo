@@ -1,4 +1,4 @@
-#myModal.modal.fade
+#my-modal.modal.fade
   .modal-dialog
     .modal-content
       .modal-header

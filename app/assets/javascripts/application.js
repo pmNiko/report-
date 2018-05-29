@@ -15,13 +15,10 @@
 //= require rails-ujs
 //= require jquery
 //= require bootstrap-sprockets
+//= require select2_simple_form
 //= require select2
 //= require_tree .
 
-
-$(document).ready(function() {
-  $('.select2-multiple').select2();
-});
 // Hiden flash message
 window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
