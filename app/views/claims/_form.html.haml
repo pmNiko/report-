@@ -1,10 +1,11 @@
 .row
-= simple_form_for @claim do |f|
-  = f.association :users, as: :select,
-                  value_method: :id, label_method: :email,
-                  multiple: true, input_html: { class: 'select2-multiple' }
+= simple_form_for(@claim, html: { class: 'form-inline' }) do |f|
+  = f.input :user_ids, collection: User.all, value_method: :id, label_method: :email, input_html: { multiple: true, class: 'select2-multiple' }
   = f.input :ticket
 
   = f.input :client
 
   = f.button :submit
+%select.select2-multiple{:multiple => "multiple", :name => "states[]", :style => "width:400px"}
+  - User.all.each do |u|
+    %option{:value => "AL"}= u.email
