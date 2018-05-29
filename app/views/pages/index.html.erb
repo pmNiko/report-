@@ -24,9 +24,9 @@
       </div>
       <div class="modal-body">
         <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width:260px">
-          <option value="AL">Alabama</option>
-            ...
-          <option value="WY">Wyoming</option>
+          <% User.all.each do |u|%>
+            <option value="AL"><%= u.email %></option>
+          <%end%>
         </select>
       </div>
       <div class="modal-footer">
