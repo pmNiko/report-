@@ -20,7 +20,7 @@
 
 
 $(document).ready(function() {
-  $('.js-example-basic-multiple').select2();
+  $('.select2-multiple').select2();
 });
 // Hiden flash message
 window.setTimeout(function() {

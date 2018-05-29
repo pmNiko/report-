@@ -66,3 +66,5 @@ gem "rename"
 gem 'rails_admin'
 #Fix error => relation "active_storage_attachments" does not exist
 gem 'remotipart', '~> 1.4.2'
+#Simple Form
+gem 'simple_form'
