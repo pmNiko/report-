@@ -1,1 +1,2 @@
 $('#dialog').modal('toggle');
+$('#claim_<%= @claim.id %>').replaceWith('<%= j render (@claim) %>')

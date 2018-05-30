@@ -17,9 +17,3 @@ $("#claim_user_ids").attr('multiple', true);
 $('#dialog').on('shown.bs.modal', function () {
 	  $('.first_input').focus()
   });
-
-$('.modal-footer').html(
-  "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
-  "<button type='submit' class='btn btn-primary pull-right' form='edit_claim_<%=@claim.id%>'"+
-  " value='Guardar cambios'>Guardar cambios</button>"
-);

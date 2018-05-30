@@ -1,0 +1,8 @@
+<tr id="claim_<%= claim.id %>">
+  <td><%= claim.ticket %></td>
+  <td><%= claim.client %></td>
+  <td>
+    <%= link_to 'Edit', edit_claim_path(claim), remote: true, :class => 'btn btn-sm btn-info' %>
+    <%= link_to 'Delete', claim, remote: true, :method => :delete, data: {confirm: "Delete Claim: #{claim.ticket} #{claim.client}"}, :class => 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

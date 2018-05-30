@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require select2_simple_form
 //= require select2
+//= require turbolinks
 //= require_tree .
 
 // Hiden flash message
@@ -24,4 +25,4 @@ window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();
     });
-}, 2000);
+}, 3000);

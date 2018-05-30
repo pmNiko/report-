@@ -52,8 +52,8 @@ class ClaimsController < ApplicationController
   def destroy
     @claim.destroy
     respond_to do |format|
-      format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
+      format.html { redirect_to posts_url }
     end
   end
 

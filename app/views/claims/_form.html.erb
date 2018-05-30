@@ -10,4 +10,7 @@
   %><br><br>
   <%= f.input :ticket %>
   <%= f.input :client %>
+  <div class="form-group">
+    <%= f.submit  @claim.new_record? ? "Create Create" : "Update Claim", :class => "btn btn-primary" %>
+  </div>
 <% end %>

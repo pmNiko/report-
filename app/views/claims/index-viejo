@@ -1,0 +1,32 @@
+- @claims.each do |claim|
+  %tr
+    %td= claim.ticket
+    %td= claim.client
+    - if claim.has_responsable?
+      %td= claim.responsables.first.email
+      %td= ''
+      %td
+        = link_to claim_path(claim), class: 'btn btn-info btn-xs' do
+          = content_tag(:span, '', class: 'glyphicon glyphicon-eye-open')
+      %td
+        = link_to edit_claim_path(claim), remote: true, class: 'btn btn-warning btn-xs' do
+          = content_tag(:span, '', class: 'glyphicon glyphicon-edit')
+      %td
+        = link_to claim_path(claim), class: 'btn btn-danger btn-xs', |
+          method: :delete, data: {confirm: 'Estas segur@?'} do       |
+          = content_tag(:span, '', class: 'glyphicon glyphicon-trash')
+    - else
+      %td
+        = claim.responsables.first.email
+      %td
+        = claim.responsables.second.email
+      %td
+        = link_to claim_path(claim), class: 'btn btn-info btn-xs' do
+          = content_tag(:span, '', class: 'glyphicon glyphicon-eye-open')
+      %td
+        = link_to edit_claim_path(claim),remote: true, class: 'btn btn-warning btn-xs' do
+          = content_tag(:span, '', class: 'glyphicon glyphicon-edit')
+      %td
+        = link_to claim_path(claim), class: 'btn btn-danger btn-xs', |
+          method: :delete, data: {confirm: 'Estas seguro?'} do       |
+          = content_tag(:span, '', class: 'glyphicon glyphicon-trash')
