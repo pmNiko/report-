@@ -1,59 +1,43 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
 
-  # GET /claims
-  # GET /claims.json
   def index
     @claims = Claim.all
   end
 
-  # GET /claims/1
-  # GET /claims/1.json
   def show
   end
 
-  # GET /claims/new
   def new
     @claim = Claim.new
   end
 
-  # GET /claims/1/edit
   def edit
   end
 
   # POST /claims
-  # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
 
     respond_to do |format|
-      if @claim.save
-        format.js
-      else
-        format.js
-      end
+      @claim.save
+      format.js
     end
   end
 
   # PATCH/PUT /claims/1
-  # PATCH/PUT /claims/1.json
   def update
     respond_to do |format|
-      if @claim.update(claim_params)
-        format.js
-      else
-        format.js
-      end
+      @claim.update(claim_params)
+      format.js
     end
   end
 
   # DELETE /claims/1
-  # DELETE /claims/1.json
   def destroy
     @claim.destroy
     respond_to do |format|
       format.js
-      format.html { redirect_to posts_url }
     end
   end
 
