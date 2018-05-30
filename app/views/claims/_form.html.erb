@@ -1,4 +1,4 @@
-<%= simple_form_for @claim, remote: true, html: {class: "form-inline"} do |f| %>
+<%= simple_form_for @claim, remote: true, html: {class: "form-group"} do |f| %>
   <%= f.error_notification %>
   <%= f.input :user_ids,
                     label: 'Resposables',
@@ -6,8 +6,7 @@
                     value_method: :id,
                     collection: User.all,
                     include_blank: false,
-                    input_html: {id: 'claim_user_ids', multiple: true },
-                    prompt: 'Seleccione los responsables'
+                    input_html: {id: 'claim_user_ids', multiple: true}
   %><br><br>
   <%= f.input :ticket %>
   <%= f.input :client %>

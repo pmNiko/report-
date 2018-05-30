@@ -28,7 +28,7 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
-        format.js 
+        format.js
       else
         format.js
       end
@@ -40,11 +40,9 @@ class ClaimsController < ApplicationController
   def update
     respond_to do |format|
       if @claim.update(claim_params)
-        format.html { redirect_to @claim, notice: 'Claim was successfully updated.' }
-        format.json { render :show, status: :ok, location: @claim }
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @claim.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

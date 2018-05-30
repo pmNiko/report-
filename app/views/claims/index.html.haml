@@ -44,7 +44,7 @@
                           = link_to claim_path(claim), class: 'btn btn-info btn-xs' do
                             = content_tag(:span, '', class: 'glyphicon glyphicon-eye-open')
                         %td
-                          = link_to edit_claim_path(claim), class: 'btn btn-warning btn-xs' do
+                          = link_to edit_claim_path(claim), remote: true, class: 'btn btn-warning btn-xs' do
                             = content_tag(:span, '', class: 'glyphicon glyphicon-edit')
                         %td
                           = link_to claim_path(claim), class: 'btn btn-danger btn-xs', |
@@ -59,7 +59,7 @@
                           = link_to claim_path(claim), class: 'btn btn-info btn-xs' do
                             = content_tag(:span, '', class: 'glyphicon glyphicon-eye-open')
                         %td
-                          = link_to edit_claim_path(claim), class: 'btn btn-warning btn-xs' do
+                          = link_to edit_claim_path(claim),remote: true, class: 'btn btn-warning btn-xs' do
                             = content_tag(:span, '', class: 'glyphicon glyphicon-edit')
                         %td
                           = link_to claim_path(claim), class: 'btn btn-danger btn-xs', |

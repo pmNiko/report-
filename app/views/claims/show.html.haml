@@ -16,5 +16,5 @@
     %td
       = @claim.responsables.second.email
 
-  = link_to 'Edit', edit_claim_path(@claim)
+  = link_to 'Edit', edit_claim_path(@claim), remote: true
   = link_to 'Back', claims_path
