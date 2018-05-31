@@ -3,10 +3,8 @@
   %td= claim.client
   - if claim.has_responsable?
     %td= claim.responsables.first.email
-    %td= ""
   - else
-    %td= claim.responsables.first.email
-    %td= claim.responsables.second.email
+    %td= "#{claim.responsables.first.email}" +" - "+ "#{claim.responsables.second.email}"
   %td
     = link_to 'Edit', edit_claim_path(claim), remote: true, :class => 'btn btn-sm btn-info'
     = link_to 'Delete', claim, remote: true, :method => :delete,                                     |

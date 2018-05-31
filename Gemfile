@@ -72,3 +72,8 @@ gem 'simple_form'
 gem 'select2_simple_form', github: 'lndl/select2_simple_form'
 #Data-Confirm Modal
 gem 'data-confirm-modal'
+
+gem 'momentjs-rails'
+
+gem 'fullcalendar.io-rails', '~> 3.9'
+

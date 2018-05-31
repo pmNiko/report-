@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require select2_simple_form
 //= require select2
+//= require calendar
 //= require data-confirm-modal
 //= require turbolinks
 //= require_tree .
@@ -27,3 +28,15 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 3000);
+
+$(function(){
+
+  $('#calendar').fullCalendar({
+    themeSystem: 'bootstrap4',
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    }
+  });
+});
