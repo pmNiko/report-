@@ -70,4 +70,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
 gem 'momentjs-rails'
-gem 'fullcalendar'
+
+gem 'fullcalendar.io-rails', '~> 3.9'
+

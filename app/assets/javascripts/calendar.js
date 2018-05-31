@@ -10,10 +10,6 @@
 // require fullcalendar/scheduler
 // require fullcalendar/gcal
 
-$(document).ready(function() {
-  $("#calendar").fullcalendar();
-});
-
 $(function() {
 
   $('#calendar').fullCalendar({
@@ -27,5 +23,6 @@ $(function() {
     selectHelper: true,
     editable: true,
     eventLimit: true,
+
   });
-};
+});
