@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require select2_simple_form
 //= require select2
+//= require data-confirm-modal
 //= require turbolinks
 //= require_tree .
 

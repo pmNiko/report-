@@ -1,0 +1,16 @@
+.container
+  %h2 Claims
+  .card.card-block.bg-faded
+    = link_to "New Claim", new_claim_path, remote: true, class: "btn btn-primary"
+  .new-claim
+  %table.table.table-bordered.table-striped{:id => ""}
+    %thead
+      %tr
+        %th Ticket
+        %th Client
+        %th Responsable
+        %th Responsable
+        %th Actions
+    %tbody#claims
+      = render @claims
+  = render 'dialog'

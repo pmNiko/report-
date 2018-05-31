@@ -5,20 +5,7 @@
   <a class="navbar-brand" href="#">Navbar</a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', class: 'nav-link'  %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Claims', claims_path, class: 'nav-link' %>
-        </li>
-      <% end %>
-      <li class="nav-item">
-        <% if current_user.present? && (current_user.has_role? :admin)%>
-         <%= link_to 'Admin', rails_admin_path, class: 'nav-link'%>
-        <% end %>
-      </li>
-
+      <%= render 'layouts/navigation_links' %>
     </ul>
   </div>
 </nav>

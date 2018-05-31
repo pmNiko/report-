@@ -70,3 +70,5 @@ gem 'remotipart', '~> 1.4.2'
 gem 'simple_form'
 #Select2SimpleForm is a custom input for SimpleForm
 gem 'select2_simple_form', github: 'lndl/select2_simple_form'
+#Data-Confirm Modal
+gem 'data-confirm-modal'

@@ -1,0 +1,15 @@
+%tr{:id => "claim_#{claim.id}"}
+  %td= claim.ticket
+  %td= claim.client
+  - if claim.has_responsable?
+    %td= claim.responsables.first.email
+    %td= ""
+  - else
+    %td= claim.responsables.first.email
+    %td= claim.responsables.second.email
+  %td
+    = link_to 'Edit', edit_claim_path(claim), remote: true, :class => 'btn btn-sm btn-info'
+    = link_to 'Delete', claim, remote: true, :method => :delete,                                     |
+      class:"btn btn-danger btn-sm",                                                                 |
+      data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
+      verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}       |
