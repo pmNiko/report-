@@ -14,12 +14,12 @@
 //= require popper
 //= require rails-ujs
 //= require jquery
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require select2_simple_form
 //= require select2
 //= require calendar
 //= require data-confirm-modal
-//= require turbolinks
 //= require_tree .
 
 // Hiden flash message
