@@ -7,13 +7,10 @@ $('.modal-body').html('<%= j render("form") %>');
 // Show the dynamic dialog
 $('#dialog').modal("show");
 $('#claim_user_ids').select2({
-  width: '270px',
   placeholder: "Select a responsables",
-  allowClear: true
 });
-$("#claim_user_ids").attr('multiple', true);
 
 // Set focus to the first element
-$('#claim_user_ids').on('shown.bs.modal', function () {
+$('#dialog').on('shown.bs.modal', function () {
 	  $('.first_input').focus()
   });
