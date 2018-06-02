@@ -22,12 +22,6 @@
 //= require data-confirm-modal
 //= require_tree .
 
-// Hiden flash message
-//window.setTimeout(function() {
-  //  $(".alert").fadeTo(500, 0).slideUp(500, function(){
-    //    $(this).remove();
-    //});
-//}, 3000);
 
 $(function(){
 
