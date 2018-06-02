@@ -15,7 +15,7 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require select2_simple_form
 //= require select2
 //= require calendar
