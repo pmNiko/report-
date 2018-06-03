@@ -28,7 +28,7 @@
     //    $(this).remove();
     //});
 //}, 3000);
-
+/*
 $(function(){
 
   $('#calendar').fullCalendar({
@@ -40,3 +40,4 @@ $(function(){
     }
   });
 });
+*/
