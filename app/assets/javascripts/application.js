@@ -21,7 +21,7 @@
 //= require calendar
 //= require data-confirm-modal
 //= require_tree .
-
+//= require bootstrap-sprockets
 
 $(function(){
 
