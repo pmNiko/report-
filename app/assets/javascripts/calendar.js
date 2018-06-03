@@ -9,7 +9,7 @@
 // Optional addons  change '// require' --> '//= require' to enable
 // require fullcalendar/scheduler
 // require fullcalendar/gcal
-/*
+
 $(function() {
 
   $('#calendar').fullCalendar({
@@ -26,4 +26,3 @@ $(function() {
 
   });
 });
-*/

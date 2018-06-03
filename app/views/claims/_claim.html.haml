@@ -1,13 +1,14 @@
-%tr{:id => "claim_#{claim.id}"}
+%tr.text-center{:id => "claim_#{claim.id}"}
   %td= claim.ticket
   %td= claim.client
   %td
     = claim.responsables.first.email
     - unless claim.has_responsable?
-      = " - " + claim.responsables.first.email
+      = " - " + claim.responsables.second.email
   %td
-    = link_to 'Edit', edit_claim_path(claim), remote: true, :class => 'btn btn-sm btn-info'
-    = link_to 'Delete', claim, remote: true, :method => :delete,                                     |
-      class:"btn btn-danger btn-sm",                                                                 |
+    = link_to '', edit_claim_path(claim), :remote => true, :class => 'fa fa-edit fa-lg'
+    &nbsp
+    = link_to '', claim, remote: true, :method => :delete,                                           |
+      class:"fa fa-times-circle-o fa-lg",                                                            |
       data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
       verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}       |

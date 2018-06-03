@@ -15,19 +15,13 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require select2_simple_form
 //= require select2
 //= require calendar
 //= require data-confirm-modal
 //= require_tree .
-
-// Hiden flash message
-window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove();
-    });
-}, 5000);
+//= require bootstrap-sprockets
 
 $(function(){
 

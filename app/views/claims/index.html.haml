@@ -1,10 +1,12 @@
 .container
-  %h2 Claims
-  .card.card-block.bg-faded
-    = link_to "New Claim", new_claim_path, remote: true, class: "btn btn-primary"
+  %h2.text-center Claims
+  .card.card-block.bg-faded.text-center
+    = link_to new_claim_path, :remote => true do
+      = content_tag(:i, nil, class: "fa fa-plus-circle fa-lg")
+      &nbsp NEW CLAIM
   .new-claim
   %table.table.table-bordered.table-striped{:id => ""}
-    %thead
+    %thead.text-center
       %tr
         %th Ticket
         %th Client
@@ -13,4 +15,12 @@
     %tbody#claims
       = render @claims
   = render 'dialog'
-.calendar
+  %br
+  %br
+  .row
+    .col-1
+      %i.fa.fa-calendar.fa-lg
+    .col-10#calendar
+    .col-1
+      &nbsp&nbsp
+      %i.fa.fa-calendar.fa-lg

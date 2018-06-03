@@ -10,9 +10,11 @@ class ClaimsController < ApplicationController
 
   def new
     @claim = Claim.new
+    @users = User.all
   end
 
   def edit
+    @users = User.all
   end
 
   # POST /claims
