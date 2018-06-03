@@ -77,3 +77,5 @@ gem 'data-confirm-modal'
 gem 'momentjs-rails'
 
 gem 'fullcalendar.io-rails', '~> 3.9'
+
+gem "font-awesome-rails"

@@ -301,6 +301,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   data-confirm-modal
   devise
+  font-awesome-rails
   fullcalendar.io-rails (~> 3.9)
   jbuilder (~> 2.5)
   jquery-rails
