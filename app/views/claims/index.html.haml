@@ -2,16 +2,15 @@
   %h2.text-center Claims
   .card.card-block.bg-faded.text-center
     = link_to new_claim_path, :remote => true do
-      = content_tag(:i, nil, class: "fa fa-plus-circle fa-lg")
-      &nbsp NEW CLAIM
+      = fa_icon "plus-square-o", text: "NEW CLAIM", right: true, class: "fa-lg"
   .new-claim
   %table.table.table-bordered.table-striped{:id => ""}
     %thead.text-center
       %tr
-        %th Ticket
-        %th Client
-        %th Responsables
-        %th Actions
+        %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-lg"
+        %th= fa_icon "tag", text: "Client", right: true, class: "fa-lg"
+        %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+        %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-lg"
     %tbody#claims
       = render @claims
   = render 'dialog'
