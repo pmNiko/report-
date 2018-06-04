@@ -31,7 +31,7 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   ## 'fix' == ERROR:  relation "active_storage_attachments" does not exist  == 'fix'
-  config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment']
+  #config.excluded_models = ['ActiveStorage::Blob', 'ActiveStorage::Attachment']
 
   config.actions do
     dashboard                     # mandatory
