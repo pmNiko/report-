@@ -23,14 +23,11 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
-$(function(){
 
-  $('#calendar').fullCalendar({
-    themeSystem: 'bootstrap4',
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
-    }
-  });
-});
+// Hiden flash message
+//window.setTimeout(function() {
+  //  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    //    $(this).remove();
+    //});
+//}, 3000);
+/*
