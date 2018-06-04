@@ -23,9 +23,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 #gem Bootstrap compatible for rails_layout x 'bootstrap ~>4.1.1'
 gem 'bootstrap', '~> 4.1.1'
-gem 'bootstrap-sass'
 #Reporttrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
-gem 'jquery-rails'
+#gem 'jquery-rails'
 #gem select2
 gem "select2-rails"
 
