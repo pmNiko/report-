@@ -1,0 +1,10 @@
+= simple_form_for @event, remote: true, html: {class: "form-group"} do |f|
+  = f.error_notification
+
+  = f.date_field :star_time, value: params[:star_time]
+  = f.date_field :end_time, :value => params[:end_time]
+  = f.input :type_event
+  = f.input :user_id
+  .form-group
+    = f.submit  @event.new_record? ? "Create Create" : "Update Claim",
+    :class => "btn btn-primary"

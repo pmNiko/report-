@@ -26,8 +26,6 @@ $(function() {
     events: '/events.json',
 
     select: function(start, end) {
-      alert(start)
-      alert(end)
       return newEvent(start, end);
     },
 
@@ -60,16 +58,12 @@ newEvent = function(start_time, end_time){
   $.ajax({
     type: "GET",
     url: "/events/new",
-    /*data: {
-      event: {
-        title: "",
-        start_time: "" + new Date(start_time).toUTCString(),
-        end_time: "" + new Date(end_time).toUTCString(),
-        description: ""
-      }
-    }*/
-    dataType: "HTML",
+    data: {
+      star_time: "" + new Date(start_time).toUTCString(),
+      end_time: "" + new Date(end_time).toUTCString(),
+    }
   });
+  //$.getScript(event.new_url, function() {});
 };
 
 updateEvent = function(the_event) {
