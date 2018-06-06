@@ -1,6 +1,9 @@
 class Claim < ApplicationRecord
-  #The class Claim has many responsables
+  #relation n:m claims_users
   has_and_belongs_to_many :users
+  #relation n:m claims_teams
+  has_and_belongs_to_many :teams
+
   #Return the responsables
   def responsables
     users
@@ -10,12 +13,4 @@ class Claim < ApplicationRecord
     responsables.count == 1
   end
 
-  #Reclamo pertenece a algun equipo
-  def to_a?(team)
-    team.there_any?(self)
-  end
-  #Se encarga de agregar un responsable a su coleccion.
-  def add(responsable)
-    users << responsable
-  end
 end
