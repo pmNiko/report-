@@ -14,8 +14,10 @@ def new
 end
 
 def edit
+  @users = User.all
 end
 
+# POST /claims
 def create
   @team = Team.new(team_params)
 
@@ -25,6 +27,7 @@ def create
   end
 end
 
+# PATCH/PUT /teams/1
 def update
   respond_to do |format|
     @team.update(team_params)
@@ -32,12 +35,14 @@ def update
   end
 end
 
+# DELETE /teams/1
 def destroy
   @team.destroy
   respond_to do |format|
     format.js
   end
 end
+
 
 private
   # Use callbacks to share common setup or constraints between actions.

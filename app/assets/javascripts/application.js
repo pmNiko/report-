@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery3
-//= require popper
-//= require rails-ujs
 //= require jquery
+//= require jquery_ujs
+//= require popper
 //= require turbolinks
 //= require bootstrap
 //= require select2_simple_form
@@ -22,8 +22,9 @@
 //= require data-confirm-modal
 //= require_tree .
 
-$(function(){
 
+$(document).on('ready page:load', function () {
+  // Actions to do
   $('#calendar').fullCalendar({
     themeSystem: 'bootstrap4',
     header: {
