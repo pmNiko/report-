@@ -1,0 +1,15 @@
+%tr.text-center{:id => "team_#{team.id}"}
+  %td= team.date_format
+  %td= team.truck
+  %td
+    = team.responsables.first.email
+    - unless team.has_responsable?
+      = " - " + team.responsables.second.email
+  %td
+    = link_to edit_team_path(team), :remote => true do
+      = fa_icon "edit", right: true, class: "fa-2x"
+    &nbsp
+    = link_to '', team, remote: true, :method => :delete,                                          |
+      class:"fa fa-trash fa-2x",                                                            |
+      data: {confirm: "Delete: "+"[ Team of truck:"+" #{team.truck} ]", |
+      verify: "#{team.truck}", verify_text: "Type: " + " '#{team.truck}' " + "to confirm"}       |

@@ -6,11 +6,16 @@ class Team < ApplicationRecord
   accepts_nested_attributes_for :claims, reject_if: :all_blank, allow_destroy: true
 
   #incluye este usuario en su coleccion de usuarios
-  def responsibles
-    users
-  end
   def date_format
     date.strftime("%d/%m/%Y")
   end
 
+  #Return the responsables
+  def responsables
+    users
+  end
+  #Return true or false if contain only one responsable
+  def has_responsable?
+    responsables.count == 1
+  end
 end

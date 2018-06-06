@@ -1,16 +1,16 @@
-= simple_form_for @claim, remote: true, html: {class: "form-group"} do |f|
+= simple_form_for @team, remote: true, html: {class: "form-group"} do |f|
   = f.error_notification
+  = f.input :date
+  = f.input :truck
   = f.input :user_ids, as: :Select2,   |
     label: 'Resposables',              |
     label_method: :email,              |
     collection: @users,                |
     multiple: true,                    |
     maximumSelectionLength: 2,         |
-    input_html: {id: 'claim_user_ids'} |
+    input_html: {id: 'team_user_ids'} |
   %br/
   %br/
-  = f.input :ticket
-  = f.input :client
   .form-group
-    = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
+    = f.submit  @team.new_record? ? "Create Team" : "Update Team",
     :class => "btn btn-primary"
