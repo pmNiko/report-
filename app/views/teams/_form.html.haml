@@ -12,7 +12,7 @@
   = f.simple_fields_for :claims do |claim|
     = render 'claim_fields', :f => claim
   %button_tag
-    = link_to_add_association button_tag('', type: "button", class: "+"), f, :claims
+    = link_to_add_association button_tag('', type: "button", class: "glyphicon glyphicon-plus"), f, :claims
 
   %br/
   %br/
