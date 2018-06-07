@@ -20,9 +20,17 @@
 //= require select2
 //= require calendar
 //= require data-confirm-modal
+//= require cocoon
 //= require_tree .
+//= require bootstrap-sprockets
 
 
+// Se oculta el flash message
+window.setTimeout(function() {
+    $(".flash_hidden").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 2000);
 $(document).on('ready page:load', function () {
   // Actions to do
   $('#calendar').fullCalendar({

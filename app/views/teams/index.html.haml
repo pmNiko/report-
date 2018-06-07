@@ -4,13 +4,6 @@
     = link_to new_team_path, :remote => true do
       = fa_icon "plus-square-o", text: "NEW TEAM", right: true, class: "fa-lg"
   .new-claim
-  %table.table.table-bordered.table-striped{:id => ""}
-    %thead.text-center
-      %tr
-        %th= fa_icon "ticket", text: "date", right: true, class: "fa-lg"
-        %th= fa_icon "tag", text: "truck", right: true, class: "fa-lg"
-        %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
-        %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-lg"
-    %tbody#teams
+    %tbody
       = render @teams
-  = render 'dialog'
+= render 'dialog'
