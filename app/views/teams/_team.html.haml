@@ -1,36 +1,41 @@
-.div{:id => "team_#{team.id}"}
-  %a{"data-parent" => "#accordion", "data-toggle" => "collapse",
-   :href => "#collapse#{team.id}", :id => "but"}
-    %table.table.table-bordered.table-striped{:id => ""}
-      %thead.text-center
-        %tr
-          %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-lg"
-          %th= fa_icon "tag", text: "Client", right: true, class: "fa-lg"
-          %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
-          %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-lg"
-        %tr
-          %td= fa_icon "ticket", text: "#{team.date}", right: true, class: "fa-1x"
-          %td= fa_icon "tag", text: "#{team.truck}", right: true, class: "fa-1x"
-          %td
-            = fa_icon "vcard-o", text: "#{team.responsables.first.email}", right: true, class: "fa-1x"
-            - unless team.has_responsable?
-              = " - " + team.responsables.second.email
-          %th
-            = link_to edit_team_path(team), :remote => true do
-              = fa_icon "edit", right: true, class: "fa-1x"
-            &nbsp
-            = link_to '', team, remote: true, :method => :delete,                                          |
-              class:"fa fa-trash fa-1x",                                                            |
-              data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
-              verify: "#{team.truck}", verify_text: "Type: " + " '#{team.truck}' " + "to confirm"}       |
+.row
+  .col-1
+  .panel-group.col-10{:id => "team_#{team.id}"}
+    .panel.panel-defauls.text-center
+      .panel-heading
+        .panel-title
+          %a{"data-parent" => "#accordion", "data-toggle" => "collapse",
+           :href => "#collapse#{team.id}", :id => "but"}
+            .panel-body
+              %table.table.table-striped
+                %tbody
+                  %tr
+                    %th= fa_icon "ticket", text: "Date", right: true, class: "fa-lg"
+                    %th= fa_icon "tag", text: "Truck", right: true, class: "fa-lg"
+                    %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+                    %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-lg"
+                  %tr
+                    %td= team.date
+                    %td= team.truck
+                    %td
+                      = team.responsables.first.email
+                      - unless team.has_responsable?
+                        = " - " + team.responsables.second.email
+                    %th
+                      = link_to edit_team_path(team), :remote => true do
+                        = fa_icon "edit", right: true, class: "fa-1x"
+                      &nbsp
+                      = link_to '', team, remote: true, :method => :delete,                                          |
+                        class:"fa fa-trash fa-1x",                                                            |
+                        data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
+                        verify: "#{team.truck}", verify_text: "Type: " + " '#{team.truck}' " + "to confirm"}
     .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
       .panel-body
-        %table.table.table-bordered.table-striped{:id => ""}
-          %thead.text-center
-            %tr
-              %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-1x"
-              %th= fa_icon "tag", text: "Cliente", right: true, class: "fa-1x"
-              %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-1x"
+        %table.table.table-striped
+          %tbody
+            %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-1x"
+            %th= fa_icon "tag", text: "Cliente", right: true, class: "fa-1x"
+            %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-1x"
           %tbody
             - team.claims.each do |claim|
               %tr
@@ -44,3 +49,6 @@
                     class:"fa fa-trash fa-1x",                                                            |
                     data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
                     verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}
+      .progress
+        .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width:40%"}
+          40%
