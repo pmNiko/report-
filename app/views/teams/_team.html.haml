@@ -1,7 +1,7 @@
-.row
+.row{:id => "team_#{team.id}"}
   .col-1
-  .panel-group.col-10{:id => "team_#{team.id}"}
-    .panel.panel-defauls.text-center
+  .panel-group.col-10
+    .panel.panel-defauls
       .panel-heading
         .panel-title
           %a{"data-parent" => "#accordion", "data-toggle" => "collapse",
@@ -32,6 +32,11 @@
     .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
       .panel-body
         %table.table.table-striped
+          %tbody
+          %tr
+            %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-lg"
+            %th= fa_icon "ticket", text: "Client", right: true, class: "fa-lg"
+            %th= fa_icon "tag", text: "Actions", right: true, class: "fa-lg"
           %tbody#claims
             = render team.claims
       .progress
