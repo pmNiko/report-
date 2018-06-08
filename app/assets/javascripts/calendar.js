@@ -10,48 +10,49 @@
 // require fullcalendar/scheduler
 // require fullcalendar/gcal
 
-$(function() {
+$(document).on('turbolinks:load', function() {
+   console.log('(document).turbolinks:load');
+   // Actions to do
+   $('#calendar').fullCalendar({
+     themeSystem: 'bootstrap4',
+     header: {
+       left: 'prev,next today',
+       center: 'title',
+       right: 'month,agendaWeek,agendaDay'
+     },
+     selectable: true,
+     selectHelper: true,
+     editable: true,
+     eventLimit: true,
+     events: '/events.json',
 
-  $('#calendar').fullCalendar({
-    themeSystem: 'bootstrap4',
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
-    },
-    selectable: true,
-    selectHelper: true,
-    editable: true,
-    eventLimit: true,
-    events: '/events.json',
+     select: function(start, end) {
+       return newEvent(start, end);
+     },
 
-    select: function(start, end) {
-      return newEvent(start, end);
-    },
+     eventClick: function(event, jsEvent, view) {
+       $.getScript(event.edit_url, function() {});
 
-    eventClick: function(event, jsEvent, view) {
-      $.getScript(event.edit_url, function() {});
+       //call ajax to show preview of the post in the preview container
+       var event_select = $(this).data(event._id);
+         //this is the show call to posts_controller#show
 
-      //call ajax to show preview of the post in the preview container
-      var event_select = $(this).data(event._id);
-        //this is the show call to posts_controller#show
+         $.ajax({
+           url: "/event/'"+post_id,
+           beforeSend: function( xhr ) {}
+         })
+         .done(function( data ){});
+     },
 
-        $.ajax({
-          url: "/event/'"+post_id,
-          beforeSend: function( xhr ) {}
-        })
-        .done(function( data ){});
-    },
-
-    eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
-      return updateEvent(event);
-    },
-    eventResize: function(event, dayDelta, minuteDelta, revertFunc) {
-        return updateEvent(event);
-    },
+     eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+       return updateEvent(event);
+     },
+     eventResize: function(event, dayDelta, minuteDelta, revertFunc) {
+         return updateEvent(event);
+     },
 
 
-  });
+   });
 });
 
 newEvent = function(start_time, end_time){

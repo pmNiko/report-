@@ -21,14 +21,3 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 2000);
-$(document).on('ready page:load', function () {
-  // Actions to do
-  $('#calendar').fullCalendar({
-    themeSystem: 'bootstrap4',
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
-    }
-  });
-});
