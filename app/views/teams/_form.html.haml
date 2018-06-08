@@ -1,7 +1,8 @@
 = simple_form_for @team, remote: true, html: {class: "form-group"} do |f|
   = f.error_notification
-  = f.input :date
-  = f.input :truck
+  .form-inline
+    = f.input :date
+    = f.input :truck
   = f.input :user_ids, as: :Select2,   |
     label: 'Resposables',              |
     label_method: :email,              |
@@ -12,7 +13,7 @@
   = f.simple_fields_for :claims do |claim|
     = render 'claim_fields', :f => claim
   %button_tag
-    = link_to_add_association button_tag('', type: "button", class: "glyphicon glyphicon-plus"), f, :claims
+    = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square-o'
 
   %br/
   %br/
