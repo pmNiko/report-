@@ -5,6 +5,10 @@
   = f.date_field :end_time, :value => params[:end_time]
   = f.input :type_event
   = f.input :user_id
+  =f.input :description
+
   .form-group
     = f.submit  @event.new_record? ? "Create Create" : "Update Claim",
     :class => "btn btn-primary"
+%input{:onclick => "CapacityChart();", :type => "button", :value => "#{params[:star_time]}"}/
+%input#datetime type: "datetime-local", value:param

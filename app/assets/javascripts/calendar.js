@@ -59,10 +59,11 @@ newEvent = function(start_time, end_time){
     type: "GET",
     url: "/events/new",
     data: {
-      star_time: "" + new Date(start_time).toUTCString(),
-      end_time: "" + new Date(end_time).toUTCString(),
+      star_time: "" + start_time.format('YYYY-MM-DD'),
+      end_time: "" + end_time.format('YYYY-MM-DD'),
     }
   });
+
   //$.getScript(event.new_url, function() {});
 };
 
@@ -72,11 +73,14 @@ updateEvent = function(the_event) {
     url: "/events/" + the_event.id,
     data: {
       event: {
-        title: the_event.title,
-        start_time: "" + new Date(the_event.start).toUTCString(),
+        description: the_event.description || "",
+        star_time: "" + new Date(the_event.start).toUTCString(),
         end_time: "" + new Date(the_event.end).toUTCString(),
-        description: the_event.description || ""
+        type_event: the_event.type_event,
+        user_id: the_event.user_id,
+        authenticity_token: "<%= form_authenticity_token %>"
       }
     }
+
   });
 };
