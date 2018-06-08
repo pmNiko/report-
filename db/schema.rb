@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_200452) do
+ActiveRecord::Schema.define(version: 2018_06_08_163114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2018_06_03_200452) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "claims_users", force: :cascade do |t|
+  create_table "claims_teams", id: false, force: :cascade do |t|
     t.integer "claim_id"
-    t.integer "user_id"
+    t.integer "team_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 2018_06_03_200452) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.date "date"
+    t.integer "truck"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams_users", id: false, force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :claims
   resources :events
+  resources :teams
 
   root 'claims#index'
 

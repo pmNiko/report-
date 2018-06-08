@@ -1,16 +1,7 @@
 = simple_form_for @claim, remote: true, html: {class: "form-group"} do |f|
   = f.error_notification
-  = f.input :user_ids, as: :Select2,   |
-    label: 'Resposables',              |
-    label_method: :email,              |
-    collection: @users,                |
-    multiple: true,                    |
-    maximumSelectionLength: 2,         |
-    input_html: {id: 'claim_user_ids'} |
-  %br/
-  %br/
   = f.input :ticket
   = f.input :client
   .form-group
-    = f.submit  @claim.new_record? ? "Create Create" : "Update Claim",
+    = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
     :class => "btn btn-primary"

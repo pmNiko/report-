@@ -1,0 +1,8 @@
+.form-inline
+  .form-group.text-center
+    = f.input :ticket, class: 'form-control'
+    = f.input :client, class: 'form-control'
+  .form-group.text-center
+    %button_tag.btn-danger.btn-sm
+      = link_to_remove_association('', f,
+        { wrapper_class: 'form-inline', type: "button", class: "glyphicon glyphicon-trash"})

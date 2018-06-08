@@ -1,10 +1,66 @@
-/*!
- * Bootstrap v4.1.1 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+// File: app/assets/stylesheets/custom.scss
+@import "bootstrap";
+@media (min-width: 992px) {
+  .navbar-toggleable-md .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+  }
+}
 
+@mixin border1 {
+  border: 0px solid rgba(86, 61, 124, .2);
+}
+
+.row,
+.row>.col,
+.row>[class^=col-] {
+  @include border1;
+}
+
+h1 {
+  padding-top: 2em;
+}
+
+h2 {
+  padding-top: 1em;
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 5rem;
+}
+
+@mixin hightlight {
+  @extend .bg-success;
+  @extend .text-white;
+}
+/*
+th {
+  @include hightlight;
+}
+*/
+.scroll-x {
+  overflow-x: scroll;
+}
+
+@mixin fixed-x {
+  position: sticky;
+  width: 2em;
+  @include hightlight;
+}
+
+.fixed-x0 {
+  @include fixed-x;
+  left: 0;
+}
+
+.fixed-x1 {
+  @include fixed-x;
+  left: 2em;
+}
+
+div.scroll-example {
+  @extend .scroll-x;
+  height: 30em;
+}
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/mixins";

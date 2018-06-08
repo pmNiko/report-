@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable
-  has_and_belongs_to_many :claims
-  has_many :events
+  #relation n:m claims_users
+  #has_and_belongs_to_many :claims
+  #relation n:m teams_users
+  has_and_belongs_to_many :teams
 end

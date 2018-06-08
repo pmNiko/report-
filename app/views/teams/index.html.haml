@@ -1,0 +1,9 @@
+.container.text-center
+  %h2.text-center Teams
+  = link_to new_team_path, :remote => true do
+    = fa_icon "plus-square-o", text: "NEW TEAM", right: true, class: "fa-lg"
+  .new-team#teams
+    %tbody
+      = render @teams
+
+= render 'dialog'

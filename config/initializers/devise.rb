@@ -9,10 +9,11 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '9f6511efda524dc2ca5759053be81ec76c9560ef44728ac99dc8e5cf9264ebe3c58dd0cbc216c7e845d99a33822089def44503f6a545d4aae4afb95f706ee726'
-  config.secret_key = '7711581eaf2c2187782dcff2e6ffe31b4fda07a395e1887cec80efc20e5b2fdbd218838a3eae985afe1be72486abae0270942183dbea9a09a0f64d80eeaf708f'
+  #config.secret_key = '7711581eaf2c2187782dcff2e6ffe31b4fda07a395e1887cec80efc20e5b2fdbd218838a3eae985afe1be72486abae0270942183dbea9a09a0f64d80eeaf708f'
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -93,7 +94,7 @@ Devise.setup do |config|
   # avoid CSRF token fixation attacks. This means that, when using AJAX
   # requests for sign in and sign up, you need to get a new CSRF token
   # from the server. You can disable this option at your own risk.
-  # config.clean_up_csrf_token_on_authentication = true
+  #config.clean_up_csrf_token_on_authentication = true
 
   # When false, Devise will not attempt to reload routes on eager load.
   # This can reduce the time taken to boot the app but if your application
