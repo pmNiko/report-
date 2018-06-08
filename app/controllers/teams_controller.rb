@@ -37,7 +37,7 @@ end
 
 # DELETE /teams/1
 def destroy
-  @team.destroy
+  @team.destroy_and_child
   respond_to do |format|
     format.js
   end

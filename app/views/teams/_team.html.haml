@@ -32,23 +32,8 @@
     .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
       .panel-body
         %table.table.table-striped
-          %tbody
-            %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-1x"
-            %th= fa_icon "tag", text: "Cliente", right: true, class: "fa-1x"
-            %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-1x"
-          %tbody
-            - team.claims.each do |claim|
-              %tr
-                %td= claim.ticket
-                %td= claim.client
-                %td
-                  = link_to edit_claim_path(claim), :remote => true do
-                    = fa_icon "edit", right: true, class: "fa-1x"
-                  &nbsp
-                  = link_to '', claim, remote: true, :method => :delete,                                          |
-                    class:"fa fa-trash fa-1x",                                                            |
-                    data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
-                    verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}
+          %tbody#claims
+            = render team.claims
       .progress
         .progress-bar.progress-bar-success.progress-bar-striped.active{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width:40%"}
           40%

@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable
   #relation n:m claims_users
-  has_and_belongs_to_many :claims
+  #has_and_belongs_to_many :claims
   #relation n:m teams_users
   has_and_belongs_to_many :teams
 end

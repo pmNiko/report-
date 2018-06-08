@@ -5,6 +5,7 @@ class Team < ApplicationRecord
   has_and_belongs_to_many :claims, inverse_of: :teams
   accepts_nested_attributes_for :claims, reject_if: :all_blank, allow_destroy: true
 
+
   #incluye este usuario en su coleccion de usuarios
   def date_format
     date.strftime("%d/%m/%Y")
@@ -17,5 +18,12 @@ class Team < ApplicationRecord
   #Return true or false if contain only one responsable
   def has_responsable?
     responsables.count == 1
+  end
+
+  def destroy_and_child
+    self.claims.each do |claim|
+      claim.destroy
+    end
+    self.destroy
   end
 end
