@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :events
   resources :teams
 
-  root 'claims#index'
+  root 'events#index'
 
 end
