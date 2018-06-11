@@ -1,20 +1,17 @@
-= simple_form_for @team, remote: true, html: {class: "form-group"} do |f|
+= simple_form_for @team, remote: true, html: {class:"form-horizontal"} do |f|
   = f.error_notification
   .form-inline
-    = f.input :date
+    = f.date_field :date, class: 'form-control datepicker'
     = f.input :truck
+    = f.label :Responsables
+    = f.collection_select :user_ids, @users, :id, :email, {include_blank: true}, {multiple: true}
   %br/
   %br/
-  = f.label :Responsables
-  = f.collection_select :user_ids, @users, :id, :email, {include_blank: true}, {multiple: true}
-  %br/
-  %br/
-  = f.simple_fields_for :claims do |claim|
-    = render 'claim_fields', :f => claim
-  %button_tag
-    = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square-o'
-
-
+  .form-group
+    = f.simple_fields_for :claims do |claim|
+      = render 'claim_fields', :f => claim
+    %button_tag
+      = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square-o'
   .form-group
     = f.submit  @team.new_record? ? "Create Team" : "Update Team",
     :class => "btn btn-primary"
