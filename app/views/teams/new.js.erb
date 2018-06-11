@@ -7,7 +7,16 @@ $('.modal-body').html('<%= j render("form") %>');
 // Show the dynamic dialog
 $('#dialog').modal("show");
 $('#team_user_ids').select2({
-  placeholder: "Select a responsables",
+//  language: "es",
+//  minimumResultsForSearch: 20, // at least 20 results must be displayed
+  maximumInputLength: 30,
+  allowClear: true,
+  placeholder: "Responsables",
+  maximumSelectionLength: 2,
+  multiple: true,
+  width: '50%',
+//  tags: true,
+//  tokenSeparators: [',', ' ']
 });
 
 // Set focus to the first element

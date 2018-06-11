@@ -3,13 +3,12 @@
   .form-inline
     = f.input :date
     = f.input :truck
-  = f.input :user_ids, as: :Select2,   |
+  = f.input :user_ids,                 |
     label: 'Resposables',              |
     label_method: :email,              |
     collection: @users,                |
-    multiple: true,                    |
-    maximumSelectionLength: 2,         |
-    input_html: {id: 'team_user_ids'} |
+    input_html: {id: 'team_user_ids'}  |
+
   = f.simple_fields_for :claims do |claim|
     = render 'claim_fields', :f => claim
   %button_tag
