@@ -1,7 +1,10 @@
 = simple_form_for @claim, remote: true, html: {class: "form-group"} do |f|
   = f.error_notification
-  = f.input :ticket
-  = f.input :client
+  .form-group
+    = f.input :ticket
+    = f.input :client
+    .form-control
+      = f.select :state, Claim.states.keys
   .form-group
     = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
     :class => "btn btn-primary"

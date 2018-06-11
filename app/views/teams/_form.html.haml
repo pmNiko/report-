@@ -1,7 +1,7 @@
 = simple_form_for @team, remote: true, html: {class:"form-horizontal"} do |f|
   = f.error_notification
   .form-inline
-    = f.date_field :date, class: 'form-control datepicker'
+    = f.date_field :date, class: 'form-control'
     = f.input :truck
     = f.label :Responsables
     = f.collection_select :user_ids, @users, :id, :email, {include_blank: true}, {multiple: true}
