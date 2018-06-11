@@ -4,7 +4,7 @@ class Claim < ApplicationRecord
   #relation n:m claims_teams
   has_and_belongs_to_many :teams
   #Claim state
-  enum state: {
+  enum status: {
     pending: 1,
     in_progress: 2,
     finished: 3,

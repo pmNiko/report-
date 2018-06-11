@@ -3,7 +3,7 @@
   .form-group
     = f.input :ticket
     = f.input :client
-    = f.input :state, collection: Claim.states.keys
+    = f.input :status, collection: @statuses
   .form-group
     = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
     :class => "btn btn-primary"

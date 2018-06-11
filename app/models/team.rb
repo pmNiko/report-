@@ -26,4 +26,7 @@ class Team < ApplicationRecord
     end
     self.destroy
   end
+  def method_name
+
+  end
 end

@@ -10,11 +10,11 @@ class ClaimsController < ApplicationController
 
   def new
     @claim = Claim.new
-    @users = User.all
+    @statuses = Claim.statuses.keys
   end
 
   def edit
-    @users = User.all
+    @statuses = Claim.statuses.keys
   end
 
   # POST /claims
@@ -51,6 +51,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:ticket, :client, :state, {:user_ids =>[]})
+      params.require(:claim).permit(:ticket, :client, :status, {:user_ids =>[]})
     end
 end
