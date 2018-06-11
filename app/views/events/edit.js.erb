@@ -1,0 +1,14 @@
+// Add the dialog title
+$('#dialog h3').html("<i class='fa fa-edit'></i>Editar ");
+
+// Render the new new
+$('.modal-body').html('<%= j render("edit") %>');
+
+// Show the dynamic dialog
+$('#dialog').modal("show");
+
+// Set focus to the first element
+$('#dialog').on('shown.bs.modal', function () {
+    $('.first_input').focus()
+  });
+j
