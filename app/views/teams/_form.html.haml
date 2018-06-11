@@ -3,16 +3,18 @@
   .form-inline
     = f.input :date
     = f.input :truck
-  = f.collection_select :user_ids, @users, :id, :email, {:selected => @team.user_ids, include_blank: true}, {multiple: true}
-
-
+  %br/
+  %br/
+  = f.label :Responsables
+  = f.collection_select :user_ids, @users, :id, :email, {include_blank: true}, {multiple: true}
+  %br/
+  %br/
   = f.simple_fields_for :claims do |claim|
     = render 'claim_fields', :f => claim
   %button_tag
     = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square-o'
 
-  %br/
-  %br/
+
   .form-group
     = f.submit  @team.new_record? ? "Create Team" : "Update Team",
     :class => "btn btn-primary"
