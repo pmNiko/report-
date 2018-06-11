@@ -26,7 +26,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 #Reporttrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
 gem 'jquery-rails'
 #gem select2
-gem 'select2-rails', '~> 4.0', '>= 4.0.3'
+gem 'select2-rails', '~> 4.0'
 
 
 group :development, :test do

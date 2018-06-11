@@ -307,7 +307,7 @@ DEPENDENCIES
   rename
   rolify
   sass-rails (~> 5.0)
-  select2-rails (~> 4.0, >= 4.0.3)
+  select2-rails (~> 4.0)
   selenium-webdriver
   simple_form
   spring
