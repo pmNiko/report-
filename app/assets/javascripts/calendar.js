@@ -31,17 +31,12 @@ $(document).on('turbolinks:load', function() {
      },
 
      eventClick: function(event, jsEvent, view) {
-       $.getScript(event.edit_url, function() {});
 
-       //call ajax to show preview of the post in the preview container
-       var event_select = $(this).data(event._id);
-         //this is the show call to posts_controller#show
-
-         $.ajax({
-           url: "/event/'"+post_id,
-           beforeSend: function( xhr ) {}
-         })
-         .done(function( data ){});
+      $.ajax({
+       url: "/event/'"+event._id,
+       beforeSend: function( xhr ) {}
+      })
+      .done(function( data ){});
      },
 
      eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
@@ -68,18 +63,17 @@ newEvent = function(start_time, end_time){
   //$.getScript(event.new_url, function() {});
 };
 
-updateEvent = function(the_event) {
+updateEvent = function(event) {
   $.ajax({
     type: "PATCH",
-    url: "/events/" + the_event.id,
+    url: "/events/" + event.id,
     data: {
       event: {
-        description: the_event.description || "",
-        star_time: "" + new Date(the_event.start).toUTCString(),
-        end_time: "" + new Date(the_event.end).toUTCString(),
-        type_event: the_event.type_event,
-        user_id: the_event.user_id,
-        authenticity_token: "<%= form_authenticity_token %>"
+        description: event.description || "",
+        star_time: "" + new Date(event.start).toUTCString(),
+        end_time: "" + new Date(event.end).toUTCString(),
+        type_event: event.type_event,
+        user_id: event.user_id,
       }
     }
 
