@@ -6,7 +6,6 @@
 //= require popper
 //= require turbolinks
 //= require bootstrap
-//= require select2_simple_form
 //= require select2
 //= require calendar
 //= require data-confirm-modal
@@ -21,3 +20,4 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 2000);
+$('.datepicker').datepicker({format: 'dd/mm/yyyy'});

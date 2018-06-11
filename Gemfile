@@ -26,7 +26,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 #Reporttrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
 gem 'jquery-rails'
 #gem select2
-gem "select2-rails"
+gem 'select2-rails', '~> 4.0'
 
 
 group :development, :test do
@@ -68,8 +68,6 @@ gem 'rails_admin'
 gem 'remotipart', '~> 1.4.2'
 #Simple Form
 gem 'simple_form'
-#Select2SimpleForm is a custom input for SimpleForm
-gem 'select2_simple_form', github: 'lndl/select2_simple_form'
 #Data-Confirm Modal
 gem 'data-confirm-modal'
 
