@@ -11,4 +11,5 @@ class Claim < ApplicationRecord
     to_contact: 4,
     review: 5
   }
+
 end

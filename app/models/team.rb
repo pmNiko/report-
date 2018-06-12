@@ -19,14 +19,16 @@ class Team < ApplicationRecord
   def has_responsable?
     responsables.count == 1
   end
-
+  #Destroy all children team
   def destroy_and_child
     self.claims.each do |claim|
       claim.destroy
     end
     self.destroy
   end
-  def method_name
-
+  # % of advance
+  def advanced
+    advanced = self.claims.select{ |claim| !claim.pending? }
+    advanced.count * 100 / self.claims.count
   end
 end
