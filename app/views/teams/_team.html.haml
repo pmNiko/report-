@@ -4,40 +4,43 @@
     .panel.panel-defauls
       .panel-heading
         .panel-title
+          %table.table
+            %tbody
+              %tr
+                %th= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
+                %th= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
+                %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+                %th= fa_icon "cogs", text: "Actions", right: true, class: "fa-lg"
           %a{"data-parent" => "#accordion", "data-toggle" => "collapse",
            :href => "#collapse#{team.id}", :id => "but"}
             .panel-body
               %table.table.table-striped
-                %tbody
-                  %tr
-                    %th= fa_icon "ticket", text: "Date", right: true, class: "fa-lg"
-                    %th= fa_icon "tag", text: "Truck", right: true, class: "fa-lg"
-                    %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
-                    %th= fa_icon "wrench", text: "Actions", right: true, class: "fa-lg"
-                  %tr
-                    %td= team.date
-                    %td= team.truck
-                    %td
-                      = team.responsables.first.email
-                      - unless team.has_responsable?
-                        = " - " + team.responsables.second.email
-                    %th
-                      = link_to edit_team_path(team), :remote => true do
-                        = fa_icon "edit", right: true, class: "fa-1x"
-                      &nbsp
-                      = link_to '', team, remote: true, :method => :delete,                                          |
-                        class:"fa fa-trash fa-1x",                                                            |
-                        data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
-                        verify: "#{team.truck}", verify_text: "Type: " + " '#{team.truck}' " + "to confirm"}
+                %tr
+                  %td= team.date
+                  %td= team.truck
+                  %td
+                    = team.responsables.first.email
+                    - unless team.has_responsable?
+                      = " - " + team.responsables.second.email
+                  %th
+                    = link_to edit_team_path(team), :remote => true do
+                      = fa_icon "pencil-square-o", right: true, class: "fa-1x"
+                    &nbsp
+                    = link_to '', team, remote: true, :method => :delete,                                          |
+                      class:"fa fa-trash fa-1x",                                                            |
+                      data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
+                      verify: "#{team.truck}", verify_text: "Type: " + " '#{team.truck}' " + "to confirm"}
     .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
       .panel-body
         %table.table.table-striped
           %tbody
           %tr
-            %th= fa_icon "ticket", text: "Ticket", right: true, class: "fa-lg"
-            %th= fa_icon "ticket", text: "Client", right: true, class: "fa-lg"
-            %th= fa_icon "ticket", text: "State", right: true, class: "fa-lg"
-            %th= fa_icon "tag", text: "Actions", right: true, class: "fa-lg"
+            %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
+            %th= fa_icon "male", text: "Client", class: "fa-lg"
+            %th= fa_icon "bolt", text: "Status", class: "fa-lg"
+            %th= fa_icon "clock-o", text: "Start", class: "fa-lg"
+            %th= fa_icon "clock-o", text: "End", class: "fa-lg"
+            %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
           %tbody#claims
             = render team.claims
       .progress

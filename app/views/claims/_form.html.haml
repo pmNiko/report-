@@ -4,6 +4,9 @@
     = f.input :ticket
     = f.input :client
     = f.input :status, collection: @statuses
+    = f.time_select :starts_at
+    = f.time_select :ends_at, {:default => {:hour => '00', :minute => '00'}}
+
   .form-group
     = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
     :class => "btn btn-primary"

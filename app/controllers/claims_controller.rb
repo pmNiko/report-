@@ -51,6 +51,15 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:ticket, :client, :status, {:user_ids =>[]})
+      params
+      .require(:claim)
+      .permit(
+        :ticket,
+        :client,
+        :status,
+        :starts_at,
+        :ends_at,
+        {:user_ids =>[]}
+      )
     end
 end
