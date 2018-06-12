@@ -8,7 +8,7 @@
     = link_to edit_claim_path(claim), :remote => true do
       = fa_icon "pencil-square-o", right: true, class: "fa-lg"
     &nbsp
-    = link_to '', claim, remote: true, :method => :delete,                                          |
-      class:"fa fa-trash fa-lg",                                                            |
+    = link_to '', claim, remote: true, :method => :delete,                                           |
+      class:"fa fa-trash fa-lg",                                                                     |
       data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
       verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}       |
