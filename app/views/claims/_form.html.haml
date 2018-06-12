@@ -7,11 +7,29 @@
     .form-control
       = f.label :starts_at
       %br
-      = f.time_select :starts_at
-    .form-control      	
+      = f.time_select :starts_at,
+        :combined => true,
+        :default => Time.now.change(:hour => 8, :min => 30),
+        :ampm => true,
+        :minute_interval => 15,
+        :time_separator => "",
+        :start_hour => 8,
+        :start_minute => 00,
+        :end_hour => 19,
+        :end_minute => 30
+    .form-control
       = f.label :ends_at
       %br
-      = f.time_select :ends_at, {:default => {:hour => '00', :minute => '00'}}
+      = f.time_select :ends_at,
+        :combined => true,
+        :default => Time.now.change(:hour => 8, :min => 30),
+        :ampm => true,
+        :minute_interval => 15,
+        :time_separator => "",
+        :start_hour => 8,
+        :start_minute => 00,
+        :end_hour => 19,
+        :end_minute => 30
 
   .form-group
     = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",

@@ -28,7 +28,7 @@ class Team < ApplicationRecord
   end
   # % of advance
   def advanced
-    advanced = self.claims.select{ |claim| !claim.pending? }
+    advanced = self.claims.select{ |claim| !claim.pendiente? }
     advanced.count * 100 / self.claims.count
   end
 end
