@@ -5,6 +5,7 @@ class Claim < ApplicationRecord
   has_and_belongs_to_many :jobs
   #Claim state
   enum status: {pendiente: 1,en_curso: 2,finalizado: 3,contactar: 4,revisar: 5}
+  enum kind: {reclamo: 1, instalacion: 2, cruzada: 3, trabajo_preventivo: 4, relevamiento: 5}
 
   def fprint(a_time)
     default = Time.now.change({ hour: 23, min: 59})

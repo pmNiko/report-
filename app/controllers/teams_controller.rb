@@ -11,10 +11,12 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @users = User.all
+    @kinds = Claim.kinds.keys
   end
 
   def edit
     @users = User.all
+    @kinds = Claim.kinds.keys 
   end
 
   # POST /claims

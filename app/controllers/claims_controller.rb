@@ -9,7 +9,7 @@ class ClaimsController < ApplicationController
   end
 
   def new
-    @claim = Claim.new    
+    @claim = Claim.new  
   end
 
   def edit

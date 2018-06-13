@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_174827) do
+ActiveRecord::Schema.define(version: 2018_06_13_222235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_174827) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer "sort"
+    t.integer "kind", default: 1
     t.index ["team_id"], name: "index_claims_on_team_id"
   end
 

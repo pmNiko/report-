@@ -1,9 +1,10 @@
 %tr.text-center{:id => "claim_#{claim.id}"}
   %td= claim.ticket
   %td= claim.client
+  %td= claim.kind
   %td= claim.status
   %td= claim.starts
-  %td= claim.ends 
+  %td= claim.ends
   %td
     = link_to edit_claim_path(claim), :remote => true do
       = fa_icon "pencil-square-o", right: true, class: "fa-lg"

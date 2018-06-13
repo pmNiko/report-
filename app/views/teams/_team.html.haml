@@ -37,6 +37,7 @@
           %tr
             %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
             %th= fa_icon "male", text: "Client", class: "fa-lg"
+            %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
             %th= fa_icon "bolt", text: "Status", class: "fa-lg"
             %th= fa_icon "clock-o", text: "Start", class: "fa-lg"
             %th= fa_icon "clock-o", text: "End", class: "fa-lg"
@@ -44,5 +45,5 @@
           %tbody#claims
             = render team.claims
     .progress
-      .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width:#{team.advanced}%"}
+      .progress-bar.progress-bar-striped.progress-bar-animated{:style => 'width: "#{team.advanced %}"'}
         claim advanced #{team.advanced} %
