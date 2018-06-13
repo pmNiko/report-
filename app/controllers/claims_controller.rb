@@ -9,12 +9,12 @@ class ClaimsController < ApplicationController
   end
 
   def new
-    @claim = Claim.new
-    @statuses = Claim.statuses.keys
+    @claim = Claim.new    
   end
 
   def edit
     @statuses = Claim.statuses.keys
+    @jobs = Job.all
   end
 
   # POST /claims
@@ -59,7 +59,7 @@ class ClaimsController < ApplicationController
         :status,
         :starts_at,
         :ends_at,
-        {:user_ids =>[]}
+        {:job_ids =>[]}
       )
     end
 end

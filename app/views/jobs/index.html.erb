@@ -1,0 +1,14 @@
+<table>
+  <tbody >  <!-- sortable target -->
+    <% @jobs.each do |job| %>
+      <tr> <!-- Needs id tag on sorting elements -->
+        <td><%= job.code %></td>
+        <td><%= job.title %></td>
+        <td><%= link_to 'Show', job %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<td><%= link_to 'New', new_job_path %></td>

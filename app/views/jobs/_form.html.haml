@@ -1,0 +1,7 @@
+= simple_form_for @job, html: {class: "form-group"} do |f|
+  = f.error_notification
+  .form-group
+    = f.input :code
+    = f.input :title
+  .form-group
+    = f.submit

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :claims
   resources :events
   resources :teams
+  resources :jobs
 
   root 'events#index'
 

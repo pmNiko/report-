@@ -1,0 +1,13 @@
+<table>
+  <tbody class="sortable">  <!-- sortable target -->
+    <% @claims.each_with_sortable_id do |claim, sortable_id| %>
+      <tr id="<%= sortable_id %>">  <!-- Needs id tag on sorting elements -->
+        <td><%= claim.ticket %></td>
+        <td><%= claim.sort %></td>
+        <td><%= link_to 'Show', claim %></td>
+        <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
+        <td><%= link_to 'Destroy', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

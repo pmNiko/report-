@@ -20,6 +20,3 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 2000);
-$('tbody').sortable({
-    // you can use ajax code here
-  });
