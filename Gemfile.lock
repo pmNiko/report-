@@ -86,8 +86,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    combined_time_select (2.0.0)
-      rails (>= 5.0.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     data-confirm-modal (1.6.2)
@@ -292,7 +290,6 @@ DEPENDENCIES
   chromedriver-helper
   cocoon
   coffee-rails (~> 4.2)
-  combined_time_select (~> 2.0.0)
   data-confirm-modal
   devise
   font-awesome-rails
