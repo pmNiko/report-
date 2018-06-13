@@ -79,3 +79,4 @@ gem "font-awesome-rails"
 
 #handle nested forms.
 gem "cocoon"
+gem "combined_time_select", "~> 2.0.0"
