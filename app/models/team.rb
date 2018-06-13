@@ -1,8 +1,8 @@
 class Team < ApplicationRecord
   #relation n:m teams_users
   has_and_belongs_to_many :users
-  #relation n:m claims_teams
-  has_and_belongs_to_many :claims, inverse_of: :teams
+  #relation 1:N  -  team claims 
+  has_many :claims
   accepts_nested_attributes_for :claims, reject_if: :all_blank, allow_destroy: true
 
 
@@ -28,7 +28,7 @@ class Team < ApplicationRecord
   end
   # % of advance
   def advanced
-    advanced = self.claims.select{ |claim| !claim.pending? }
+    advanced = self.claims.select{ |claim| !claim.pendiente? }
     advanced.count * 100 / self.claims.count
   end
 end

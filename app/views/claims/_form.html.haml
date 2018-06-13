@@ -7,12 +7,11 @@
     .form-control
       = f.label :starts_at
       %br
-      = f.time_select :starts_at, {:ampm => true}
+      = f.time_select :starts_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
     .form-control
       = f.label :ends_at
       %br
-      = f.time_select :ends_at, {:ampm => true, :default => {:hour => '00', :minute => '00'}}
-
+      = f.time_select :ends_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
   .form-group
     = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
     :class => "btn btn-primary"

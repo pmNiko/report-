@@ -1,24 +1,18 @@
 class Claim < ApplicationRecord
-  #relation n:m claims_users
-  #has_and_belongs_to_many :users
-  #relation n:m claims_teams
-  has_and_belongs_to_many :teams
+  #relation 1:N  -  team claims
+  belongs_to :team
   #Claim state
-  enum status: {
-    pending: 1,
-    in_progress: 2,
-    finished: 3,
-    to_contact: 4,
-    review: 5
-  }
+  enum status: {pendiente: 1,en_curso: 2,finalizado: 3,contactar: 4,revisar: 5}
 
+  def fprint(a_time)
+    default = (Time.now.change({ hour: 23, min: 59})).strftime("%R")
+    return "#{a_time.strftime("%R")}"+" hs" unless a_time.nil? || pendiente? || time_hs == default
+  end
   def starts
-    return starts_at.strftime("%R")	unless starts_at.nil?
+    self.fprint(self.starts_at)
   end
   def ends
-    default = Time.now.change({ hour: 00, min: 00})
-    return ends_at.strftime("%R") unless
-    ends_at.nil? || ends_at.strftime("%R") == default.strftime("%R")
+    self.fprint(self.ends_at)
   end
 
 end
