@@ -1,7 +1,5 @@
 class Claim < ApplicationRecord
-  #relation n:m claims_users
-  #has_and_belongs_to_many :users
-  #relation n:1 claims_team
+  #relation 1:N  -  team claims
   belongs_to :team
   #Claim state
   enum status: {pendiente: 1,en_curso: 2,finalizado: 3,contactar: 4,revisar: 5}
