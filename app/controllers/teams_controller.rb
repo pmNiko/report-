@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
 
   def edit
     @users = User.all
-    @kinds = Claim.kinds.keys 
+    @kinds = Claim.kinds.keys
   end
 
   # POST /claims
@@ -64,6 +64,7 @@ private
         :id,
         :ticket,
         :client,
+        :kind,
         :_destroy
         ])
   end

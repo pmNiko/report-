@@ -3,7 +3,7 @@
   .form-group
     = f.input :ticket
     = f.input :client
-    = f.input :status, collection: @statuses
+    = f.select :status, @statuses
     = f.collection_select :job_ids, @jobs, :id, :title , {include_blank: true}, {multiple: true}
     .form-control
       = f.label :starts_at
