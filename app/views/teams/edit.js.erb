@@ -7,7 +7,15 @@ $('.modal-body').html('<%= j render("form") %>');
 // Show the dynamic dialog
 $('#dialog').modal("show");
 $('#team_user_ids').select2({
-  placeholder: "Select a responsables"
+  maximumInputLength: 30,
+  allowClear: true,
+  placeholder: "Responsables",
+  maximumSelectionLength: 2,
+  width: '40%'
+});
+$('#team_truck_id').select2({
+  maximumInputLength: 3,
+  placeholder: "Nº"
 });
 
 // Set focus to the first element

@@ -1,10 +1,11 @@
 class Team < ApplicationRecord
   #relation n:m teams_users
   has_and_belongs_to_many :users
-  #relation 1:N  -  team claims 
+  #relation 1:N  -  team claims
   has_many :claims
   accepts_nested_attributes_for :claims, reject_if: :all_blank, allow_destroy: true
-
+  #relation 1:N  -  truck teams
+  belongs_to :truck
 
   #incluye este usuario en su coleccion de usuarios
   def date_format

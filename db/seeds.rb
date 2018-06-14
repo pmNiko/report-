@@ -147,3 +147,36 @@ Job.create!({
   :code  => "111",
   :title => "Coordinado"
   })
+
+Truck.create!({
+  :number => "13",
+  :brand => "Partner"
+  })
+Truck.create!({
+  :number => "14",
+  :brand => "Hilux"
+  })
+Truck.create!({
+  :number => "20",
+  :brand => "Hilux"
+  })
+Truck.create!({
+  :number => "21",
+  :brand => "Hilux"
+  })
+Truck.create!({
+  :number => "22",
+  :brand => "Partner"
+  })
+Truck.create!({
+  :number => "23",
+  :brand => "Hilux"
+  })
+Truck.create!({
+  :number => "25",
+  :brand => "Partner"
+  })
+Truck.create!({
+  :number => "26",
+  :brand => "Partner"
+  })

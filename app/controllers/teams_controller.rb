@@ -12,11 +12,13 @@ class TeamsController < ApplicationController
     @team = Team.new
     @users = User.all
     @kinds = Claim.kinds.keys
+    @trucks = Truck.all
   end
 
   def edit
     @users = User.all
     @kinds = Claim.kinds.keys
+    @trucks = Truck.all
   end
 
   # POST /claims
@@ -59,7 +61,7 @@ private
         {:user_ids =>[]},
         :claims,
         :date,
-        :truck,
+        :truck_id,
         claims_attributes: [
         :id,
         :ticket,

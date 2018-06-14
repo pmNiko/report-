@@ -17,7 +17,7 @@
               %table.table.table-striped
                 %tr
                   %td= team.date
-                  %td= team.truck
+                  %td= "#{team.truck.brand} " "#{team.truck.number}"
                   %td
                     = team.responsables.first.email
                     - unless team.has_responsable?
@@ -29,7 +29,7 @@
                     = link_to '', team, remote: true, :method => :delete,                                          |
                       class:"fa fa-trash fa-1x",                                                            |
                       data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
-                      verify: "#{team.truck}", verify_text: "Type: " + " '#{team.truck}' " + "to confirm"}
+                      verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
     .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
       .panel-body
         %table.table.table-striped
