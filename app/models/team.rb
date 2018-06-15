@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
-  validates_presence_of :date, :truck_id, :user_id
+  validates :date, presence: true
+  validates_presence_of :truck, :users, presence: true
   #relation n:m teams_users
   has_and_belongs_to_many :users
   #relation 1:N  -  team claims

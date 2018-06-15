@@ -1,5 +1,5 @@
 class Claim < ApplicationRecord
-  validates_presence_of :ticket, :client, :kind
+  validates :ticket, :client, :kind, presence: true
   #relation 1:N  -  team claims
   belongs_to :team
   #relation 1:N  -  claim - materials
