@@ -24,7 +24,7 @@ class Team < ApplicationRecord
   #Destroy all children team
   def destroy_and_child
     self.claims.each do |claim|
-      claim.destroy
+      claim.destroy_and_child
     end
     self.destroy
   end
