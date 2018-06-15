@@ -11,13 +11,13 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @users = User.all
-    @kinds = Claim.kinds.keys
+    @kinds = Claim.kindss
     @trucks = Truck.all
   end
 
   def edit
     @users = User.all
-    @kinds = Claim.kinds.keys
+    @kinds = Claim.kindss
     @trucks = Truck.all
   end
 
@@ -59,15 +59,15 @@ private
       .require(:team)
       .permit(
         {:user_ids =>[]},
-        :claims,
         :date,
         :truck_id,
         claims_attributes: [
-        :id,
-        :ticket,
-        :client,
-        :kind,
-        :_destroy
-        ])
+          :id,
+          :ticket,
+          :client,
+          :kind,
+          :_destroy
+        ]
+      )
   end
 end

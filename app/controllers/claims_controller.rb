@@ -9,11 +9,12 @@ class ClaimsController < ApplicationController
   end
 
   def new
-    @claim = Claim.new  
+    @claim = Claim.new
   end
 
   def edit
-    @statuses = Claim.statuses.keys
+    @statuses = Claim.statusess
+    @items = Material.itemss
     @jobs = Job.all
   end
 
@@ -37,7 +38,7 @@ class ClaimsController < ApplicationController
 
   # DELETE /claims/1
   def destroy
-    @claim.destroy
+    @claim.destroy_and_child
     respond_to do |format|
       format.js
     end
@@ -54,12 +55,18 @@ class ClaimsController < ApplicationController
       params
       .require(:claim)
       .permit(
+        {:job_ids =>[]},
         :ticket,
         :client,
         :status,
         :starts_at,
         :ends_at,
-        {:job_ids =>[]}
+        materials_attributes: [
+          :id,
+          :item,
+          :quantity,
+          :_destroy
+        ]
       )
     end
 end

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :teams
   resources :jobs
 
-  root 'events#index'
+  root 'teams#index'
 
 end

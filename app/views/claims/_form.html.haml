@@ -1,4 +1,4 @@
-= simple_form_for @claim, remote: true, html: {class: "form-group"} do |f|
+= simple_form_for @claim, remote: true, html: {class: "form-horizontal"} do |f|
   = f.error_notification
   .form-inline.justify-content-center
     .form-control
@@ -31,7 +31,13 @@
     = f.collection_select :job_ids, @jobs, :id, :title , {include_blank: true}, {multiple: true}
   %br
   %br
+  .form-control.text-center
+    = f.simple_fields_for :materials do |material|
+      = render 'material_fields', :f => material
+    %button_tag
+      = link_to_add_association ' ', f, :materials, class: 'fa fa-plus-square fa-lg'
+  %br
+  %br
   .form-group.text-center
     = f.submit  @claim.new_record? ? "Create Claim" : "Update",
     :class => "btn btn-primary"
-h

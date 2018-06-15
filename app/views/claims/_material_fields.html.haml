@@ -1,0 +1,8 @@
+.form-inline.justify-content-center
+  .form-group
+    = f.select :item, @items
+    = f.input :quantity, class: 'form-control'
+  .form-group
+    = link_to_remove_association('', f,
+      { wrapper_class: 'form-inline', class: "fa fa-trash fa-lg"})
+  %br

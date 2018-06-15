@@ -7,6 +7,7 @@ class Team < ApplicationRecord
   #relation 1:N  -  truck teams
   belongs_to :truck
 
+
   #incluye este usuario en su coleccion de usuarios
   def date_format
     date.strftime("%d/%m/%Y")
@@ -27,9 +28,16 @@ class Team < ApplicationRecord
     end
     self.destroy
   end
-  # % of advance
-  def advanced
+  #Print percent advanced distinct [] or 0
+  def percent_advanced
     advanced = self.claims.select{ |claim| !claim.pendiente? }
-    advanced.count * 100 / self.claims.count
+    return 0 unless !advanced.empty?
+      return advanced.count * 100 / self.claims.count
+  end
+  # % of advance distinct 0 or 5% default
+  def advanced
+    advanced = percent_advanced
+    return 5 unless !advanced == 0
+      return advanced
   end
 end
