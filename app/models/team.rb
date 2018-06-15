@@ -28,16 +28,19 @@ class Team < ApplicationRecord
     end
     self.destroy
   end
+  
   #Print percent advanced distinct [] or 0
-  def percent_advanced
+  def advanced(val_default)
     advanced = self.claims.select{ |claim| !claim.pendiente? }
-    return 0 unless !advanced.empty?
-      return advanced.count * 100 / self.claims.count
+    return val_default if advanced.empty?
+    return advanced.count * 100 / self.claims.count
   end
-  # % of advance distinct 0 or 5% default
-  def advanced
-    advanced = percent_advanced
-    return 5 unless !advanced == 0
-      return advanced
+  #% of advance default 0%
+  def percent
+    advanced(0)
+  end
+  # % of advance default 5%
+  def progress_bar
+    advanced(5)
   end
 end

@@ -17,24 +17,29 @@ class Claim < ApplicationRecord
   def self.kindss
     kinds.keys
   end
-
-  def fprint(a_time)
+  def hour(a_time)
+    a_time.strftime("%R")
+  end
+  def hour_default
     default = Time.now.change({ hour: 23, min: 59})
-    return "#{a_time.strftime("%R")}"+" hs" unless a_time.nil? || pendiente? ||
-                                a_time.strftime("%R") == default.strftime("%R")
+    hour(default)
+  end
+  def form_print(a_time)
+    return "#{hour(a_time)}"+" hs" unless a_time.nil? ||
+      pendiente? || hour(a_time) == hour_default
   end
   def starts
-    self.fprint(self.starts_at)
+    form_print(starts_at)
   end
   def ends
-    self.fprint(self.ends_at)
+    form_print(ends_at)
   end
   #Destroy all children team
   def destroy_and_child
-    self.materials.each do |material|
+    materials.each do |material|
       material.destroy
     end
-    self.destroy
+    destroy
   end
 
 end
