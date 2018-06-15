@@ -45,5 +45,7 @@
           %tbody#claims
             = render team.claims
     .progress
-      .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width:#{team.advanced}%"}
-        claim advanced #{team.advanced} %
+      .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
+        progress:
+      .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width: #{team.advanced}%"}
+        #{team.advanced}%
