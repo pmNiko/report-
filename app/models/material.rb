@@ -1,4 +1,5 @@
 class Material < ApplicationRecord
+  validates_presence_of :item, :quantity
   #Relation 1:N claim - materials
   belongs_to :claim
 

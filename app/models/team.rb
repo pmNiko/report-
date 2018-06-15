@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  validates_presence_of :date, :truck_id, :user_id
   #relation n:m teams_users
   has_and_belongs_to_many :users
   #relation 1:N  -  team claims
@@ -28,7 +29,7 @@ class Team < ApplicationRecord
     end
     self.destroy
   end
-  
+
   #Print percent advanced distinct [] or 0
   def advanced(val_default)
     advanced = self.claims.select{ |claim| !claim.pendiente? }
