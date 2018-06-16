@@ -50,13 +50,12 @@
     .float-left
       = f.submit  @claim.new_record? ? "Create Claim" : "Update",
       :class => "btn btn-outline-primary"
-
     .float-right
-      %button_tag= button_to 'Contact to', contact_to_claim_path(@claim),
+      %button_tag= link_to 'Contact to', contact_to_claim_path(@claim),
       method: :post, :class => "btn btn-outline-info btn-sm "
     .float-right
-      %button_tag= button_to 'Review', review_claim_path(@claim),
+      %button_tag= link_to 'Review', review_claim_path(@claim),
       method: :post, :class => "btn btn-outline-danger btn-sm "
     .float-right
-      %button_tag= button_to 'Finished', finished_claim_path(@claim),
+      %button_tag= link_to 'Finished', finished_claim_path(@claim),
       method: :post, :class => "btn btn-outline-success btn-sm "
