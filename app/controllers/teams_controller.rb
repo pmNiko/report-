@@ -17,8 +17,8 @@ class TeamsController < ApplicationController
 
   def edit
     @users = User.all
-    @kinds = Claim.kindss
     @trucks = Truck.all
+    @kinds = Claim.kindss
   end
 
   # POST /claims

@@ -15,6 +15,7 @@ class ClaimsController < ApplicationController
   def edit
     @statuses = Claim.statusess
     @items = Material.itemss
+    @points = Measure.pointss
     @jobs = Job.all
   end
 
@@ -65,6 +66,12 @@ class ClaimsController < ApplicationController
           :id,
           :item,
           :quantity,
+          :_destroy
+        ],
+        measures_attributes: [
+          :id,
+          :point,
+          :log,
           :_destroy
         ]
       )

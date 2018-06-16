@@ -13,18 +13,23 @@ class Claim < ApplicationRecord
   has_many :materials
   accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
 
+  #relation 1:N  -  claim - measures
+  has_many :measures
+  accepts_nested_attributes_for :measures, reject_if: :all_blank, allow_destroy: true
+
   #Relation m:n   <==== Revisar
   has_and_belongs_to_many :jobs
 
   #---------- Hash attribute´s ----------#
-  
+
   enum status: {
                 pendiente: 1,en_curso: 2,
                 finalizado: 3,contactar: 4,revisar: 5
               }
   enum kind: {
-              reclamo: 1, instalacion: 2,
-              cruzada: 3, trabajo_preventivo: 4, relevamiento: 5
+              Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,
+              Cruzada: 6, Preventivo: 7, Relevamiento: 8,
+              Extencion: 9
             }
 
   #----------  --- Public Method´s  ---  ----------#
@@ -61,10 +66,13 @@ class Claim < ApplicationRecord
     a_time.strftime("%R")
   end
 
-  #Destroy all children team
+  #Destroy all children claim => materials - claim => measures
   def destroy_and_child
     materials.each do |material|
       material.destroy
+    end
+    measures.each do |measure|
+      measure.destroy
     end
     destroy
   end
