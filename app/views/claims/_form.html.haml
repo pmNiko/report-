@@ -10,6 +10,10 @@
   %p
     %strong Kind :
     = @claim.kind
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Status :
+    = @claim.status
 
 = simple_form_for @claim, remote: true, html: {class: "form-horizontal"} do |f|
   = f.error_notification

@@ -46,8 +46,9 @@ class Claim < ApplicationRecord
 
   def begin
     en_curso!
-    starts_at = Time.now
-    save!
+    #To set is necesary "self"
+    self.starts_at = DateTime.current
+    save
   end
 
   #----------  --- Private Method´s  ---  ----------#

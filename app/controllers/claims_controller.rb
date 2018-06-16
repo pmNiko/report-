@@ -10,16 +10,19 @@ class ClaimsController < ApplicationController
   def contact_to
     @claim = Claim.find(params[:id])
     @claim.contactar!
+    redirect_to teams_path
   end
 
   def review
     @claim = Claim.find(params[:id])
     @claim.revisar!
+    redirect_to teams_path
   end
 
   def finished
     @claim = Claim.find(params[:id])
     @claim.finalizado!
+    redirect_to teams_path
   end
   def show
   end
