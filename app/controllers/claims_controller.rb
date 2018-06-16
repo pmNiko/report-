@@ -1,10 +1,26 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @claims = Claim.all
+  def begin
+    @claim = Claim.find(params[:id])
+    @claim.begin
+    redirect_to teams_path
   end
 
+  def contact_to
+    @claim = Claim.find(params[:id])
+    @claim.contactar!
+  end
+
+  def review
+    @claim = Claim.find(params[:id])
+    @claim.revisar!
+  end
+
+  def finished
+    @claim = Claim.find(params[:id])
+    @claim.finalizado!
+  end
   def show
   end
 

@@ -44,6 +44,12 @@ class Claim < ApplicationRecord
     form_print(ends_at)
   end
 
+  def begin
+    en_curso!
+    starts_at = Time.now
+    save!
+  end
+
   #----------  --- Private Method´s  ---  ----------#
 
   #Return hour:minutes unless tree condition:

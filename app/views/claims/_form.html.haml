@@ -46,8 +46,17 @@
       = link_to_add_association ' ', f, :materials, class: 'fa fa-plus-square fa-lg'
   %br
   %br
-  .form-control
-    = f.submit  @claim.new_record? ? "Create Claim" : "Update",
-    :class => "btn btn-primary"
+  .form-group
+    .float-left
+      = f.submit  @claim.new_record? ? "Create Claim" : "Update",
+      :class => "btn btn-outline-primary"
+
     .float-right
-      = f.select :status, @statuses
+      %button_tag= button_to 'Contact to', contact_to_claim_path(@claim),
+      method: :post, :class => "btn btn-outline-info btn-sm "
+    .float-right
+      %button_tag= button_to 'Review', review_claim_path(@claim),
+      method: :post, :class => "btn btn-outline-danger btn-sm "
+    .float-right
+      %button_tag= button_to 'Finished', finished_claim_path(@claim),
+      method: :post, :class => "btn btn-outline-success btn-sm "
