@@ -17,17 +17,6 @@
 
 = simple_form_for @claim, remote: true, html: {class: "form-horizontal"} do |f|
   = f.error_notification
-  .form-inline.justify-content-center
-    .form-control
-      = f.label :starts_at
-      %br
-      = f.time_select :starts_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
-    .form-control
-      = f.label :ends_at
-      %br
-      = f.time_select :ends_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
-  %br
-  %br
   .form-control
     .form-group.text-center
       = f.label :jobs
@@ -52,16 +41,24 @@
   = f.input :observation, class: 'form-control'
   %br
   %br
-  .form-group
-    .float-left
-      = f.submit  @claim.new_record? ? "Create Claim" : "Update",
-      :class => "btn btn-outline-primary"
-    .float-right
-      %button_tag= link_to 'Contact to', contact_to_claim_path(@claim),
-      method: :post, :class => "btn btn-outline-info btn-sm "
-    .float-right
-      %button_tag= link_to 'Review', review_claim_path(@claim),
-      method: :post, :class => "btn btn-outline-danger btn-sm "
-    .float-right
-      %button_tag= link_to 'Finished', finished_claim_path(@claim),
-      method: :post, :class => "btn btn-outline-success btn-sm "
+  %nav.nav.nav-tabs.nav-justified
+    %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#off-line"} Off-Line
+    %a.nav-item.nav-link.active{"data-toggle" => "tab", :href => "#real-time"} Real Time
+  .tab-content
+    #off-line.tab-pane.fade
+      .form-inline.justify-content-center
+        .form-control
+          = f.label :starts_at
+          %br
+          = f.time_select :starts_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
+        .form-control
+          = f.label :ends_at
+          %br
+          = f.time_select :ends_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
+        .form-control
+          = f.label :status
+          = f.select :status, @statuses
+    #real-time.tab-pane.fade.show.active
+      .float-rigth
+        = f.submit  @claim.new_record? ? "Create Claim" : "Update",
+        :class => "btn btn-outline-primary"
