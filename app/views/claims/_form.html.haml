@@ -14,6 +14,14 @@
   %p
     %strong Status :
     = @claim.status
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Starts_at :
+    = @claim.starts
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Ends_at :
+    = @claim.ends
 
 = simple_form_for @claim, remote: true, html: {class: "form-horizontal"} do |f|
   = f.error_notification
@@ -62,3 +70,12 @@
       .float-rigth
         = f.submit  @claim.new_record? ? "Create Claim" : "Update",
         :class => "btn btn-outline-primary"
+      .float-right
+        %button_tag= link_to 'Contact to', contact_to_claim_path(@claim),
+        method: :post, :class => "btn btn-outline-info btn-sm "
+      .float-right
+        %button_tag= link_to 'Review', review_claim_path(@claim),
+        method: :post, :class => "btn btn-outline-danger btn-sm "
+      .float-right
+        %button_tag= link_to 'Finished', finished_claim_path(@claim),
+        method: :post, :class => "btn btn-outline-success btn-sm "
