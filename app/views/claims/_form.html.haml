@@ -28,9 +28,17 @@
       = f.time_select :ends_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
   %br
   %br
-  .form-control.text-center
-    = f.label :jobs
-    = f.collection_select :job_ids, @jobs, :id, :title , {include_blank: true}, {multiple: true}
+  .form-control
+    .form-group.text-center
+      = f.label :jobs
+      = f.collection_select :job_ids, @jobs, :id, :title , {include_blank: true}, {multiple: true}
+    %br
+    .form-group.text-center
+      = f.label :materials
+      = f.simple_fields_for :materials do |material|
+        = render 'material_fields', :f => material
+      %button_tag
+        = link_to_add_association ' ', f, :materials, class: 'fa fa-plus-square fa-lg'
   %br
   %br
   .form-control.text-center
@@ -41,13 +49,7 @@
       = link_to_add_association ' ', f, :measures, class: 'fa fa-plus-square fa-lg'
   %br
   %br
-  .form-control.text-center
-    = f.label :materials
-    %br
-    = f.simple_fields_for :materials do |material|
-      = render 'material_fields', :f => material
-    %button_tag
-      = link_to_add_association ' ', f, :materials, class: 'fa fa-plus-square fa-lg'
+  = f.input :observation, class: 'form-control'
   %br
   %br
   .form-group

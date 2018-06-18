@@ -1,8 +1,6 @@
-.form-inline.justify-content-center
-  .form-group
+.form-group.row
+  .form-control
     = f.select :point, @points
     = f.input :log, class: 'form-control'
-  .form-group
     = link_to_remove_association('', f,
-      { wrapper_class: 'form-inline', class: "fa fa-trash fa-lg"})
-  %br
+      { wrapper_class: 'form-group.row', class: "fa fa-trash fa-lg"})
