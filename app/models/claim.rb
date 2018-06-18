@@ -6,6 +6,10 @@ class Claim < ApplicationRecord
 
   #---------- Associations ----------#
 
+  #relation 1:N  -  author claims
+  #- Note: If the relationship is called `user` no we would need to specify the class.
+  belongs_to :author, class_name: "User"
+
   #relation 1:N  -  team claims
   belongs_to :team
 

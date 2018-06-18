@@ -24,9 +24,9 @@ class TeamsController < ApplicationController
   # POST /claims
   def create
     @team = Team.new(team_params)
-
+    @team.add_authors(current_user)
+    @team.save
     respond_to do |format|
-      @team.save
       format.js
     end
   end

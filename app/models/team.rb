@@ -16,11 +16,17 @@ class Team < ApplicationRecord
   #relation 1:N  -  team claims
   has_many :claims
   accepts_nested_attributes_for :claims, reject_if: :all_blank, allow_destroy: true
-  
+
   #relation 1:N  -  truck teams
   belongs_to :truck
 
   #----------  --- Public Method´s  ---  ----------#
+
+  def add_authors(current_user)
+    claims.each do |claim|
+      claim.author = current_user
+    end
+  end
 
   #Return the responsables
   def responsables

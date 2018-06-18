@@ -22,6 +22,10 @@
   %p
     %strong Ends_at :
     = @claim.ends
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Author :
+    = @claim.author.email
 
 = simple_form_for @claim, remote: true, html: {class: "form-horizontal"} do |f|
   = f.error_notification
