@@ -1,5 +1,6 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [:show, :edit, :update, :destroy]
+  before_action :set_claim, only: [ :show, :edit, :update, :destroy, :begin,
+                                    :contact_to, :review, :finished ]
 
   def begin
     @claim = Claim.find(params[:id])
@@ -12,20 +13,24 @@ class ClaimsController < ApplicationController
   def contact_to
     @claim = Claim.find(params[:id])
     @claim.contactar!
+    @claim.current_end_time
     redirect_to teams_path
   end
 
   def review
     @claim = Claim.find(params[:id])
     @claim.revisar!
+    @claim.current_end_time
     redirect_to teams_path
   end
 
   def finished
     @claim = Claim.find(params[:id])
     @claim.finalizado!
+    @claim.current_end_time
     redirect_to teams_path
   end
+
   def show
   end
 
@@ -40,7 +45,6 @@ class ClaimsController < ApplicationController
     @jobs = Job.all
   end
 
-  # POST /claims
   def create
     @claim = Claim.new(claim_params)
 
@@ -50,7 +54,6 @@ class ClaimsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /claims/1
   def update
     respond_to do |format|
       @claim.update(claim_params)
@@ -58,7 +61,6 @@ class ClaimsController < ApplicationController
     end
   end
 
-  # DELETE /claims/1
   def destroy
     @claim.destroy_and_child
     respond_to do |format|
@@ -83,6 +85,7 @@ class ClaimsController < ApplicationController
         :status,
         :starts_at,
         :ends_at,
+        :observation,
         materials_attributes: [
           :id,
           :item,

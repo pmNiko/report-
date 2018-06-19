@@ -48,10 +48,16 @@ class Claim < ApplicationRecord
     form_print(ends_at)
   end
 
+  #Change status and set current start time
   def begin
     en_curso!
     #To set is necesary "self"
     self.starts_at = DateTime.current
+    save
+  end
+
+  def current_end_time
+    self.ends_at = DateTime.current
     save
   end
 
@@ -63,13 +69,13 @@ class Claim < ApplicationRecord
   #3.-> hour its different to hour default
   def form_print(a_time)
     return "#{hour(a_time)}"+" hs" unless a_time.nil? ||
-      pendiente? || hour(a_time) == hour_default
+      pendiente? || time_default?(a_time)
   end
 
   #Hour default for comparison
-  def hour_default
+  def time_default?(a_time)
     default = Time.now.change({ hour: 23, min: 59})
-    hour(default)
+    hour(default) == hour(a_time)
   end
 
   #Pretty print

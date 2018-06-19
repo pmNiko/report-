@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     @team.add_authors(current_user)
     @team.save
     respond_to do |format|
-      format.js
+      format.js 
     end
   end
 
