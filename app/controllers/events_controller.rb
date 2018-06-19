@@ -11,6 +11,8 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @users = User.all
+    @type_events = Event.type_events
   end
 
   def edit
