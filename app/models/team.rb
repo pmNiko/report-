@@ -22,9 +22,12 @@ class Team < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+  #Association author to claims
   def add_authors(current_user)
     claims.each do |claim|
-      claim.author = current_user
+      if claim.author.nil?
+        claim.author = current_user
+      end
     end
   end
 
@@ -38,12 +41,12 @@ class Team < ApplicationRecord
     responsables.count == 1
   end
 
-  #% of advance default 0%
+  #Percent of advance default 0%
   def percent
     advanced(0)
   end
 
-  # % of advance default 5%
+  #Percent of advance default 5%
   def progress_bar
     advanced(5)
   end

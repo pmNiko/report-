@@ -33,8 +33,10 @@ class TeamsController < ApplicationController
 
   # PATCH/PUT /teams/1
   def update
+    @team.update(team_params)
+    @team.add_authors(current_user)
+    @team.save
     respond_to do |format|
-      @team.update(team_params)
       format.js
     end
   end
