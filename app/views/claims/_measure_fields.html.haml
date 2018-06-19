@@ -1,0 +1,6 @@
+.form-group.row
+  .form-control
+    = f.select :point, @points
+    = f.input :log, class: 'form-control'
+    = link_to_remove_association('', f,
+      { wrapper_class: 'form-group.row', class: "fa fa-trash fa-lg"})

@@ -15,7 +15,7 @@
   %strong End time :
   = @event.end_time - 25.seconds
 
-= link_to 'Edit', edit_event_path(@event), :remote => true
+= link_to 'Edit', edit_event_path(@event), remote: true
 = link_to ' Delete', @event, :method => :delete
 = link_to 'Back', events_path
 = render 'dialog'

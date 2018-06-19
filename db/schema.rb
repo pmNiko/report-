@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_163114) do
+ActiveRecord::Schema.define(version: 2018_06_18_172930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,21 @@ ActiveRecord::Schema.define(version: 2018_06_08_163114) do
     t.string "client"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer "sort"
+    t.integer "kind", default: 1
+    t.integer "status", default: 1
+    t.text "observation"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_claims_on_author_id"
+    t.index ["team_id"], name: "index_claims_on_team_id"
   end
 
-  create_table "claims_teams", id: false, force: :cascade do |t|
+  create_table "claims_jobs", force: :cascade do |t|
     t.integer "claim_id"
-    t.integer "team_id"
+    t.integer "job_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -36,6 +46,31 @@ ActiveRecord::Schema.define(version: 2018_06_08_163114) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.float "code"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "claim_id"
+    t.integer "item"
+    t.index ["claim_id"], name: "index_materials_on_claim_id"
+  end
+
+  create_table "measures", force: :cascade do |t|
+    t.integer "point"
+    t.text "log"
+    t.bigint "claim_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["claim_id"], name: "index_measures_on_claim_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -50,14 +85,22 @@ ActiveRecord::Schema.define(version: 2018_06_08_163114) do
 
   create_table "teams", force: :cascade do |t|
     t.date "date"
-    t.integer "truck"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "truck_id"
+    t.index ["truck_id"], name: "index_teams_on_truck_id"
   end
 
   create_table "teams_users", id: false, force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
+  end
+
+  create_table "trucks", force: :cascade do |t|
+    t.integer "number"
+    t.string "brand"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,4 +128,8 @@ ActiveRecord::Schema.define(version: 2018_06_08_163114) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "claims", "teams"
+  add_foreign_key "materials", "claims"
+  add_foreign_key "measures", "claims"
+  add_foreign_key "teams", "trucks"
 end

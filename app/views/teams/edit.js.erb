@@ -1,5 +1,5 @@
 // Add the dialog title
-$('#dialog h3').html("<i class='glyphicon glyphicon-plus'></i> Editar");
+$('#dialog h3').html("<i class='fa fa-edit'></i>Team ");
 
 // Render the new form
 $('.modal-body').html('<%= j render("form") %>');
@@ -7,7 +7,14 @@ $('.modal-body').html('<%= j render("form") %>');
 // Show the dynamic dialog
 $('#dialog').modal("show");
 $('#team_user_ids').select2({
-  placeholder: "Select a responsables"
+  maximumInputLength: 30,
+  placeholder: "Responsables",
+  maximumSelectionLength: 2,
+  width: '40%'
+});
+$('#team_truck_id').select2({
+  maximumInputLength: 3,
+  placeholder: "Nº"
 });
 
 // Set focus to the first element

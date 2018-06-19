@@ -1,7 +1,85 @@
-= simple_form_for @claim, remote: true, html: {class: "form-group"} do |f|
+.form-inline.justify-content-center
+  %p
+    %strong Ticket:
+    = @claim.ticket
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Client :
+    = @claim.client
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Kind :
+    = @claim.kind
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Status :
+    = @claim.status
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Starts_at :
+    = @claim.starts
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Ends_at :
+    = @claim.ends
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  %p
+    %strong Author :
+    = @claim.author.email
+
+= simple_form_for @claim, remote: true, html: {class: "form-horizontal"} do |f|
   = f.error_notification
-  = f.input :ticket
-  = f.input :client
-  .form-group
-    = f.submit  @claim.new_record? ? "Create Claim" : "Update Claim",
-    :class => "btn btn-primary"
+  .form-control
+    .form-group.text-center
+      = f.label :jobs
+      = f.collection_select :job_ids, @jobs, :id, :title , {include_blank: true}, {multiple: true}
+    %br
+    .form-group.text-center
+      = f.label :materials
+      = f.simple_fields_for :materials do |material|
+        = render 'material_fields', :f => material
+      %button_tag
+        = link_to_add_association ' ', f, :materials, class: 'fa fa-plus-square fa-lg'
+  %br
+  %br
+  .form-control.text-center
+    = f.label :measures
+    = f.simple_fields_for :measures do |measure|
+      = render 'measure_fields', :f => measure
+    %button_tag
+      = link_to_add_association ' ', f, :measures, class: 'fa fa-plus-square fa-lg'
+  %br
+  %br
+  = f.input :observation, class: 'form-control'
+  %br
+  %br
+  %nav.nav.nav-tabs.nav-justified
+    %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#off-line"} Off-Line
+    %a.nav-item.nav-link.active{"data-toggle" => "tab", :href => "#real-time"} Real Time
+  .tab-content
+    #off-line.tab-pane.fade
+      .form-inline.justify-content-center
+        .form-control
+          = f.label :starts_at
+          %br
+          = f.time_select :starts_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
+        .form-control
+          = f.label :ends_at
+          %br
+          = f.time_select :ends_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
+        .form-control
+          = f.label :status
+          = f.select :status, @statuses
+    #real-time.tab-pane.fade.show.active
+      .float-rigth
+        = f.submit  @claim.new_record? ? "Create Claim" : "Update",
+        :class => "btn btn-outline-primary"
+      .float-right
+        %button_tag= link_to 'Contact to', contact_to_claim_path(@claim),
+        method: :post, :class => "btn btn-outline-info btn-sm "
+      .float-right
+        %button_tag= link_to 'Review', review_claim_path(@claim),
+        method: :post, :class => "btn btn-outline-danger btn-sm "
+      .float-right
+        %button_tag= link_to 'Finished', finished_claim_path(@claim),
+        method: :post, :class => "btn btn-outline-success btn-sm "

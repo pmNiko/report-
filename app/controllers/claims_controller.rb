@@ -1,8 +1,34 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [:show, :edit, :update, :destroy]
+  before_action :set_claim, only: [ :show, :edit, :update, :destroy, :begin,
+                                    :contact_to, :review, :finished ]
 
-  def index
-    @claims = Claim.all
+  def begin
+    @claim = Claim.find(params[:id])
+    @claim.begin
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def contact_to
+    @claim = Claim.find(params[:id])
+    @claim.contactar!
+    @claim.current_end_time
+    redirect_to teams_path
+  end
+
+  def review
+    @claim = Claim.find(params[:id])
+    @claim.revisar!
+    @claim.current_end_time
+    redirect_to teams_path
+  end
+
+  def finished
+    @claim = Claim.find(params[:id])
+    @claim.finalizado!
+    @claim.current_end_time
+    redirect_to teams_path
   end
 
   def show
@@ -10,14 +36,15 @@ class ClaimsController < ApplicationController
 
   def new
     @claim = Claim.new
-    @users = User.all
   end
 
   def edit
-    @users = User.all
+    @statuses = Claim.statusess
+    @items = Material.itemss
+    @points = Measure.pointss
+    @jobs = Job.all
   end
 
-  # POST /claims
   def create
     @claim = Claim.new(claim_params)
 
@@ -27,7 +54,6 @@ class ClaimsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /claims/1
   def update
     respond_to do |format|
       @claim.update(claim_params)
@@ -35,9 +61,8 @@ class ClaimsController < ApplicationController
     end
   end
 
-  # DELETE /claims/1
   def destroy
-    @claim.destroy
+    @claim.destroy_and_child
     respond_to do |format|
       format.js
     end
@@ -51,6 +76,28 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:ticket, :client, {:user_ids =>[]})
+      params
+      .require(:claim)
+      .permit(
+        {:job_ids =>[]},
+        :ticket,
+        :client,
+        :status,
+        :starts_at,
+        :ends_at,
+        :observation,
+        materials_attributes: [
+          :id,
+          :item,
+          :quantity,
+          :_destroy
+        ],
+        measures_attributes: [
+          :id,
+          :point,
+          :log,
+          :_destroy
+        ]
+      )
     end
 end

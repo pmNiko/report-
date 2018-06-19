@@ -1,0 +1,2 @@
+$("#layout-notice").html("<%=j flash[:notice] %>");
+$('#claim_<%= @claim.id %>').replaceWith('<%= j render (@claim) %>')

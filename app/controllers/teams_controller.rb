@@ -1,47 +1,53 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
-def index
-  @teams = Team.all
-end
+  def index
+    @teams = Team.all
+  end
 
-def show
-end
+  def show
+  end
 
-def new
-  @team = Team.new
-  @users = User.all
-end
+  def new
+    @team = Team.new
+    @users = User.all
+    @kinds = Claim.kindss
+    @trucks = Truck.all
+  end
 
-def edit
-  @users = User.all
-end
+  def edit
+    @users = User.all
+    @trucks = Truck.all
+    @kinds = Claim.kindss
+  end
 
-# POST /claims
-def create
-  @team = Team.new(team_params)
-
-  respond_to do |format|
+  # POST /claims
+  def create
+    @team = Team.new(team_params)
+    @team.add_authors(current_user)
     @team.save
-    format.js
+    respond_to do |format|
+      format.js 
+    end
   end
-end
 
-# PATCH/PUT /teams/1
-def update
-  respond_to do |format|
+  # PATCH/PUT /teams/1
+  def update
     @team.update(team_params)
-    format.js
+    @team.add_authors(current_user)
+    @team.save
+    respond_to do |format|
+      format.js
+    end
   end
-end
 
-# DELETE /teams/1
-def destroy
-  @team.destroy_and_child
-  respond_to do |format|
-    format.js
+  # DELETE /teams/1
+  def destroy
+    @team.destroy_and_child
+    respond_to do |format|
+      format.js
+    end
   end
-end
 
 
 private
@@ -55,14 +61,15 @@ private
       .require(:team)
       .permit(
         {:user_ids =>[]},
-        :claims,
         :date,
-        :truck,
+        :truck_id,
         claims_attributes: [
-        :id,
-        :ticket,
-        :client,
-        :_destroy
-        ])
+          :id,
+          :ticket,
+          :client,
+          :kind,
+          :_destroy
+        ]
+      )
   end
 end

@@ -1,21 +1,24 @@
-= simple_form_for @team, remote: true, html: {class: "form-group"} do |f|
+= simple_form_for @team, remote: true, html: {class:"form-horizontal"} do |f|
   = f.error_notification
-  = f.input :date
-  = f.input :truck
-  = f.input :user_ids, as: :Select2,   |
-    label: 'Resposables',              |
-    label_method: :email,              |
-    collection: @users,                |
-    multiple: true,                    |
-    maximumSelectionLength: 2,         |
-    input_html: {id: 'team_user_ids'} |
-  = f.simple_fields_for :claims do |claim|
-    = render 'claim_fields', :f => claim
-  %button_tag
-    = link_to_add_association button_tag('', type: "button", class: "glyphicon glyphicon-plus"), f, :claims
-
-  %br/
-  %br/
+  .form-inline.justify-content-center
+    .text-center
+      = f.label :Date
+      = f.date_field :date, :title => "date", :value => Date.today,
+            :placeholder => 'dd/mm/yyyy',
+            :class => "form-control-datepicker"
+    .text-center
+      = f.label :Truck
+      = f.collection_select :truck_id, @trucks, :id, :number, {include_blank: true}
+    = f.collection_select :user_ids, @users, :id, :email, {include_blank: true}, {multiple: true}
+  %br
+  %br
+  .form-inline
+    = f.simple_fields_for :claims do |claim|
+      = render 'claim_fields', :f => claim
+    %button_tag
+      = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square fa-lg'
+  %br
+  %br
   .form-group
     = f.submit  @team.new_record? ? "Create Team" : "Update Team",
     :class => "btn btn-primary"

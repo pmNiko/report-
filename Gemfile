@@ -20,15 +20,10 @@ gem 'turbolinks', '~> 5.0.0'
 gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
 #gem Bootstrap compatible for rails_layout x 'bootstrap ~>4.1.1'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 #Reporttrap JavaScript depends on jQuery. If you're using Rails 5.1+, add the jquery-rails.
 gem 'jquery-rails'
-#gem select2
-gem "select2-rails"
-
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -55,7 +50,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 #Devise Autentication
 gem 'devise'
 #Generate Roles
@@ -68,16 +62,12 @@ gem 'rails_admin'
 gem 'remotipart', '~> 1.4.2'
 #Simple Form
 gem 'simple_form'
-#Select2SimpleForm is a custom input for SimpleForm
-gem 'select2_simple_form', github: 'lndl/select2_simple_form'
+#gem select2
+gem 'select2-rails', '~> 4.0'
 #Data-Confirm Modal
 gem 'data-confirm-modal'
-
 gem 'momentjs-rails'
-
 gem 'fullcalendar.io-rails', '~> 3.9'
-
 gem "font-awesome-rails"
-
 #handle nested forms.
 gem "cocoon"

@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+
+
+  #Relation 1:N user - events
   belongs_to :user
 
   enum type_events: {
@@ -22,6 +25,7 @@ class Event < ApplicationRecord
     7 => "#a7cbff",
     8 => "#a7cbff"
   }
+
 end
 
 ## Type of Events
