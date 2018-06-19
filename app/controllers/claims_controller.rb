@@ -4,7 +4,9 @@ class ClaimsController < ApplicationController
   def begin
     @claim = Claim.find(params[:id])
     @claim.begin
-    redirect_to teams_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def contact_to

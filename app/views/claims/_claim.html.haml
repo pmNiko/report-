@@ -2,7 +2,8 @@
   %td= claim.ticket
   %td= claim.client
   %td= claim.kind
-  %td= button_to 'Begin', begin_claim_path(claim), method: :post, :class => "btn btn-outline-success btn-sm"
+  %td= button_to 'Begin', begin_claim_path(claim), method: :post, remote: true,
+  :class => "btn btn-outline-success btn-sm"
   %td= claim.starts
   %td= claim.ends
   %td
