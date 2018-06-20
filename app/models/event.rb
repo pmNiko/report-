@@ -2,7 +2,7 @@ class Event < ApplicationRecord
 
 
   #Relation 1:N user - events
-  belongs_to :user
+  has_many :users
 
   enum type_events: {
     Guardia: 1,
