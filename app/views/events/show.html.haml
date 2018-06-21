@@ -3,8 +3,11 @@
   %strong Type of Event:
   = @event.type_event
 %p
-  %strong User :
-  = @event.user_id
+  %strong Users :
+  - @event.users.each do | user|
+    %br
+    = user.email 
+
 %p
   %strong Description :
   = @event.description
@@ -13,7 +16,7 @@
   = @event.star_time
 %p
   %strong End time :
-  = @event.end_time - 25.seconds
+  = @event.end_time
 
 = link_to 'Edit', edit_event_path(@event), remote: true
 = link_to ' Delete', @event, :method => :delete

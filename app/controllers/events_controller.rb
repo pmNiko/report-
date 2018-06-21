@@ -6,16 +6,20 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id])  
+    @type_events = Event.type_events.keys
   end
 
   def new
     @event = Event.new
     @users = User.all
-    @type_events = Event.type_events
+    @type_events = Event.type_events.keys
   end
 
   def edit
+    @event = Event.find(params[:id])
+    @users = User.all
+    @type_events = Event.type_events.keys
   end
 
   def create
@@ -45,6 +49,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:description, :star_time, :end_time, :type_event, :user_id)
+      params.require(:event).permit(:description, :star_time, :end_time, :type_event, {:user_ids =>[]})
     end
 end

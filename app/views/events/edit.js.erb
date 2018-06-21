@@ -1,8 +1,8 @@
 // Add the dialog title
 $('#dialog h3').html("<i class='fa fa-edit'></i>Editar ");
 
-// Render the new new
-$('.modal-body').html('<%= j render("edit") %>');
+// Render the form
+$('.modal-body').html('<%= j render("form") %>');
 
 // Show the dynamic dialog
 $('#dialog').modal("show");
@@ -11,4 +11,7 @@ $('#dialog').modal("show");
 $('#dialog').on('shown.bs.modal', function () {
     $('.first_input').focus()
   });
-j
+
+$('#event_user_ids').select2({
+  placeholder: "Select an User",
+});

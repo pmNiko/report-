@@ -9,7 +9,7 @@ class User < ApplicationRecord
   #has_and_belongs_to_many :claims
   #relation n:m teams_users
   has_and_belongs_to_many :teams
-  has_and_belongs_to_many :events
   #relation 1:N author claims
   has_many :claims, foreign_key: "author_id"
+  has_and_belongs_to_many :events
 end

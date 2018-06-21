@@ -2,9 +2,9 @@ class Event < ApplicationRecord
 
 
   #Relation 1:N user - events
-  has_many :users
+  has_and_belongs_to_many :users
 
-  enum type_events: {
+  enum type_event: {
     Guardia: 1,
     Hs_Extras: 2,
     Parte_Medico: 3,
