@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(version: 2018_06_20_231443) do
     t.string "client"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 1
     t.bigint "team_id"
     t.datetime "starts_at"
     t.datetime "ends_at"
+    t.integer "sort"
     t.integer "kind", default: 1
+    t.integer "status", default: 1
     t.text "observation"
     t.bigint "author_id"
     t.index ["author_id"], name: "index_claims_on_author_id"
