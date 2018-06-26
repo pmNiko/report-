@@ -30,14 +30,6 @@ $(document).on('turbolinks:load', function() {
       return newEvent(start, end);
     },
 
-    eventClick: function(event, jsEvent, view) {
-      $.ajax({
-        url: "/event/'"+event._id,
-        beforeSend: function( xhr ) {}
-      })
-      .done(function( data ){});
-    },
-
     eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
       return updateEvent(event);
     },
