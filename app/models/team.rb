@@ -27,6 +27,7 @@ class Team < ApplicationRecord
     claims.each do |claim|
       if claim.author.nil?
         claim.author = current_user
+        save
       end
     end
   end

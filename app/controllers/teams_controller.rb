@@ -5,9 +5,6 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  def show
-  end
-
   def new
     @team = Team.new
     @users = User.all
@@ -25,19 +22,31 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.add_authors(current_user)
-    @team.save
     respond_to do |format|
+<<<<<<< HEAD
       format.js 
+=======
+      if @team.save
+        format.js
+      else
+        #flash.now[:success] = "Error team create."
+        format.js
+      end
+>>>>>>> teams
     end
   end
 
   # PATCH/PUT /teams/1
   def update
-    @team.update(team_params)
-    @team.add_authors(current_user)
-    @team.save
     respond_to do |format|
-      format.js
+      if @team.update(team_params)
+        @team.add_authors(current_user)
+        #flash.now[:success] = "Team to truck: "+@team.truck+" it was updated."
+        format.js
+      else
+        #flash.now[:success] = "Team to truck: "+@team.truck+" could not be updated."
+        format.js
+      end
     end
   end
 
@@ -72,4 +81,5 @@ private
         ]
       )
   end
+
 end

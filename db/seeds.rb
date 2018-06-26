@@ -14,6 +14,7 @@ martinUser = User.new(
   :password_confirmation => "123456"
 )
 martinUser.save!
+martinUser.add_role :technician
 
 damiUser = User.new(
   :email                 => "damian.desimini@cotesma.com",
@@ -21,6 +22,7 @@ damiUser = User.new(
   :password_confirmation => "123456"
 )
 damiUser.save!
+damiUser.add_role :technician
 
 maxiUser = User.new(
   :email                 => "maximiliano.avila@cotesma.com",
@@ -28,6 +30,7 @@ maxiUser = User.new(
   :password_confirmation => "123456"
 )
 maxiUser.save!
+maxiUser.add_role :technician
 
 darioUser = User.new(
   :email                 => "dario.dinapoli@cotesma.com",
@@ -35,6 +38,7 @@ darioUser = User.new(
   :password_confirmation => "123456"
 )
 darioUser.save!
+darioUser.add_role :technician
 
 marcosUser = User.new(
   :email                 => "marcos.olate@cotesma.com",
@@ -42,6 +46,7 @@ marcosUser = User.new(
   :password_confirmation => "123456"
 )
 marcosUser.save!
+marcosUser.add_role :technician
 
 guilleUser = User.new(
   :email                 => "guille.cabrera@cotesma.com",
@@ -49,6 +54,7 @@ guilleUser = User.new(
   :password_confirmation => "123456"
 )
 guilleUser.save!
+guilleUser.add_role :technician
 
 santiUser = User.new(
   :email                 => "santiago.thomas@cotesma.com",
@@ -56,6 +62,7 @@ santiUser = User.new(
   :password_confirmation => "123456"
 )
 santiUser.save!
+santiUser.add_role :technician
 
 juabaUser = User.new(
   :email                 => "juan.cardenas@cotesma.com",
@@ -63,6 +70,7 @@ juabaUser = User.new(
   :password_confirmation => "123456"
 )
 juabaUser.save!
+juabaUser.add_role :technician
 
 luisUser = User.new(
   :email                 => "luis.savedra@cotesma.com",
@@ -70,6 +78,7 @@ luisUser = User.new(
   :password_confirmation => "123456"
 )
 luisUser.save!
+luisUser.add_role :technician
 
 gasparUser = User.new(
   :email                 => "gaspar.sierra@cotesma.com",
@@ -77,6 +86,7 @@ gasparUser = User.new(
   :password_confirmation => "123456"
 )
 gasparUser.save!
+gasparUser.add_role :technician
 
 hugoUser = User.new(
   :email                 => "hugo.perez@cotesma.com",
@@ -84,6 +94,8 @@ hugoUser = User.new(
   :password_confirmation => "123456"
 )
 hugoUser.save!
+hugoUser.add_role :dir
+hugoUser.add_role :chief
 
 leoUser = User.new(
   :email                 => "leonardo.gaias@cotesma.com",
@@ -91,6 +103,7 @@ leoUser = User.new(
   :password_confirmation => "123456"
 )
 leoUser.save!
+leoUser.add_role :dir
 
 pabloUser = User.new(
   :email                 => "pablo.ferreri@cotesma.com",
@@ -98,6 +111,7 @@ pabloUser = User.new(
   :password_confirmation => "123456"
 )
 pabloUser.save!
+pabloUser.add_role :dir
 
 Job.create!({
   :code  => "0.1",
