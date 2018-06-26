@@ -10,7 +10,11 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    if current_user.has_role? :chief
+      @event = Event.new
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
