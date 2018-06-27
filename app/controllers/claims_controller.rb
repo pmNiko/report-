@@ -32,6 +32,7 @@ class ClaimsController < ApplicationController
   end
 
   def show
+    @claim = Claim.find(params[:id])
   end
 
   def new

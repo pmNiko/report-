@@ -37,6 +37,15 @@ class Team < ApplicationRecord
     users
   end
 
+  def data_responsables
+    data = []
+    data << responsables.first.email
+    unless has_responsable?
+      data << responsables.second.email
+    end
+    return data
+  end
+
   #Return true or false if contain only one responsable
   def has_responsable?
     responsables.count == 1

@@ -1,0 +1,46 @@
+.card-group
+  .card
+    .text-center
+      %h3.card-title #{@claim.kind}
+      %p.card-text
+        #{@claim.date}
+      %img.card-img-top{:alt => "Flex Card Image 1", :src => "https://img.webnots.com/2017/04/Bootstrap-Card-Image.png"}/
+    .card-body
+      %p= claim_resposables(@claim)
+      %p.card-text Ticket: #{@claim.ticket}
+      %p.card-text Client: #{@claim.client}
+      %p.card-text Author: #{@claim.author.email}
+    .card-footer
+      %small.text-muted Start: #{@claim.starts}
+  .card
+    .card-body
+      .text-center
+        %h5.card-title Sumary
+      %p.card-text Cocluded: #{@claim.status}
+      %p.card-text
+        Jobs:
+        %br
+        - @claim.jobs.each do |job|
+          %tr
+            %td
+              %strong= " - " + job.title
+      %br
+      %p.card-text Observation: #{@claim.observation}
+    .card-footer
+      %small.text-muted End: #{@claim.ends}
+  .card
+    .card-body
+      %h5.card-title Materials/Measures
+      %p.card-text
+        Measures:
+
+      %p.card-text
+        Materials:
+        %br
+        - @claim.materials.each do |material|
+          %tr
+            %td
+              %strong= " >> " + material.item + ": " + material.quantity + "mts/u"
+      %br
+    .card-footer
+      %small.text-muted Time finish: xx hs - xx min

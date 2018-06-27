@@ -7,42 +7,43 @@
           %table.table
             %tbody
               %tr
-                %td= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
-                %td= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
-                %td= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
-                %td= fa_icon "cogs", text: "Actions", right: true, class: "fa-lg"
-
-          .panel-body
-            %table.table.table-striped
-              %tr
-                %td= team.date
-                %td= "#{team.truck.brand} " "#{team.truck.number}"
-                %td
-                  = team.responsables.first.email
-                  - unless team.has_responsable?
-                    = " - " + team.responsables.second.email
-                %td
-                  = link_to edit_team_path(team), :remote => true do
-                    = fa_icon "pencil-square-o", right: true, class: "fa-1x"
-                  &nbsp
-                  = link_to '', team, remote: true, :method => :delete,                                          |
-                    class:"fa fa-trash fa-1x",                                                            |
-                    data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
-                    verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
-
-    .panel-body
-      %table.table.table-striped
-        %tbody
-        %tr
-          %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
-          %th= fa_icon "male", text: "Client", class: "fa-lg"
-          %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
-          %th= fa_icon "bolt", text: "Status", class: "fa-lg"
-          %th= fa_icon "clock-o", text: "Start", class: "fa-lg"
-          %th= fa_icon "clock-o", text: "End", class: "fa-lg"
-          %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
-        %tbody#claims
-          = render team.claims
+                %th= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
+                %th= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
+                %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+                - if has_roles?(:dir, :admin)
+                  %th= fa_icon "cogs", text: "Actions", right: true, class: "fa-lg"
+          %a{"data-parent" => "#accordion", "data-toggle" => "collapse",
+           :href => "#collapse#{team.id}", :id => "but"}
+            .panel-body
+              %table.table.table-striped
+                %tr
+                  %td= team.date
+                  %td= team_truck(team)
+                  %td= team_responsables(team)
+                  - if has_roles?(:dir, :admin)
+                    %th
+                      = link_to edit_team_path(team), :remote => true do
+                        = fa_icon "pencil-square-o", right: true, class: "fa-1x"
+                      &nbsp
+                      = link_to '', team, remote: true, :method => :delete,                                          |
+                        class:"fa fa-trash fa-1x",                                                            |
+                        data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
+                        verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
+    .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
+      .panel-body
+        %table.table.table-striped
+          %tbody
+          %tr
+            %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
+            %th= fa_icon "male", text: "Client", class: "fa-lg"
+            %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
+            %th= fa_icon "bolt", text: "Status", class: "fa-lg"
+            %th= fa_icon "clock-o", text: "Start", class: "fa-lg"
+            %th= fa_icon "clock-o", text: "End", class: "fa-lg"
+            - if has_roles?(:dir, :admin)
+              %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
+          %tbody#claims
+            = render team.claims
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:

@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   post "claims/review:id" => "claims#review", :as => 'review_claim'
   post "claims/finished:id" => "claims#finished", :as => 'finished_claim'
 
+  get "teams/home_dir" => "teams#home_dir", :as => 'dir_team'
+  get "teams/home_technician" => "teams#home_technician", :as => 'technician_team'
+
   resources :events
   resources :teams
   resources :jobs
 
-  root 'teams#index'
+  root 'teams#home'
 
 end
