@@ -10,7 +10,7 @@ module ClaimsHelper
     if claim.has_responsable?
       claim.data_responsables.first
     else
-      claim.data_responsables.first + " " + claim.data_responsables.second
+      claim.data_responsables.first + " - " + claim.data_responsables.second
     end
   end
 end
