@@ -1,0 +1,16 @@
+- @team.claims.each do |claim|
+  %tr.text-center{:id => "claim_#{claim.id}"}
+    %td= claim.kind
+    %td= claim.ticket
+    %td= claim.client
+    - if claim.pendiente?
+      %td= button_to 'Begin', begin_claim_path(claim), method: :post, remote: true,
+      :class => "btn btn-outline-success btn-sm"
+    - elsif concluded?(claim)
+      %td
+        = link_to claim_path(claim), :remote => true do
+          = fa_icon "eye", right: true, class: "fa-lg"
+    - else
+      %td
+        = link_to edit_claim_path(claim), :remote => true do
+          = fa_icon "pencil-square-o", right: true, class: "fa-lg"

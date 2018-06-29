@@ -1,0 +1,40 @@
+%tbody
+  .row
+    .col-1
+    .panel-group.col-10
+      .panel.panel-defauls
+        .panel-heading
+          .panel-title
+            %table.table.text-center
+              %tbody
+                %tr
+                  %th= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
+                  %th= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
+                  %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+            .panel-body
+              %table.table.header.text-center
+                %tr
+                  %th= @team.date
+                  %th= "#{@team.truck.brand} " "#{@team.truck.number}"
+                  %th
+                    = @team.responsables.first.email
+                    - unless @team.has_responsable?
+                      = " - " + @team.responsables.second.email
+        .panel-body
+          %table.table.table-striped.text-center
+            %tbody
+            %tr
+              %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
+              %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
+              %th= fa_icon "male", text: "Client", class: "fa-lg"
+              %th= fa_icon "bolt", text: "Action", class: "fa-lg"
+            %tbody#claims
+              - unless @team.claims.nil?
+                = render 'technician_claims'
+      .progress
+        .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
+          progress:
+        .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width: #{@team.progress_bar}%"}
+          #{@team.percent}%
+
+= render 'dialog'

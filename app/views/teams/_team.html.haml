@@ -20,15 +20,14 @@
                   %td= team.date
                   %td= team_truck(team)
                   %td= team_responsables(team)
-                  - if has_roles?(:dir, :admin)
-                    %th
-                      = link_to edit_team_path(team), :remote => true do
-                        = fa_icon "pencil-square-o", right: true, class: "fa-1x"
-                      &nbsp
-                      = link_to '', team, remote: true, :method => :delete,                                          |
-                        class:"fa fa-trash fa-1x",                                                            |
-                        data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
-                        verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
+                  %th
+                    = link_to edit_team_path(team), :remote => true do
+                      = fa_icon "pencil-square-o", right: true, class: "fa-1x"
+                    &nbsp
+                    = link_to '', team, remote: true, :method => :delete,                                          |
+                      class:"fa fa-trash fa-1x",                                                            |
+                      data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
+                      verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
     .panel-collapse.collapse.border-collapse{:id => ("collapse#{team.id}")}
       .panel-body
         %table.table.table-striped
@@ -40,8 +39,7 @@
             %th= fa_icon "bolt", text: "Status", class: "fa-lg"
             %th= fa_icon "clock-o", text: "Start", class: "fa-lg"
             %th= fa_icon "clock-o", text: "End", class: "fa-lg"
-            - if has_roles?(:dir, :admin)
-              %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
+            %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
           %tbody#claims
             = render team.claims
     .progress

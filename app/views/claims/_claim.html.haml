@@ -2,25 +2,17 @@
   %td= claim.kind
   %td= claim.ticket
   %td= claim.client
-  - if claim.pendiente? && has_role?(:technician)
-    %td= button_to 'Begin', begin_claim_path(claim), method: :post, remote: true,
-    :class => "btn btn-outline-success btn-sm"
-  - elsif has_role?(:technician)
-    %td
-      = link_to edit_claim_path(claim), :remote => true do
-        = fa_icon "pencil-square-o", right: true, class: "fa-lg"
-  - else
-    %td= claim.status
-
+  %td= claim.status
   %td= claim.starts
   %td= claim.ends
-  - if has_roles?(:dir, :admin)
-    %td
-      - if concluded?(claim)
-        = link_to claim_path(claim), :remote => true do
-          = fa_icon "eye", right: true, class: "fa-lg"
-      - else
-        = link_to '', claim, remote: true, :method => :delete,                                           |
-          class:"fa fa-trash fa-lg",                                                                     |
-          data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
-          verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}       |
+  %td
+    - if concluded?(claim)
+      = link_to claim_path(claim), :remote => true do
+        = fa_icon "eye", right: true, class: "fa-lg"
+    - elsif claim.en_curso?
+      = fa_icon "spinner", class: "fa-lg"
+    - else
+      = link_to '', claim, remote: true, :method => :delete,                                           |
+        class:"fa fa-trash fa-lg",                                                                     |
+        data: {confirm: "Delete: "+"[ Ticket:"+" #{claim.ticket} ]-"+"[ Client:"+" #{claim.client} ]", |
+        verify: "#{claim.client}", verify_text: "Type: " + " '#{claim.client}' " + "to confirm"}       |
