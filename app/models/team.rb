@@ -84,5 +84,6 @@ class Team < ApplicationRecord
     self.destroy
   end
 
+  scope :today, lambda { where('date = ?', Date.today)}
 
 end

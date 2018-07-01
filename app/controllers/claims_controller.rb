@@ -1,5 +1,5 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [ :show, :edit, :update, :destroy, :begin,
+  before_action :set_claim, only: [ :show, :edit, :update, :destroy,
                                     :contact_to, :review, :finished ]
 
   def begin
@@ -14,21 +14,21 @@ class ClaimsController < ApplicationController
     @claim = Claim.find(params[:id])
     @claim.contactar!
     @claim.current_end_time
-    redirect_to teams_path
+    redirect_to technician_team_path
   end
 
   def review
     @claim = Claim.find(params[:id])
     @claim.revisar!
     @claim.current_end_time
-    redirect_to teams_path
+    redirect_to technician_team_path
   end
 
   def finished
     @claim = Claim.find(params[:id])
     @claim.finalizado!
     @claim.current_end_time
-    redirect_to teams_path
+    redirect_to technician_team_path
   end
 
   def show

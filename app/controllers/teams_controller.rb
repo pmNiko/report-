@@ -17,22 +17,22 @@ class TeamsController < ApplicationController
   end
 
   def home_technician
-    @team = Team.first
     @user = current_user
+    @team = @user.teams.today.first
   end
 
   def home_dir
-    @teams = Team.all
+    @teams = Team.today
     @user = current_user
   end
 
   def index
-    @teams = Team.all
+    @teams = Team.today
   end
 
   def new
     @team = Team.new
-    @users = User.all
+    @users = User.with_role(:technician)
     @kinds = Claim.kindss
     @trucks = Truck.all
   end

@@ -14,12 +14,9 @@
             .panel-body
               %table.table.header.text-center
                 %tr
-                  %th= @team.date
-                  %th= "#{@team.truck.brand} " "#{@team.truck.number}"
-                  %th
-                    = @team.responsables.first.email
-                    - unless @team.has_responsable?
-                      = " - " + @team.responsables.second.email
+                  %th= @team.date_format
+                  %th= team_truck(@team)
+                  %th= team_responsables(@team)
         .panel-body
           %table.table.table-striped.text-center
             %tbody
@@ -30,7 +27,7 @@
               %th= fa_icon "bolt", text: "Action", class: "fa-lg"
             %tbody#claims
               - unless @team.claims.nil?
-                = render 'technician_claims'
+                = render @team.claims
       .progress
         .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
           progress:

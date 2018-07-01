@@ -17,7 +17,7 @@
             .panel-body
               %table.table.table-striped
                 %tr
-                  %td= team.date
+                  %td= team.date_format
                   %td= team_truck(team)
                   %td= team_responsables(team)
                   %th
@@ -41,7 +41,23 @@
             %th= fa_icon "clock-o", text: "End", class: "fa-lg"
             %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
           %tbody#claims
-            = render team.claims
+          - unless team.claims.nil?
+            - team.claims.each do |claim|
+              %tr.text-center
+                %td= claim.kind
+                %td= claim.ticket
+                %td= claim.client
+                %td= claim.status
+                %td= claim.starts
+                %td= claim.ends
+                %td
+                  - if concluded?(claim)
+                    = link_to claim_path(claim), :remote => true do
+                      = fa_icon "eye", right: true, class: "fa-lg"
+                  - elsif claim.en_curso?
+                    = fa_icon "spinner", class: "fa-lg"
+                  - else
+                    = fa_icon "hourglass-start", class: "fa-lg"                    
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:
