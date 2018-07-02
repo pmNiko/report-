@@ -1,6 +1,5 @@
-.form-group.row
-  .form-control
-    = f.select :point, @points
-    = f.input :log, class: 'form-control'
-    = link_to_remove_association('', f,
-      { wrapper_class: 'form-group.row', class: "fa fa-trash fa-lg"})
+%tr.row.m-0.point
+  %td.d-inline-block.col-4= f.select :point, @points
+  %td.d-inline-block.col-6= f.text_field :log, class: 'form-control'
+  %td.d-inline-block.col-2#trash_measures= link_to_remove_association('', f,
+    { wrapper_class: 'point', class: "fa fa-trash fa-lg"})

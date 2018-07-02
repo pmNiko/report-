@@ -16,7 +16,7 @@
               :placeholder => 'dd/mm/yyyy',
               :class => "form-control-datepicker text-center"
             %td.d-inline-block.col-3= f.collection_select :truck_id,
-              @trucks, :id, :number, {include_blank: true, :prompt => 'Number'}
+              @trucks, :id, :number, {include_blank: true}
             %td.d-inline-block.col-6= f.collection_select :user_ids,
               @users, :id, :email, {include_blank: true}, {multiple: true}
   .card
