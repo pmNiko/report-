@@ -1,13 +1,38 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def home
     @teams = Team.all
+    @user = current_user
+
+    if @user.has_role? :admin
+      redirect_to teams_path
+    elsif @user.has_role? :dir
+      redirect_to dir_team_path
+    elsif @user.has_role? :technician
+      redirect_to technician_team_path
+    else
+      redirect_to new_user_session_path
+    end
+  end
+
+  def home_technician
+    @user = current_user
+    @team = @user.teams.today.first
+  end
+
+  def home_dir
+    @teams = Team.today
+    @user = current_user
+  end
+
+  def index
+    @teams = Team.today
   end
 
   def new
     @team = Team.new
-    @users = User.all
+    @users = User.with_role(:technician)
     @kinds = Claim.kindss
     @trucks = Truck.all
   end
@@ -32,17 +57,14 @@ class TeamsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /teams/1
   def update
+    @team.update(team_params)
+    @team.add_authors(current_user)
+    @team.save
     respond_to do |format|
-      if @team.update(team_params)
-        @team.add_authors(current_user)
-        #flash.now[:success] = "Team to truck: "+@team.truck+" it was updated."
-        format.js
-      else
-        #flash.now[:success] = "Team to truck: "+@team.truck+" could not be updated."
-        format.js
-      end
+      format.js
     end
   end
 

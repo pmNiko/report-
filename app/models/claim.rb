@@ -38,6 +38,21 @@ class Claim < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+  #Return date to visit
+  def date
+    team.date_format
+  end
+
+  #Return data responsables claim
+  def data_responsables
+    team.data_responsables
+  end
+
+  #Return true if has a responsable
+  def has_responsable?
+    team.has_responsable?
+  end
+
   #Return start hour claim
   def starts
     form_print(starts_at)

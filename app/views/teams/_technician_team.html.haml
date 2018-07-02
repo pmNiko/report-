@@ -1,0 +1,33 @@
+.card
+  .card
+    .card-header.bg-info TEAM
+    .card-body.p-0
+      %table.table
+        %thead
+          %tr
+            %th= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
+            %th= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
+            %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+        %tbody
+          %tr
+            %td= @team.date_format
+            %td= team_truck(@team)
+            %td= team_responsables(@team)
+    .card-body
+      %table.table.table-striped
+        %thead
+          %tr.bg-info
+            %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
+            %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
+            %th= fa_icon "male", text: "Client", class: "fa-lg"
+            %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
+        %tbody#claims
+          - unless @team.claims.nil?
+            = render @team.claims
+  .progress
+    .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
+      progress:
+    .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width: #{@team.progress_bar}%"}
+      #{@team.percent}%
+
+= render 'dialog'

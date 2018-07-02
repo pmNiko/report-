@@ -12,4 +12,5 @@ class User < ApplicationRecord
   #relation 1:N author claims
   has_many :claims, foreign_key: "author_id"
   has_and_belongs_to_many :events
+
 end

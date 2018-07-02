@@ -1,8 +1,6 @@
-.form-inline.text.center
-  .form-group
-    = f.input :ticket, class: 'form-control'
-    = f.input :client, class: 'form-control'
-    = f.select :kind, @kinds
-  .form-group
-    = link_to_remove_association('', f,
-      { wrapper_class: 'form-inline', class: "fa fa-trash fa-lg"})
+%tr.row.m-0
+  %td.d-inline-block.col-4= f.text_field :ticket, class: 'text-center'
+  %td.d-inline-block.col-4= f.text_field :client, class: 'text-center'
+  %td.d-inline-block.col-2= f.select :kind, @kinds
+  %td.d-inline-block.col-2= link_to_remove_association('', f,
+    { wrapper_class: 'form-inline', class: "fa fa-trash fa-lg"})
