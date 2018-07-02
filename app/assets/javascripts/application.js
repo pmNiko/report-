@@ -8,6 +8,9 @@
 //= require bootstrap
 //= require select2
 //= require calendar
+//
+//= require menus/menu_technical
+//
 //= require data-confirm-modal
 //= require cocoon
 //= require_tree .

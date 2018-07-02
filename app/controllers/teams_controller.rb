@@ -23,16 +23,12 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.add_authors(current_user)
     respond_to do |format|
-<<<<<<< HEAD
-      format.js 
-=======
       if @team.save
         format.js
       else
         #flash.now[:success] = "Error team create."
         format.js
       end
->>>>>>> teams
     end
   end
 

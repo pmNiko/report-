@@ -4,4 +4,47 @@
  *= require select2
  */
  @import "calendar";
+ @import "menu_technical";
  @import "font-awesome";
+
+
+/* Menú Listón
+----------------------------------------------- */
+
+#menuListon {
+  display: -webkit-box;
+  position: relative;
+  margin: 0 -655px 5px -30px;
+  background: rgba(255, 108, 3, 0.5);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  box-shadow: 0 3px 0 #bbb;
+  margin-bottom: 12px;
+  height: 39px;
+  padding-top: 5px;
+  padding-left: 19px;
+}
+
+#menuListon:after, #menuListon:before {
+content: '';
+position: absolute;
+}
+
+#menuListon:before, #menuListon:after {
+border-style: solid;
+border-color: transparent;
+bottom: -10px;
+}
+
+
+#menuListon:before {
+border-width: 0 20px 10px 0;
+border-right-color: #8C3115; /* Color de la sombra del doblez */
+left: 0;
+}
+
+div#div_liston {
+  width: 104px;
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 14px;
+}
