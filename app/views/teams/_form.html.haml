@@ -3,48 +3,37 @@
   .card
     .card-header.border-primary.text-center TEAM
     .card-body.text-center
-      .form-control
-        .form-inline
-          %tr
-            .col-3
-              %th  Date
-            .col-3
-              %th  Nº truck
-            .col-6
-              %th  Responsables
-        %br
-        .form-inline
-          %tr
-            .col-3
-              %td= f.date_field :date, :title => "date", :value => Date.today,
-                  :placeholder => 'dd/mm/yyyy',
-                  :class => "form-control-datepicker"
-            .col-3
-              %td= f.collection_select :truck_id, @trucks, :id, :number, {include_blank: true, :prompt => 'Number'}
-            .col-6
-              %td= f.collection_select :user_ids, @users, :id, :email, {include_blank: true}, {multiple: true}
-
+      %table.table.table-striped
+        %thead
+          %tr.row.m-0
+            %th.d-inline-block.col-3 Date
+            %th.d-inline-block.col-3 Nº truck
+            %th.d-inline-block.col-6 Responsables
+        %tbody
+          %tr.row.m-0
+            %td.d-inline-block.col-3= f.date_field :date,
+              :title => "date", :value => Date.today,
+              :placeholder => 'dd/mm/yyyy',
+              :class => "form-control-datepicker text-center"
+            %td.d-inline-block.col-3= f.collection_select :truck_id,
+              @trucks, :id, :number, {include_blank: true, :prompt => 'Number'}
+            %td.d-inline-block.col-6= f.collection_select :user_ids,
+              @users, :id, :email, {include_blank: true}, {multiple: true}
   .card
     .card-header.border-primary.text-center Ticket´s
     .card-body.text-center
-      .form-control
-        .form-inline
-          %tr
-            .col-3
-              %td  Nº ticket
-            .col-3
-              %td  Client
-            .col-3
-              %td  Kind
-            .col-3
-              %td  Trash
-      %br
-      %table
+      %table.table.table-striped
+        %thead
+          %tr.row.m-0
+            %th.d-inline-block.col-4 Nº ticket
+            %th.d-inline-block.col-4 Client
+            %th.d-inline-block.col-2 Kind
+            %th.d-inline-block.col-2 Trash
         %tbody
           = f.simple_fields_for :claims do |claim|
             = render 'claim_fields', :f => claim
-          %button_tag
-            = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square fa-lg'
+      %button_tag
+        = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square fa-lg'
   %br
   %br
   .form-group.text-center
