@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "teams/home_dir" => "teams#home_dir", :as => 'dir_team'
   get "teams/home_technician" => "teams#home_technician", :as => 'technician_team'
 
+  get "teams/report" => "teams#report", :as => 'report_team'
+
   resources :events
   resources :teams
   resources :jobs

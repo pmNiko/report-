@@ -1,7 +1,14 @@
 .card.border-info{:id => "team_#{team.id}"}
   #accordion
     .card
-      .card-header.bg-info{:id => ("heading#{team.id}")} TEAM
+      .card-header.bg-secondary{:id => ("heading#{team.id}")}
+        .row
+          .col-4
+          .col-4
+          .col-4
+            .float-right
+              = link_to edit_team_path(team), :remote => true do
+                = fa_icon "check-circle", right: true, class: "fa-1x"
       .card-body.p-0
         %table.table
           %thead
@@ -16,15 +23,16 @@
               %td= team_truck(team)
               %td= team_responsables(team)
               %td
-                = link_to edit_team_path(team), :remote => true do
-                  = fa_icon "pencil-square-o", right: true, class: "fa-1x"
-                &nbsp
-                = link_to '', team, remote: true, :method => :delete,                                          |
-                  class:"fa fa-trash fa-1x",                                                            |
-                  data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
-                  verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
-                &nbsp
-                %button{class: "fa fa-angle-double-down","aria-controls" => "team_#{team.id}", "aria-expanded" => "true", "data-target" => "#team#{team.id}", "data-toggle" => "collapse"}
+                .float-right
+                  = link_to edit_team_path(team), :remote => true do
+                    = fa_icon "pencil-square-o", right: true, class: "fa-1x"
+                  &nbsp
+                  = link_to '', team, remote: true, :method => :delete,                                          |
+                    class:"fa fa-trash fa-1x",                                                            |
+                    data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
+                    verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
+                  &nbsp
+                  %button{class: "fa fa-angle-double-down","aria-controls" => "team_#{team.id}", "aria-expanded" => "true", "data-target" => "#team#{team.id}", "data-toggle" => "collapse"}
 
       .collapse{:id => ("team#{team.id}"), "aria-labelledby" => "heading#{team.id}", "data-parent" => "#accordion"}
         .card-body

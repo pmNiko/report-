@@ -1,6 +1,10 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
+  def report
+    
+  end
+
   def home
     @teams = Team.all
     @user = current_user
