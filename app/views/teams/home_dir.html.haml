@@ -1,4 +1,5 @@
 %h4 Home #{@user.roles.first.name} - #{@user.email}
+= render 'clock'
 .container.text-center
   = link_to new_team_path, :remote => true do
     = fa_icon "plus-square-o", text: "", right: true, class: "fa-lg"

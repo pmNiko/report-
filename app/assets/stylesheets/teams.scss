@@ -1,3 +1,55 @@
-// Place all the styles related to the Teams controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.wrap {
+  width: 90%;
+  max-width: 1000px;
+}
+
+.widget {
+  width: 40%;
+  margin: 0.5em;
+}
+
+.widget p{
+  display: inline-block;
+}
+
+.date {
+  font-family: 'Oswald', Arial;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 0.3125rem;
+  /*margin-bottom: 5px;*/
+  background: rgba(0,0,0,.3);
+  padding: 5px;
+  width: 100%;
+}
+.clock {
+  font-family: 'Oswald', Arial;
+  width: 100%;
+  padding: 20px;
+  font-size: 3em;
+  text-align: center;
+  background: rgba(0,0,0,.2);
+}
+
+.clock .box-seconds,
+.clock .box-hours {
+  display: inline-block;
+}
+
+.clock .seconds,
+.clock .ampm {
+  display: block;
+}
+.padding-0 p {
+  margin-bottom: 0px;
+}
+.clock .box-hours p{
+  font-size: 1em;
+}
