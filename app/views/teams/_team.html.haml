@@ -1,13 +1,13 @@
 .card.border-info{:id => "team_#{team.id}"}
   #accordion
     .card
-      .card-header.bg-secondary{:id => ("heading#{team.id}")}
+      .card-header.bg-info{:id => ("heading#{team.id}")}
         .row
           .col-4
           .col-4
           .col-4
             .float-right
-              = link_to edit_team_path(team), :remote => true do
+              = link_to daily_report_path do
                 = fa_icon "check-circle", right: true, class: "fa-1x"
       .card-body.p-0
         %table.table
@@ -58,11 +58,15 @@
                   %td.d-inline-block.col-1= claim.starts
                   %td.d-inline-block.col-1= claim.ends
                   %td.d-inline-block.col-2
-                    - if concluded?(claim)
+                    - if claim.finalizado?
                       = link_to claim_path(claim), :remote => true do
                         = fa_icon "eye", right: true, class: "fa-lg"
                     - elsif claim.en_curso?
                       = fa_icon "wrench", class: "fa-lg"
+                    - elsif incomplete?(claim)
+                      = link_to claim_path(claim), :remote => true do
+                        = fa_icon "eye", class: "fa-lg"
+                        = fa_icon "exclamation", class: "fa-lg"
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
     .progress

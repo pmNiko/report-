@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
-  def report
-    
+  def daily_report
+    @daily_reports = Team.today
   end
 
   def home

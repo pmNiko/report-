@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "teams/home_dir" => "teams#home_dir", :as => 'dir_team'
   get "teams/home_technician" => "teams#home_technician", :as => 'technician_team'
 
-  get "teams/report" => "teams#report", :as => 'report_team'
+  get "teams/daily_report" => "teams#daily_report", :as => 'daily_report'
 
   resources :events
   resources :teams
