@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-07-05
+  truck: 1
+  user_1: one
+  user_2: one
+
+two:
+  date: 2018-07-05
+  truck: 1
+  user_1: two
+  user_2: two

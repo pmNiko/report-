@@ -6,6 +6,10 @@ class Claim < ApplicationRecord
 
   #---------- Associations ----------#
 
+  #Join Model ClaimMaterializations
+  has_many :dreport_tickets
+  has_many :dreport, :through => :dreport_tickets
+
   #relation 1:N  -  author claims
   #- Note: If the relationship is called `user` no we would need to specify the class.
   belongs_to :author, class_name: "User"

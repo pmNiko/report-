@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_211224) do
+ActiveRecord::Schema.define(version: 2018_07_05_050416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2018_07_03_211224) do
   create_table "claims_jobs", force: :cascade do |t|
     t.integer "claim_id"
     t.integer "job_id"
+  end
+
+  create_table "dreports", force: :cascade do |t|
+    t.date "date"
+    t.integer "truck"
+    t.bigint "user_1_id"
+    t.bigint "user_2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_1_id"], name: "index_dreports_on_user_1_id"
+    t.index ["user_2_id"], name: "index_dreports_on_user_2_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -100,6 +111,29 @@ ActiveRecord::Schema.define(version: 2018_07_03_211224) do
     t.integer "user_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.integer "number"
+    t.string "client"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string "kind"
+    t.float "job_1"
+    t.float "job_2"
+    t.float "job_3"
+    t.float "job_4"
+    t.float "job_5"
+    t.float "job_6"
+    t.integer "mat_1"
+    t.integer "mat_2"
+    t.integer "mat_3"
+    t.integer "mat_4"
+    t.integer "mat_5"
+    t.integer "mat_6"
+    t.text "observation"
+    t.bigint "dreport_id"
+    t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
+  end
+
   create_table "trucks", force: :cascade do |t|
     t.integer "number"
     t.string "brand"
@@ -136,4 +170,5 @@ ActiveRecord::Schema.define(version: 2018_07_03_211224) do
   add_foreign_key "materials", "claims"
   add_foreign_key "measures", "claims"
   add_foreign_key "teams", "trucks"
+  add_foreign_key "tickets", "dreports"
 end
