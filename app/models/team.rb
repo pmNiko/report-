@@ -32,12 +32,12 @@ class Team < ApplicationRecord
     end
   end
 
-  # => Return the responsables
+  # => return the responsables
   def responsables
     users
   end
 
-  # => Return data from responsables
+  # => return data from responsables
   def data_responsables
     data = []
     data << responsables.first.email
@@ -47,17 +47,17 @@ class Team < ApplicationRecord
     return data
   end
 
-  # => Return true or false if contain only one responsable
+  # => return true or false if contain only one responsable
   def has_responsable?
     responsables.count == 1
   end
 
-  # => Percent of advance default 0%
+  # => percent advance, default 0%
   def percent
     advanced(0)
   end
 
-  # => Percent of advance default 5%
+  # => percent advance, default 5%
   def progress_bar
     advanced(5)
   end
@@ -65,19 +65,19 @@ class Team < ApplicationRecord
 
   #----------  --- Private Method´s  ---  ----------#
 
-  # => Print percent advanced distinct [] or 0
+  # => print percent advanced, distinct [] or 0
   def advanced(val_default)
     advanced = self.claims.select{ |claim| !claim.pendiente? }
     return val_default if advanced.empty?
     return advanced.count * 100 / self.claims.count
   end
 
-  # => Pretty print
+  # => pretty print
   def date_format
     date.strftime("%d/%m/%Y")
   end
 
-  # => Destroy all children team
+  # => destroy all children team
   def destroy_and_child
     self.claims.each do |claim|
       claim.destroy_and_child
@@ -87,10 +87,11 @@ class Team < ApplicationRecord
 
   #----------  --- Private Method´s  ---  ----------#
 
-  # => Scope teams today
+  # => scope teams today
   scope :today, lambda { where('date = ?', Date.today) }
 
-  # => Scope teams day finished
+  # => scope teams day finished
   scope :finished, lambda { where(finished: true) }
+  
 
 end

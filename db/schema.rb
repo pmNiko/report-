@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_050416) do
+ActiveRecord::Schema.define(version: 2018_07_06_011829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,14 +123,32 @@ ActiveRecord::Schema.define(version: 2018_07_05_050416) do
     t.float "job_4"
     t.float "job_5"
     t.float "job_6"
-    t.integer "mat_1"
-    t.integer "mat_2"
-    t.integer "mat_3"
-    t.integer "mat_4"
-    t.integer "mat_5"
-    t.integer "mat_6"
+    t.integer "mat_item1"
+    t.integer "mat_item2"
+    t.integer "mat_item3"
+    t.integer "mat_item4"
+    t.integer "mat_item5"
+    t.integer "mat_item6"
     t.text "observation"
     t.bigint "dreport_id"
+    t.integer "mat_qty_1"
+    t.integer "mat_qty_2"
+    t.integer "mat_qty_3"
+    t.integer "mat_qty_4"
+    t.integer "mat_qty_5"
+    t.integer "mat_qty_6"
+    t.integer "meas_p1"
+    t.integer "meas_p2"
+    t.integer "meas_p3"
+    t.integer "meas_p4"
+    t.integer "meas_p5"
+    t.integer "meas_p6"
+    t.text "meas_log1"
+    t.text "meas_log2"
+    t.text "meas_log3"
+    t.text "meas_log4"
+    t.text "meas_log5"
+    t.text "meas_log6"
     t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
   end
 

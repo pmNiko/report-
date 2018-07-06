@@ -11,6 +11,7 @@ class Measure < ApplicationRecord
 
   #---------- Hash attribute ----------#
 
+  # => point
   enum point: {
               Central: 1, Primario: 2, Secundario: 3,
               Bajada: 4, Domicilio: 5

@@ -6,26 +6,26 @@ class Claim < ApplicationRecord
 
   #---------- Associations ----------#
 
-  #Join Model ClaimMaterializations
+  # => relation 1:N report - tickets
   has_many :dreport_tickets
   has_many :dreport, :through => :dreport_tickets
 
-  #relation 1:N  -  author claims
+  # => relation 1:N  -  author claims
   #- Note: If the relationship is called `user` no we would need to specify the class.
   belongs_to :author, class_name: "User"
 
-  #relation 1:N  -  team claims
+  # => relation 1:N  -  team claims
   belongs_to :team
 
-  #relation 1:N  -  claim - materials
+  # => relation 1:N  -  claim - materials
   has_many :materials
   accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
 
-  #relation 1:N  -  claim - measures
+  # => relation 1:N  -  claim - measures
   has_many :measures
   accepts_nested_attributes_for :measures, reject_if: :all_blank, allow_destroy: true
 
-  #Relation m:n   <==== Revisar
+  # => relation m:n   <==== Revisar
   has_and_belongs_to_many :jobs
 
   #---------- Hash attribute´s ----------#
@@ -42,32 +42,32 @@ class Claim < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
-  #Return date to visit
+  # => return date to visit
   def date
     team.date_format
   end
 
-  #Return data responsables claim
+  # => return data responsables claim
   def data_responsables
     team.data_responsables
   end
 
-  #Return true if has a responsable
+  # => return true if has a responsable
   def has_responsable?
     team.has_responsable?
   end
 
-  #Return start hour claim
+  # => return start hour claim
   def starts
     form_print(starts_at)
   end
 
-  #Return end hour claim
+  # => return end hour claim
   def ends
     form_print(ends_at)
   end
 
-  #Change status and set current start time
+  # => change status and set current start time
   def begin
     en_curso!
     #To set is necesary "self"
@@ -75,6 +75,7 @@ class Claim < ApplicationRecord
     save
   end
 
+  # => set ends_at claim with current date
   def current_end_time
     self.ends_at = DateTime.current
     save
@@ -82,27 +83,27 @@ class Claim < ApplicationRecord
 
   #----------  --- Private Method´s  ---  ----------#
 
-  #Return hour:minutes unless tree condition:
-  #1.-> hour isn´t nil
-  #2.-> claim not be pendiente
-  #3.-> hour its different to hour default
+  # => Return hour:minutes unless tree condition:
+  # => 1.-> hour isn´t nil
+  # => 2.-> claim not be pendiente
+  # => 3.-> hour its different to hour default
   def form_print(a_time)
     return "#{hour(a_time)}"+" hs" unless a_time.nil? ||
       pendiente? || time_default?(a_time)
   end
 
-  #Hour default for comparison
+  # => hour default for comparison
   def time_default?(a_time)
     default = Time.now.change({ hour: 23, min: 59})
     hour(default) == hour(a_time)
   end
 
-  #Pretty print
+  # => pretty print
   def hour(a_time)
     a_time.strftime("%R")
   end
 
-  #Destroy all children claim => materials - claim => measures
+  # => destroy all children claim => materials - claim => measures
   def destroy_and_child
     materials.each do |material|
       material.destroy
@@ -115,14 +116,15 @@ class Claim < ApplicationRecord
 
   #---------- Class method´s ----------#
 
-  #Status all
+  # => all status
   def self.statusess
     statuses.keys
   end
 
-  #Kind of claim. Kind all
+  # => all kind
   def self.kindss
     kinds.keys
   end
+  
 
 end
