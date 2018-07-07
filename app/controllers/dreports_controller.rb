@@ -5,42 +5,10 @@ class DreportsController < ApplicationController
     @dreports = Dreport.today
   end
 
-  def new
+  def end_shift
     @dreport = Dreport.new
-  end
-
-  def edit
-  end
-
-  # POST /claims
-  def create
-    @dreport = Dreport.new(dreport_params)
-    respond_to do |format|
-      if @dreport.save
-        format.js
-      else
-        #flash.now[:success] = "Error dreport create."
-        format.js
-      end
-    end
-  end
-
-
-  # PATCH/PUT /dreports/1
-  def update
-    @dreport.update(dreport_params)
-    @dreport.save
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  # DELETE /dreports/1
-  def destroy
-    @dreport.destroy
-    respond_to do |format|
-      format.js
-    end
+    @team = Team.find(params[:id])
+    @dreport.load(@team)
   end
 
 

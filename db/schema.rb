@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_06_011829) do
+ActiveRecord::Schema.define(version: 2018_07_07_035206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_07_06_011829) do
     t.bigint "user_2_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "news"
     t.index ["user_1_id"], name: "index_dreports_on_user_1_id"
     t.index ["user_2_id"], name: "index_dreports_on_user_2_id"
   end
@@ -117,12 +118,12 @@ ActiveRecord::Schema.define(version: 2018_07_06_011829) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.string "kind"
-    t.float "job_1"
-    t.float "job_2"
-    t.float "job_3"
-    t.float "job_4"
-    t.float "job_5"
-    t.float "job_6"
+    t.float "job_cod_1"
+    t.float "job_cod_2"
+    t.float "job_cod_3"
+    t.float "job_cod_4"
+    t.float "job_cod_5"
+    t.float "job_cod_6"
     t.integer "mat_item1"
     t.integer "mat_item2"
     t.integer "mat_item3"
@@ -149,6 +150,12 @@ ActiveRecord::Schema.define(version: 2018_07_06_011829) do
     t.text "meas_log4"
     t.text "meas_log5"
     t.text "meas_log6"
+    t.string "job_title_1"
+    t.string "job_title_2"
+    t.string "job_title_3"
+    t.string "job_title_4"
+    t.string "job_title_5"
+    t.string "job_title_6"
     t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
   end
 

@@ -125,6 +125,9 @@ class Claim < ApplicationRecord
   def self.kindss
     kinds.keys
   end
-  
+
+  # => scope claims day finished
+  scope :finished, lambda { where(pendiente?: false) }
+
 
 end

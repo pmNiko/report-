@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get "teams/daily_report" => "teams#daily_report", :as => 'daily_report'
 
+  post "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift'
+
   resources :events
   resources :teams
   resources :jobs
