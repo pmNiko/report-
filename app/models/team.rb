@@ -67,7 +67,7 @@ class Team < ApplicationRecord
 
   # => print percent advanced, distinct [] or 0
   def advanced(val_default)
-    advanced = self.claims.select{ |claim| !claim.pendiente? }
+    advanced = self.concluded
     return val_default if advanced.empty?
     return advanced.count * 100 / self.claims.count
   end
@@ -85,6 +85,11 @@ class Team < ApplicationRecord
     self.destroy
   end
 
+  # => claims finished or concluded
+  def concluded
+    claims.select { |claim| !claim.pendiente?}
+  end
+
   #----------  --- Private Method´s  ---  ----------#
 
   # => scope teams today
@@ -92,6 +97,6 @@ class Team < ApplicationRecord
 
   # => scope teams day finished
   scope :finished, lambda { where(finished: true) }
-  
+
 
 end

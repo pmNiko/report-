@@ -28,7 +28,6 @@ class TicketsController < ApplicationController
       params
       .require(:ticket)
       .permit(
-        {
         :dreport_id,
         :number,
         :client,

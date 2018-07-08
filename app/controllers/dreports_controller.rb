@@ -6,9 +6,11 @@ class DreportsController < ApplicationController
   end
 
   def end_shift
-    @dreport = Dreport.new
     @team = Team.find(params[:id])
-    @dreport.load(@team)
+    @dreport = Dreport.new
+    @dreport.save!
+    @dreport.load_parameters(@team)
+    @dreport.save
   end
 
 

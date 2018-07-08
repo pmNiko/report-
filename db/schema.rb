@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_035206) do
+ActiveRecord::Schema.define(version: 2018_07_08_032330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,13 +40,12 @@ ActiveRecord::Schema.define(version: 2018_07_07_035206) do
   create_table "dreports", force: :cascade do |t|
     t.date "date"
     t.integer "truck"
-    t.bigint "user_1_id"
-    t.bigint "user_2_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "news"
-    t.index ["user_1_id"], name: "index_dreports_on_user_1_id"
-    t.index ["user_2_id"], name: "index_dreports_on_user_2_id"
+    t.string "responsable_1"
+    t.string "responsable_2"
+    t.string "brand"
   end
 
   create_table "events", force: :cascade do |t|
@@ -117,7 +116,6 @@ ActiveRecord::Schema.define(version: 2018_07_07_035206) do
     t.string "client"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.string "kind"
     t.float "job_cod_1"
     t.float "job_cod_2"
     t.float "job_cod_3"
@@ -156,6 +154,9 @@ ActiveRecord::Schema.define(version: 2018_07_07_035206) do
     t.string "job_title_4"
     t.string "job_title_5"
     t.string "job_title_6"
+    t.string "author"
+    t.integer "kind"
+    t.integer "status"
     t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
   end
 

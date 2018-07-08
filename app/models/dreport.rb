@@ -2,33 +2,48 @@ class Dreport < ApplicationRecord
 
   #---------- Associations ----------#
 
-  # => relation 1:N user_1/user_2 dreports
-  belongs_to :user_1, class_name: "User"
-  belongs_to :user_2, class_name: "User"
-
   # => relation 1:N  -  dreport tickets
   has_many :tickets
 
   #---------- Public Method´s ----------#
 
-  def load(team)
+  # => load a team parameters to dreport
+  def load_parameters(team)
     self.date = team.date
-    self.truck = team.truck
+    self.truck = team.truck.number
+    self.brand = team.truck.brand
     self.add_responsables(team)
 
     claims = team.claims.finished
     unless claims.nil?
-      self.association_tickets(claims)
+      #self.association_tickets(claims)
+      claims.each do |claim|
+        #create new ticket
+        @ticket = Ticket.create
+        #load simple attributes
+        @ticket.load_parameters(claim)
+        @ticket.dreport_id = self
+      end
     end
-    save!
+    save
   end
 
+  # => pretty print
+  def date_format
+    date.strftime("%d/%m/%Y")
+  end
+
+  #---------- Private Method´s ----------#
+
+  # => load responsables to dreport
   def add_responsables(team)
-    self.user_1 = team.responsables.first
+    self.responsable_1 = team.responsables.first.email
     unless team.has_responsable?
-      self.user_2 = team.responsables.second
+      self.responsable_2 = team.responsables.second.email
+    end
   end
 
+  # => create and associated tickets
   def association_tickets(claims)
     claims.each do |claim|
       #create new ticket

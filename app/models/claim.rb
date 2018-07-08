@@ -127,7 +127,7 @@ class Claim < ApplicationRecord
   end
 
   # => scope claims day finished
-  scope :finished, lambda { where(pendiente?: false) }
+  scope :finished, lambda { where("status != ?", 1) }
 
 
 end
