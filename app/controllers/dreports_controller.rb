@@ -11,8 +11,16 @@ class DreportsController < ApplicationController
     @dreport.save!
     @dreport.load_parameters(team)
     team.finalize
+    redirect_to dreport_path(@dreport)
   end
 
+  def show
+
+  end
+
+  def current
+    @dreport = Dreport.last
+  end
 
 private
   # Use callbacks to share common setup or constraints between actions.

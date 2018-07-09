@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   get "teams/daily_report" => "teams#daily_report", :as => 'daily_report'
   resources :teams
 
-  get "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift'
-  resources :dreport
+  get "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift_dreport'
+  get "dreports/current" => "dreports#current", :as => 'current_dreport'
+  resources :dreports
 
   root 'teams#home'
 
