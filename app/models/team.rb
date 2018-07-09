@@ -90,6 +90,13 @@ class Team < ApplicationRecord
     claims.select { |claim| !claim.pendiente?}
   end
 
+  def finalize
+    self.finished = true    
+    save
+  end
+  def finished?
+    finished == true
+  end
   #----------  --- Private Method´s  ---  ----------#
 
   # => scope teams today
