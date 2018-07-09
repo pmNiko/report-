@@ -7,9 +7,7 @@
   %p=  ticket.start
   %p=  ticket.end
   %p=  ticket.kind
-  %p=  ticket.status
-  %p=  ticket.author
-  %p=  ticket.observation
+
 
   - ticket.job_codes.each do |job_cod|
     = "Job code: " + "#{job_cod}"
@@ -33,5 +31,7 @@
   - ticket.meas_logs.each do |meas_log|
     = "Log:" + "#{meas_log}"
   %br
-  %br
-  	
+
+  %p=  ticket.status
+  %p=  ticket.author
+  %p=  ticket.observation

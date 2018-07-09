@@ -218,7 +218,7 @@ class Ticket < ApplicationRecord
 
   #
   def reject_nil(parm1,parm2,parm3,parm4,parm5,parm6)
-    @not_nil = []
+    #@not_nil = []
     @params = []
     @params << parm1
     @params << parm2
@@ -226,13 +226,8 @@ class Ticket < ApplicationRecord
     @params << parm4
     @params << parm5
     @params << parm6
-    
-    @params.each do |parm|
-      unless parm.nil?
-        @not_nil << parm
-      end
-    end
-    @not_nil
+
+    @params.reject{ |parm| parm.nil? }
   end
 
 end
