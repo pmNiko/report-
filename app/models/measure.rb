@@ -17,6 +17,12 @@ class Measure < ApplicationRecord
               Bajada: 4, Domicilio: 5
             }
 
+  #---------- Public method´s ----------#
+
+  def point_key
+    Measure.points[self.point]
+  end
+
   #---------- Class method ----------#
 
   #Points all

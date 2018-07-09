@@ -7,8 +7,8 @@ class Claim < ApplicationRecord
   #---------- Associations ----------#
 
   # => relation 1:N report - tickets
-  has_many :dreport_tickets
-  has_many :dreport, :through => :dreport_tickets
+  #has_many :dreport_tickets
+  #has_many :dreport, :through => :dreport_tickets
 
   # => relation 1:N  -  author claims
   #- Note: If the relationship is called `user` no we would need to specify the class.
@@ -41,6 +41,14 @@ class Claim < ApplicationRecord
             }
 
   #----------  --- Public Method´s  ---  ----------#
+
+  def status_key
+    Claim.statuses[self.status]
+  end
+
+  def kind_key
+    Claim.kinds[self.kind]
+  end
 
   # => return date to visit
   def date

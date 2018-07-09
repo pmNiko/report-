@@ -16,14 +16,7 @@ class Dreport < ApplicationRecord
 
     claims = team.claims.finished
     unless claims.nil?
-      #self.association_tickets(claims)
-      claims.each do |claim|
-        #create new ticket
-        @ticket = Ticket.create
-        #load simple attributes
-        @ticket.load_parameters(claim)
-        @ticket.dreport_id = self
-      end
+      self.association_tickets(claims)
     end
     save
   end
@@ -49,9 +42,8 @@ class Dreport < ApplicationRecord
       #create new ticket
       @ticket = Ticket.new
       #load simple attributes
-      @ticket.load(claim)
-      #association
-      @ticket.association(self)
+      @ticket.load_parameters(claim)
+      @ticket.dreport_association(self)
     end
   end
 

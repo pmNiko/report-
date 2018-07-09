@@ -10,7 +10,6 @@ class DreportsController < ApplicationController
     @dreport = Dreport.new
     @dreport.save!
     @dreport.load_parameters(@team)
-    @dreport.save
   end
 
 

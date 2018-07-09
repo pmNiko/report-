@@ -1,3 +1,37 @@
 %p "#{@dreport.date_format}"
 %p= dreport_truck(@dreport)
 %p= dreport_responsables(@dreport)
+- @dreport.tickets.each do |ticket|
+  %p=  ticket.number
+  %p=  ticket.client
+  %p=  ticket.start
+  %p=  ticket.end
+  %p=  ticket.kind
+  %p=  ticket.status
+  %p=  ticket.author
+  %p=  ticket.observation
+
+  - ticket.job_codes.each do |job_cod|
+    = "Job code: " + "#{job_cod}"
+  %br
+
+  - ticket.job_titles.each do |job_title|
+    = "Job title: " + "#{job_title}"
+  %br
+
+  - ticket.mat_items.each do |mat_item|
+    = "Item: " + "#{mat_item}"
+
+  - ticket.mat_qtys.each do |mat_qty|
+    = "Quantity: " + "#{mat_qty}"
+  %br
+
+  - ticket.meas_points.each do |meas_point|
+    = "Point:" + "#{meas_point}"
+  %br
+
+  - ticket.meas_logs.each do |meas_log|
+    = "Log:" + "#{meas_log}"
+  %br
+  %br
+  	
