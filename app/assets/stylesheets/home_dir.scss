@@ -1,0 +1,44 @@
+body.container-fluid {
+    color: white;
+}
+body a {
+    color: white;
+}
+
+
+
+///Transpatentar el select
+span.select2-dropdown.select2-dropdown--below {
+    background-color: rgba(165, 42, 42, 0);
+}
+ul#select2-team_user_ids-results {
+    background-color: rgba(118, 140, 140, 0.18);
+}
+
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    /* background-clip: border-box; */
+    border: 1px solid rgba(210, 24, 24, 0);
+    border-radius: 0.25rem;
+    background-color: rgba(196, 255, 247, 0);
+}
+
+
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: rgba(26, 171, 164, 0.12);
+    background-clip: padding-box;
+    border: 2px solid rgba(1, 243, 255, 0.44);
+    border-radius: 0.3rem;
+    outline: 0;
+}

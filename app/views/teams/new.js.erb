@@ -6,6 +6,7 @@ $('.modal-body').html('<%= j render("form") %>');
 
 // Show the dynamic dialog
 $('#dialog').modal("show");
+$('.container.text-center').css('visibility', 'hidden');
 $('#team_user_ids').select2({
 //  language: "es",
 //  minimumResultsForSearch: 20, // at least 20 results must be displayed
@@ -18,5 +19,10 @@ $('#team_user_ids').select2({
 });
 // Set focus to the first element
 $('#dialog').on('shown.bs.modal', function () {
-	  $('.first_input').focus()
+    $('.first_input').focus()
   });
+
+
+$('#dialog').on('hidden.bs.modal', function () {
+  $('.container.text-center').css('visibility', 'visible');
+});

@@ -5,3 +5,7 @@
  */
  @import "calendar";
  @import "font-awesome";
+
+body.container-fluid {
+    background-image: url("fondo.jpg");
+}
