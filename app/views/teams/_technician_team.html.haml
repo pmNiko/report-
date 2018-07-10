@@ -1,6 +1,14 @@
 .card-home-technicial
   .card
-    .card-header.bg-info TEAM
+    .card-header.bg-info
+      .row
+        .col-4
+        .col-4
+        .col-4
+          -if @team.finished?
+            .float-right
+              = link_to current_dreport_path do
+                = fa_icon "check-circle", right: true, class: "fa-1x"
     .card-body.p-0
       %table.table
         %thead
@@ -29,5 +37,11 @@
       progress:
     .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width: #{@team.progress_bar}%"}
       #{@team.percent}%
+%br
+- unless @team.finished?
+  .float-right
+    %button_tag= link_to 'END SHIFT', shift_dreport_path(@team),
+    method: :get, :class => "btn btn-outline-success btn-sm "
+
 
 = render 'dialog'

@@ -2,27 +2,27 @@ class Team < ApplicationRecord
 
   #---------- Validates ----------#
 
-  #Validates attributes
+  # => Validates attributes
   validates :date, presence: true
 
-  #Validates of associations
+  # => Validates of associations
   validates_presence_of :truck, :users, presence: true
 
   #---------- Associations ----------#
 
-  #relation n:m teams_users
+  # => relation n:m teams_users
   has_and_belongs_to_many :users
 
-  #relation 1:N  -  team claims
+  # => relation 1:N  -  team claims
   has_many :claims
   accepts_nested_attributes_for :claims, reject_if: :all_blank, allow_destroy: true
 
-  #relation 1:N  -  truck teams
+  # => relation 1:N  -  truck teams
   belongs_to :truck
 
   #----------  --- Public Method´s  ---  ----------#
 
-  #Association author to claims
+  # => Association author to claims
   def add_authors(current_user)
     claims.each do |claim|
       if claim.author.nil?
@@ -32,11 +32,12 @@ class Team < ApplicationRecord
     end
   end
 
-  #Return the responsables
+  # => return the responsables
   def responsables
     users
   end
 
+  # => return data from responsables
   def data_responsables
     data = []
     data << responsables.first.email
@@ -46,17 +47,17 @@ class Team < ApplicationRecord
     return data
   end
 
-  #Return true or false if contain only one responsable
+  # => return true or false if contain only one responsable
   def has_responsable?
     responsables.count == 1
   end
 
-  #Percent of advance default 0%
+  # => percent advance, default 0%
   def percent
     advanced(0)
   end
 
-  #Percent of advance default 5%
+  # => percent advance, default 5%
   def progress_bar
     advanced(5)
   end
@@ -64,19 +65,19 @@ class Team < ApplicationRecord
 
   #----------  --- Private Method´s  ---  ----------#
 
-  #Print percent advanced distinct [] or 0
+  # => print percent advanced, distinct [] or 0
   def advanced(val_default)
-    advanced = self.claims.select{ |claim| !claim.pendiente? }
+    advanced = self.concluded
     return val_default if advanced.empty?
     return advanced.count * 100 / self.claims.count
   end
 
-  #Pretty print
+  # => pretty print
   def date_format
     date.strftime("%d/%m/%Y")
   end
 
-  #Destroy all children team
+  # => destroy all children team
   def destroy_and_child
     self.claims.each do |claim|
       claim.destroy_and_child
@@ -84,6 +85,25 @@ class Team < ApplicationRecord
     self.destroy
   end
 
-  scope :today, lambda { where('date = ?', Date.today)}
+  # => claims finished or concluded
+  def concluded
+    claims.select { |claim| !claim.pendiente?}
+  end
+
+  def finalize
+    self.finished = true    
+    save
+  end
+  def finished?
+    finished == true
+  end
+  #----------  --- Private Method´s  ---  ----------#
+
+  # => scope teams today
+  scope :today, lambda { where('date = ?', Date.today) }
+
+  # => scope teams day finished
+  scope :finished, lambda { where(finished: true) }
+
 
 end

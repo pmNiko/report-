@@ -1,0 +1,62 @@
+- @daily_reports.each do |daily_report|
+  .card.border-info
+    #accordion
+      .card
+        .card-header.bg-success{:id => ("heading#{daily_report.id}")}
+          .row
+            .col-4
+            .col-4
+              %strong Daily Report
+            .col-4
+              .float-right
+                = link_to daily_report_path do
+                  = fa_icon "check-circle", right: true, class: "fa-1x"
+        .card-body.p-0
+          %table.table
+            %thead
+              %tr
+                %th= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
+                %th= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
+                %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+                %th= fa_icon "cogs", text: "Actions", right: true, class: "fa-lg"
+            %tbody
+              %tr
+                %td= daily_report.date_format
+                %td= team_truck(daily_report)
+                %td= team_responsables(daily_report)
+          .card-body
+            %table.table
+              %thead
+                %tr.bg-info
+                  %th.d-inline-block.col-2= fa_icon "file-text-o", text: "Type", class: "fa-lg"
+                  %th.d-inline-block.col-2= fa_icon "ticket", text: "Ticket", class: "fa-lg"
+                  %th.d-inline-block.col-2= fa_icon "male", text: "Client", class: "fa-lg"
+                  %th.d-inline-block.col-2= fa_icon "bolt", text: "Status", class: "fa-lg"
+                  %th.d-inline-block.col-1= fa_icon "clock-o", text: "Start", class: "fa-lg"
+                  %th.d-inline-block.col-1= fa_icon "clock-o", text: "End", class: "fa-lg"
+                  %th.d-inline-block.col-2= fa_icon "cogs", text: "Actions", class: "fa-lg"
+            %table.table.table-striped
+              %tbody
+              - unless daily_report.claims.nil?
+                - daily_report.claims.each do |claim|
+                  %tr.text-center
+                    %td.d-inline-block.col-2= claim.kind
+                    %td.d-inline-block.col-2= claim.ticket
+                    %td.d-inline-block.col-2= claim.client
+                    %td.d-inline-block.col-2= claim.status
+                    %td.d-inline-block.col-1= claim.starts
+                    %td.d-inline-block.col-1= claim.ends
+                    %td.d-inline-block.col-2
+                      - if concluded?(claim)
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "eye", right: true, class: "fa-lg"
+                      - elsif claim.en_curso?
+                        = fa_icon "wrench", class: "fa-lg"
+                      - else
+                        = fa_icon "hourglass-start", class: "fa-lg"
+      .progress
+        .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
+          progress:
+        .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width: #{daily_report.progress_bar}%"}
+          #{daily_report.percent}%
+%br

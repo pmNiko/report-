@@ -1,7 +1,7 @@
 class Job < ApplicationRecord
   #---------- Associations ----------#
 
-  #Relation m:n
+  # => relation N:M
   has_and_belongs_to_many :claims
 
 

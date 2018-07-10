@@ -11,6 +11,7 @@ class Material < ApplicationRecord
 
   #---------- Hash attribute ----------#
 
+  # => item
   enum item: {
               "BAJADA UN PAR": 5,
               "JACK AMER. EMBUT.": 307,    "JACK AMER. EXTER.": 308,
@@ -23,8 +24,14 @@ class Material < ApplicationRecord
               "CABLE INTERNO": 11,         "CADENA POSTE": 172
             }
 
+  #---------- Public method´s ----------#
+
+  def item_key
+    Material.items[self.item]
+  end
+
   #---------- Class method ----------#
-  
+
   #Items all
   def self.itemss
     items.keys

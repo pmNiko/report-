@@ -1,6 +1,6 @@
-%tr.row.m-0
+%tr.row.m-0.claim-field
   %td.d-inline-block.col-4= f.text_field :ticket, class: 'text-center'
   %td.d-inline-block.col-4= f.text_field :client, class: 'text-center'
   %td.d-inline-block.col-2= f.select :kind, @kinds
   %td.d-inline-block.col-2= link_to_remove_association('', f,
-    { wrapper_class: 'form-inline', class: "fa fa-trash fa-lg"})
+    { wrapper_class: 'claim-field', class: "fa fa-trash fa-lg"})

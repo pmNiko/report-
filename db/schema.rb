@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_231443) do
+ActiveRecord::Schema.define(version: 2018_07_09_220542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 2018_06_20_231443) do
   create_table "claims_jobs", force: :cascade do |t|
     t.integer "claim_id"
     t.integer "job_id"
+  end
+
+  create_table "dreports", force: :cascade do |t|
+    t.date "date"
+    t.integer "truck"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "news"
+    t.string "brand"
+  end
+
+  create_table "dreports_users", id: false, force: :cascade do |t|
+    t.integer "dreport_id"
+    t.integer "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -91,12 +105,62 @@ ActiveRecord::Schema.define(version: 2018_06_20_231443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "truck_id"
+    t.boolean "finished", default: false
     t.index ["truck_id"], name: "index_teams_on_truck_id"
   end
 
   create_table "teams_users", id: false, force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "number"
+    t.string "client"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.float "job_cod_1"
+    t.float "job_cod_2"
+    t.float "job_cod_3"
+    t.float "job_cod_4"
+    t.float "job_cod_5"
+    t.float "job_cod_6"
+    t.integer "mat_item1"
+    t.integer "mat_item2"
+    t.integer "mat_item3"
+    t.integer "mat_item4"
+    t.integer "mat_item5"
+    t.integer "mat_item6"
+    t.text "observation"
+    t.bigint "dreport_id"
+    t.integer "mat_qty_1"
+    t.integer "mat_qty_2"
+    t.integer "mat_qty_3"
+    t.integer "mat_qty_4"
+    t.integer "mat_qty_5"
+    t.integer "mat_qty_6"
+    t.integer "meas_p1"
+    t.integer "meas_p2"
+    t.integer "meas_p3"
+    t.integer "meas_p4"
+    t.integer "meas_p5"
+    t.integer "meas_p6"
+    t.text "meas_log1"
+    t.text "meas_log2"
+    t.text "meas_log3"
+    t.text "meas_log4"
+    t.text "meas_log5"
+    t.text "meas_log6"
+    t.string "job_title_1"
+    t.string "job_title_2"
+    t.string "job_title_3"
+    t.string "job_title_4"
+    t.string "job_title_5"
+    t.string "job_title_6"
+    t.string "author"
+    t.integer "kind"
+    t.integer "status"
+    t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
   end
 
   create_table "trucks", force: :cascade do |t|
@@ -135,4 +199,5 @@ ActiveRecord::Schema.define(version: 2018_06_20_231443) do
   add_foreign_key "materials", "claims"
   add_foreign_key "measures", "claims"
   add_foreign_key "teams", "trucks"
+  add_foreign_key "tickets", "dreports"
 end

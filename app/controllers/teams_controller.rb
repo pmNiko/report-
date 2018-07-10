@@ -1,6 +1,10 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
+  def daily_report
+    @daily_reports = Team.today
+  end
+
   def home
     @teams = Team.all
     @user = current_user
@@ -19,6 +23,7 @@ class TeamsController < ApplicationController
   def home_technician
     @user = current_user
     @team = @user.teams.today.first
+    @dreport = 0
   end
 
   def home_dir

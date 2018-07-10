@@ -1,8 +1,8 @@
 # app/helpers/roles_helper.rb
 module ClaimsHelper
   #Return true when claim concluded
-  def concluded?(claim)
-    claim.finalizado? || claim.contactar? || claim.revisar?
+  def incomplete?(claim)
+    claim.contactar? || claim.revisar?
   end
 
   #Responsable email
