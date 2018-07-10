@@ -7,5 +7,12 @@
  @import "font-awesome";
 
 body.container-fluid {
-    background-image: url("fondo.jpg");
+    //background-image: url("fondo.jpg");
+    background-image: url("http://img.52lishi.com/pic/201307/24/d0753e7b32.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+main {
+    left: -5em;
 }

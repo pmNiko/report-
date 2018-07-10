@@ -5,14 +5,15 @@ nav.navbar.navbar-expand-sm.bg-dark.navbar-dark {
 }
 
 .cn-wrapper {
-  background-color: rgba(0, 0, 0, 0);
+  box-shadow: inset -5px 23px 42px -21px #b8c7c7;
+  background-color: rgba(10, 10, 10, 0.85);
+  bottom: 34em;
   font-size: 1em;
   width: 16em;
   height: 16em;
   overflow: hidden;
   position: fixed;
   z-index: 10;
-  bottom: 10em;
   left: 102%;
   border-radius: 50%;
   margin-left: -12em;
@@ -45,7 +46,6 @@ ul, menu, dir {
   top: 50%;
   margin-top: -1.3em;
   margin-left: -10em;
-  border: 2px solid rgba(15, 247, 225, 0.18);
   overflow: hidden;
   position: absolute;
   font-size: 1.5em;
@@ -67,11 +67,11 @@ ul, menu, dir {
 }
 
 .cn-wrapper li a {
-  color: rgba(93, 195, 195, 0.64);
+  color: rgba(255, 255, 255, 0.75);
   transform: skew(-50deg) rotate(-70deg) scale(1);
   border-radius: 50%;
   text-align: center;
-  padding-top: 2em;
+  padding-top: 2.5em;
   display: block;
   font-size: 1.2em;
   height: 13.5em;
@@ -126,13 +126,13 @@ items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
 }
 
 .cn-wrapper li:hover{
-  background-color: rgba(123, 173, 111, 0.35);
+  background-color: rgba(166, 171, 173, 0.25);
 }
 .csstransforms .cn-wrapper li:nth-child(odd) a {
 }
 
 .csstransforms .cn-wrapper li:nth-child(even) a {
-  background-color: gba(50, 214, 47, 0.93);
+  background-color: rgba(166, 171, 173, 0.25);
 }
 
 /* active style */

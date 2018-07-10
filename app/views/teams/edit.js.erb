@@ -6,6 +6,7 @@ $('.modal-body').html('<%= j render("form") %>');
 
 // Show the dynamic dialog
 $('#dialog').modal("show");
+$('.container.text-center').css('visibility', 'hidden');
 $('#team_user_ids').select2({
   maximumInputLength: 30,
   placeholder: "Responsables",
@@ -21,3 +22,8 @@ $('#team_truck_id').select2({
 $('#dialog').on('shown.bs.modal', function () {
 	  $('.first_input').focus()
   });
+
+
+$('#dialog').on('hidden.bs.modal', function () {
+  $('.container.text-center').css('visibility', 'visible');
+});

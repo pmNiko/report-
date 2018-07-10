@@ -5,11 +5,9 @@ body a {
     color: white;
 }
 
-
-
 ///Transpatentar el select
 span.select2-dropdown.select2-dropdown--below {
-    background-color: rgba(165, 42, 42, 0);
+    background-color: rgba(0, 0, 0, 0.76);
 }
 ul#select2-team_user_ids-results {
     background-color: rgba(118, 140, 140, 0.18);
@@ -42,3 +40,26 @@ ul#select2-team_user_ids-results {
     border-radius: 0.3rem;
     outline: 0;
 }
+
+.card-header {
+  background-color: rgba(26, 171, 164, 0.12) !important;
+  border: 2px solid rgba(1, 243, 255, 0.44);
+
+}
+.card {
+  background-color: rgba(26, 171, 164, 0.12) !important;
+  border: 2px solid rgba(1, 243, 255, 0.44);
+}
+
+
+.table th, .table td {
+  border-top: 1px solid #17a2b8;
+}
+
+.bg-info {
+  background-color: rgba(26, 171, 164, 0.12) !important;
+}
+
+  //background-color: rgba(26, 171, 164, 0.12);
+  //background-clip: padding-box;
+  //border: 2px solid rgba(1, 243, 255, 0.44);
