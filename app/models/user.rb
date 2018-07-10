@@ -11,16 +11,15 @@ class User < ApplicationRecord
 
   # => relation n:m teams_users
   has_and_belongs_to_many :teams
+  # => relation n:m dreports_users
+  has_and_belongs_to_many :dreports
 
   # => relation 1:N author claims
   has_many :claims, foreign_key: "author_id"
 
-  # => relation 1:N user_1/user_2 dreports
-  has_many :dreport, foreign_key: "user_1"
-  has_many :dreport, foreign_key: "user_2"
 
   # => Relation N:M users - events
   has_and_belongs_to_many :events
-  
+
 
 end

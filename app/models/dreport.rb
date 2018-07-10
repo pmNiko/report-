@@ -5,6 +5,8 @@ class Dreport < ApplicationRecord
   # => relation 1:N  -  dreport tickets
   has_many :tickets
 
+  # => relation n:m dreports_users
+  has_and_belongs_to_many :users
   #---------- Public Method´s ----------#
 
   # => load a team parameters to dreport
@@ -30,9 +32,9 @@ class Dreport < ApplicationRecord
 
   # => load responsables to dreport
   def add_responsables(team)
-    self.responsable_1 = team.responsables.first.email
+    self.users << team.responsables.first
     unless team.has_responsable?
-      self.responsable_2 = team.responsables.second.email
+      self.users << team.responsables.second
     end
   end
 

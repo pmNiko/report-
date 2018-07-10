@@ -2,7 +2,7 @@ class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dreports = Dreport.today
+    @dreports = Dreport.all
   end
 
   def end_shift
@@ -19,7 +19,7 @@ class DreportsController < ApplicationController
   end
 
   def current
-    @dreport = Dreport.last
+    @dreport = current_user.dreports.last
   end
 
 private
