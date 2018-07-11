@@ -1,3 +1,4 @@
+= render 'dialog'
 .container.text-center
   %h4 Home #{@user.roles.first.name} - #{@user.email}
   .new-team#teams
@@ -6,4 +7,3 @@
         = render 'technician_team'
 
 
-= render 'dialog'
