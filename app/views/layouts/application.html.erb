@@ -18,7 +18,7 @@
       <%= render 'layouts/messages' %>
       <%= yield %>
       <% if user_signed_in?%>
-        <% if current_user.has_role? :admin%>
+        <% if current_user.has_role? :dir or current_user.has_role? :admin%>
           <%= render 'menus/menu_dir' %>
         <%end%>
       <%end%>

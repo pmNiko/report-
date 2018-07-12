@@ -4,7 +4,6 @@ $('#dialog h3').html(" <i class='fa fa-clipboard'></i>");
 // Render the new form
 $('.modal-body').html('<%= j render("form") %>');
 
-$('.card-home-technicial').css('visibility', 'hidden');
 // Show the dynamic dialog
 $('#dialog').modal("show")
 $('#claim_job_ids').select2({
@@ -18,8 +17,10 @@ $('#claim_job_ids').select2({
 $('#dialog').on('shown.bs.modal', function () {
     $('.first_input').focus()
   });
-//$('.card-home-technicial').css('visibility', 'visible');
+
+$('.container.text-center').css('visibility', 'hidden');
+
 
 $('#dialog').on('hidden.bs.modal', function () {
-  $('.card-home-technicial').css('visibility', 'visible');
+  $('.container.text-center').css('visibility', 'visible');
 });
