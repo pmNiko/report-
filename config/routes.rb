@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   resources :jobs
 
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'
-  post "claims/contact_to:id" => "claims#contact_to", :as => 'contact_to_claim'
-  post "claims/review:id" => "claims#review", :as => 'review_claim'
-  post "claims/finished:id" => "claims#finished", :as => 'finished_claim'
   resources :claims do
     member do
         post 'coordinate'

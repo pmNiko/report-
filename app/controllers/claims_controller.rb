@@ -10,27 +10,6 @@ class ClaimsController < ApplicationController
     end
   end
 
-  def contact_to
-    @claim = Claim.find(params[:id])
-    @claim.contactar!
-    @claim.current_end_time
-    redirect_to technician_team_path
-  end
-
-  def review
-    @claim = Claim.find(params[:id])
-    @claim.revisar!
-    @claim.current_end_time
-    redirect_to technician_team_path
-  end
-
-  def finished
-    @claim = Claim.find(params[:id])
-    @claim.finalizado!
-    @claim.current_end_time
-    redirect_to technician_team_path
-  end
-
   def coordinate
     @date = params[:starts_at]
     console.log(@date)
