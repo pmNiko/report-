@@ -63,10 +63,21 @@ class ClaimsController < ApplicationController
   def update
     respond_to do |format|
       @claim.update(claim_params)
-      if params[:commit] == 'contact_to'
+      if params[:commit] == 'Contact to'
         @claim.contactar!
         @claim.current_end_time
-        redirect_to technician_team_path
+      elsif params[:commit] == 'Review'
+        @claim.revisar!
+        @claim.current_end_time
+      elsif params[:commit] == 'Finished'
+        @claim.finalizado!
+        @claim.current_end_time
+      elsif params[:commit] == 'Visited'
+        @claim.contactar!
+      elsif params[:commit] == 'Inspect'
+        @claim.revisar!
+      elsif params[:commit] == 'Close'
+        @claim.finalizado!
       end
       format.js
     end

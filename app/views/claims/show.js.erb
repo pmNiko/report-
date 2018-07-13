@@ -11,10 +11,8 @@ $('#dialog').modal("show");
 
 if(user){
   $('.container.text-center').css('visibility', 'hidden');
-  alert('hola')
 }else{
   $('.container.text-center').css('visibility', 'hidden');
-  alert('chau')
 }
 
 $('#dialog').on('shown.bs.modal', function () {
@@ -24,9 +22,7 @@ $('#dialog').on('shown.bs.modal', function () {
 $('#dialog').on('hidden.bs.modal', function () {
   if(user){
     $('.container.text-center').css('visibility', 'visible');
-    alert('hola')
   }else{
     $('.container.text-center').css('visibility', 'visible');
-    alert('chau')
   }
 });
