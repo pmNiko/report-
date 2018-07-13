@@ -25,10 +25,6 @@
     background-position-x: -25px;
   }
 
-  h4 {
-    display: none;
-  }
-
   .card-header.bg-info {
     display: none;
   }
@@ -39,4 +35,8 @@
     width: 115%;
   }
 
+}
+
+span.select2-selection.select2-selection--multiple {
+    background-color: black;
 }
