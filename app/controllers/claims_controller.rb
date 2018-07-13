@@ -1,6 +1,6 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy,
-                                    :contact_to, :review, :finished ]
+                                    :contact_to, :review, :finished]
 
   def begin
     @claim = Claim.find(params[:id])
@@ -31,6 +31,11 @@ class ClaimsController < ApplicationController
     redirect_to technician_team_path
   end
 
+  def coordinate
+    @date = params[:starts_at]
+    console.log(@date)
+  end
+
   def show
     @claim = Claim.find(params[:id])
   end
@@ -58,6 +63,11 @@ class ClaimsController < ApplicationController
   def update
     respond_to do |format|
       @claim.update(claim_params)
+      if params[:commit] == 'contact_to'
+        @claim.contactar!
+        @claim.current_end_time
+        redirect_to technician_team_path
+      end
       format.js
     end
   end
@@ -87,6 +97,7 @@ class ClaimsController < ApplicationController
         :starts_at,
         :ends_at,
         :observation,
+        :coordinated,
         materials_attributes: [
           :id,
           :item,

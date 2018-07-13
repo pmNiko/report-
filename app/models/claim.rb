@@ -31,8 +31,8 @@ class Claim < ApplicationRecord
   #---------- Hash attribute´s ----------#
 
   enum status: {
-                pendiente: 1,en_curso: 2,
-                finalizado: 3,contactar: 4,revisar: 5
+                pendiente: 1,en_curso: 2,finalizado: 3,
+                contactar: 4,revisar: 5,coordinado: 6
               }
   enum kind: {
               Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,

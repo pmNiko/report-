@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   post "claims/contact_to:id" => "claims#contact_to", :as => 'contact_to_claim'
   post "claims/review:id" => "claims#review", :as => 'review_claim'
   post "claims/finished:id" => "claims#finished", :as => 'finished_claim'
-  resources :claims
+  resources :claims do
+    member do
+        post 'coordinate'
+    end
+  end
 
   get "teams/home_dir" => "teams#home_dir", :as => 'dir_team'
   get "teams/home_technician" => "teams#home_technician", :as => 'technician_team'
