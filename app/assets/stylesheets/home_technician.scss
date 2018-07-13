@@ -1,2 +1,38 @@
+@media (min-width: 700px) {
+  body.container-fluid {
+    background-image: url("fondo_1366x768.jpg");
+    background-size: 100%;
+  }
+}
+@media (min-width: 400px) and (max-width: 700px) {
+  body.container-fluid {
+    background-image: url("fondo_1366x768.jpg");
+    background-size: 100% 200% ;
+  }
+}
+@media (max-width: 400px) {
 
 
+  body.container-fluid {
+    background-image: url("fondo_564×317.jpg");
+    background-size: 150% 200%;
+    background-position-x: -25px;
+  }
+
+  h4 {
+    display: none;
+  }
+
+  .card-header.bg-info {
+    display: none;
+  }
+  .container.text-center {
+    right: -5em;
+  }
+
+  #teams {
+    left: -30%;
+    width: 140%;
+  }
+
+}

@@ -13,12 +13,10 @@
       %table.table
         %thead
           %tr
-            %th= fa_icon "calendar", text: "Date", right: true, class: "fa-lg"
-            %th= fa_icon "truck", text: "Truck", right: true, class: "fa-lg"
-            %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "fa-lg"
+            %th= fa_icon "truck", text: "Truck", right: true, class: "h_t_truck fa-lg"
+            %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "h_t_responsables fa-lg"
         %tbody
           %tr
-            %td= @team.date_format
             %td= team_truck(@team)
             %td= team_responsables(@team)
     .card-body
@@ -37,11 +35,11 @@
       progress:
     .progress-bar.bg-success.progress-bar-striped.progress-bar-animated{:style => "width: #{@team.progress_bar}%"}
       #{@team.percent}%
-%br
-- unless @team.finished?
-  .float-right
-    %button_tag= link_to 'END SHIFT', shift_dreport_path(@team),
-    method: :get, :class => "btn btn-outline-success btn-sm "
+  %br
+  - unless @team.finished?
+    .float-right
+      %button_tag= link_to 'END SHIFT', shift_dreport_path(@team),
+      method: :get, :class => "btn btn-outline-success btn-sm "
 
 
 = render 'dialog'

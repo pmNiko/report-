@@ -15,9 +15,13 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-       <%= render 'menus/menu_dir' %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      <% if user_signed_in?%>
+        <% if current_user.has_role? :admin%>
+          <%= render 'menus/menu_dir' %>
+        <%end%>
+      <%end%>
     </main>
   </body>
 </html>
