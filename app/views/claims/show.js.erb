@@ -8,21 +8,9 @@ var user = '<%= escape_javascript current_user.has_role? :admin %>';
 
 // Show the dynamic dialog
 $('#dialog').modal("show");
-
-if(user){
-  $('.container.text-center').css('visibility', 'hidden');
-}else{
-  $('.container.text-center').css('visibility', 'hidden');
-}
-
-$('#dialog').on('shown.bs.modal', function () {
-})
+$('.container.text-center').css('visibility', 'hidden');
 
 
 $('#dialog').on('hidden.bs.modal', function () {
-  if(user){
-    $('.container.text-center').css('visibility', 'visible');
-  }else{
-    $('.container.text-center').css('visibility', 'visible');
-  }
+  $('.container.text-center').css('visibility', 'visible');
 });

@@ -1,10 +1,37 @@
 <div class="cn-wrapper" id="cn-wrapper">
-   <ul>
-       <li><a href="#"><span class="icon-picture"></span></a></li>
-       <li><a href="#"><span class="icon-headphones"></span></a></li>
-       <li><a href="root_path"><span class="icon-home"></span></a></li>
-       <li><a href="#"><span class="icon-facetime-video"></span></a></li>
-       <li><a href="#"><span class="icon-envelope-alt"></span></a></li>
-   </ul>
+  <ul>
+
+    <li :class => current_class?(profile_path)>
+      <a href="/teams" >
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/teams/home_dir">
+        <i class="fa fa-home" aria-hidden="true"></i>
+      </a>
+    </li>
+
+    <li>
+      <a href="/teams" >
+        <i class="fa fa-users" aria-hidden="true"></i>
+      </a>
+
+    </li>
+
+    <li>
+      <a href="/events" >
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+      </a>
+    </li>
+
+
+    <li>
+      <a href="/users/sign_out" data-method="delete" >
+        <i class="fa fa-power-off" aria-hidden="true"></i>
+      </a>
+    </li>
+
+  </ul>
 </div>
 <div id="cn-overlay" class="cn-overlay"></div>

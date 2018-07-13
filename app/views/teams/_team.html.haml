@@ -67,8 +67,7 @@
                       = fa_icon "wrench", class: "fa-lg"
                     - elsif incomplete?(claim)
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", class: "fa-lg"
-                        = fa_icon "exclamation", class: "fa-lg"
+                        = fa_icon "bolt", class: "fa-lg"
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
     .progress
@@ -78,4 +77,3 @@
         #{team.percent}%
 %br
 %br
-	
