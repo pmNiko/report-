@@ -71,5 +71,9 @@
         %tbody
           %tr
             %td.align-middle #{@claim.observation}
-    .card-footer.text-center
-      %small.text-muted
+  .card.border-info
+    .card-header.text-center Observation
+    .card-body.p-0
+      = form_with url: coordinate_claim_path do |f|
+        = f.time_select :starts_at
+        = f.submit

@@ -13,7 +13,7 @@
               %th.align-middle Type
               %th.align-middle Nº Ticket
               %th.align-middle Client
-              %th.align-middle Concluded
+              %th.align-middle Status
           %tbody
             %tr
               %td.align-middle #{@claim.kind}
@@ -90,6 +90,8 @@
               %td.align-middle= f.input :observation, class: 'form-control'
       .card-footer.text-center
         %small.text-muted
+      = f.submit  @claim.new_record? ? "Create Claim" : "Ok",
+      :class => "btn btn-outline-primary"
   .card-group
     .card.border-info
       .card-header.text-center
@@ -112,22 +114,24 @@
                   = f.time_select :ends_at, {:ampm => true, :default => Time.now.change(:hour => 23, :min => 59)}
               .card
                 .card-body.p-0
-                  = f.label :status
-                  = f.select :status, @statuses
+                  .float-right
+                    = f.submit  @claim.new_record? ? "Create Claim" : "Visited",
+                    :class => "btn btn-outline-info btn-sm "
+                  .float-right
+                    = f.submit  @claim.new_record? ? "Create Claim" : "Inspect",
+                    :class => "btn btn-outline-danger btn-sm "
+                  .float-right
+                    = f.submit  @claim.new_record? ? "Create Claim" : "Close",
+                    :class => "btn btn-outline-success btn-sm "
           #real-time.tab-pane.fade.show.active
             .card
               .card-body.p-0
                 .float-right
-                  %button_tag= link_to 'Contact to', contact_to_claim_path(@claim),
-                  method: :post, :class => "btn btn-outline-info btn-sm "
+                  = f.submit  @claim.new_record? ? "Create Claim" : "Contact to",
+                  :class => "btn btn-outline-info btn-sm "
                 .float-right
-                  %button_tag= link_to 'Review', review_claim_path(@claim),
-                  method: :post, :class => "btn btn-outline-danger btn-sm "
+                  = f.submit  @claim.new_record? ? "Create Claim" : "Review",
+                  :class => "btn btn-outline-danger btn-sm "
                 .float-right
-                  %button_tag= link_to 'Finished', finished_claim_path(@claim),
-                  method: :post, :class => "btn btn-outline-success btn-sm "
-  %br
-  %br
-
-  = f.submit  @claim.new_record? ? "Create Claim" : "Update",
-  :class => "btn btn-outline-primary"
+                  = f.submit  @claim.new_record? ? "Create Claim" : "Finished",
+                  :class => "btn btn-outline-success btn-sm "

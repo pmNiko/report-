@@ -1,6 +1,6 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy,
-                                    :contact_to, :review, :finished ]
+                                    :contact_to, :review, :finished]
 
   def begin
     @claim = Claim.find(params[:id])
@@ -10,25 +10,26 @@ class ClaimsController < ApplicationController
     end
   end
 
-  def contact_to
+  def coordinate
     @claim = Claim.find(params[:id])
-    @claim.contactar!
-    @claim.current_end_time
-    redirect_to technician_team_path
-  end
+    @claim.contactado!
 
-  def review
-    @claim = Claim.find(params[:id])
-    @claim.revisar!
-    @claim.current_end_time
-    redirect_to technician_team_path
-  end
-
-  def finished
-    @claim = Claim.find(params[:id])
-    @claim.finalizado!
-    @claim.current_end_time
-    redirect_to technician_team_path
+    @team = Team.find(@claim.team.id)
+    "starts_at(4i)"=>"06", "starts_at(5i)"=>"03"
+    @claim_coordinated = Claim.new
+    
+    @claim_coordinated.author = current_user
+    @claim_coordinated.team = @team
+    @claim_coordinated.starts_at = @claim.starts_at
+    @claim_coordinated.ticket = @claim.ticket
+    @claim_coordinated.client = @claim.client
+    @claim_coordinated.coordinado!
+    @claim_coordinated.kind = @claim.kind_key
+    @claim_coordinated.observation = "<< Previo: " + "#{@claim.observation} >>"
+    @claim_coordinated.save!
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
@@ -58,6 +59,22 @@ class ClaimsController < ApplicationController
   def update
     respond_to do |format|
       @claim.update(claim_params)
+      if params[:commit] == 'Contact to'
+        @claim.contactar!
+        @claim.current_end_time
+      elsif params[:commit] == 'Review'
+        @claim.revisar!
+        @claim.current_end_time
+      elsif params[:commit] == 'Finished'
+        @claim.finalizado!
+        @claim.current_end_time
+      elsif params[:commit] == 'Visited'
+        @claim.contactar!
+      elsif params[:commit] == 'Inspect'
+        @claim.revisar!
+      elsif params[:commit] == 'Close'
+        @claim.finalizado!
+      end
       format.js
     end
   end
@@ -87,6 +104,7 @@ class ClaimsController < ApplicationController
         :starts_at,
         :ends_at,
         :observation,
+        :coordinated,
         materials_attributes: [
           :id,
           :item,

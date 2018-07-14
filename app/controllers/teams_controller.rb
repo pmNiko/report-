@@ -23,7 +23,6 @@ class TeamsController < ApplicationController
   def home_technician
     @user = current_user
     @team = @user.teams.today.first
-    @dreport = 0
   end
 
   def home_dir
