@@ -17,3 +17,25 @@ main {
 span.select2-selection.select2-selection--multiple {
     background-color: black;
 }
+
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+    background-color: rgba(26, 171, 164, 0.12);
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: rgba(2, 247, 255, 0.35) !important;
+}
+span.select2-selection.select2-selection--multiple {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+
+option {
+    background-color: rgba(249, 249, 249, 0);
+}
+
+input, button, select, optgroup, textarea {
+  background-color: rgb(7, 136, 142) !important;
+}
