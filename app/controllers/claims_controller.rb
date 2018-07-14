@@ -11,8 +11,25 @@ class ClaimsController < ApplicationController
   end
 
   def coordinate
-    @date = params[:starts_at]
-    console.log(@date)
+    @claim = Claim.find(params[:id])
+    @claim.contactado!
+
+    @team = Team.find(@claim.team.id)
+    "starts_at(4i)"=>"06", "starts_at(5i)"=>"03"
+    @claim_coordinated = Claim.new
+    
+    @claim_coordinated.author = current_user
+    @claim_coordinated.team = @team
+    @claim_coordinated.starts_at = @claim.starts_at
+    @claim_coordinated.ticket = @claim.ticket
+    @claim_coordinated.client = @claim.client
+    @claim_coordinated.coordinado!
+    @claim_coordinated.kind = @claim.kind_key
+    @claim_coordinated.observation = "<< Previo: " + "#{@claim.observation} >>"
+    @claim_coordinated.save!
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show

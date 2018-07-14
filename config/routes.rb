@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'
   resources :claims do
     member do
-        post 'coordinate'
+      post 'coordinate'
     end
   end
 
