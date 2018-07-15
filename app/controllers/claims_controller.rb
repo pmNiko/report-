@@ -15,18 +15,27 @@ class ClaimsController < ApplicationController
     @claim.contactado!
 
     @team = Team.find(@claim.team.id)
-    "starts_at(4i)"=>"06", "starts_at(5i)"=>"03"
     @claim_coordinated = Claim.new
-    
+
+    # params["starts_at(4i)"].to_i + 3
+    # temporal solution for the zone horarie
+    # capturate and create Datetime for cordinate new claims
+    somedate = DateTime.new(params["starts_at(1i)"].to_i,
+                        params["starts_at(2i)"].to_i,
+                        params["starts_at(3i)"].to_i,
+                        params["starts_at(4i)"].to_i + 3,
+                        params["starts_at(5i)"].to_i)
+
     @claim_coordinated.author = current_user
     @claim_coordinated.team = @team
-    @claim_coordinated.starts_at = @claim.starts_at
+    @claim_coordinated.starts_at = somedate
     @claim_coordinated.ticket = @claim.ticket
     @claim_coordinated.client = @claim.client
     @claim_coordinated.coordinado!
     @claim_coordinated.kind = @claim.kind_key
     @claim_coordinated.observation = "<< Previo: " + "#{@claim.observation} >>"
     @claim_coordinated.save!
+
     respond_to do |format|
       format.js
     end
