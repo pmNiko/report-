@@ -22,5 +22,6 @@
         - text_button = 'Begin'
       = button_to text_button, begin_claim_path(claim), method: :post, remote: true,
       :class => "btn btn-outline-success btn-sm"
-    = link_to history_claim_path(claim) do
-      = fa_icon "history", class: "fa-lg"
+    - if claim.has_history?      
+      = link_to history_claim_path(claim) do
+        = fa_icon "history", class: "fa-lg"

@@ -4,11 +4,12 @@ class ClaimsController < ApplicationController
 
   def history
     claim = Claim.find(params[:id])
-    @client = claim.client
+    client = claim.client
     @claims = Claim
-      .client(@client)
+      .client(client)
       .order(created_at: :desc)
       .limit(6)
+      .finished
   end
 
   def begin

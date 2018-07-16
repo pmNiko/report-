@@ -42,6 +42,7 @@ class Claim < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+  # => change state and create new claim with set starts_at
   def to_coordinate(claim, team, hour, min, current_user)
     self.contactado!
     claim.author = current_user
@@ -54,6 +55,11 @@ class Claim < ApplicationRecord
     claim.kind = self.kind_key
     claim.observation = "<< Previo: " + "#{self.observation} >>"
     claim.save!
+  end
+
+  # => returns true if your history is not empty
+  def has_history?
+    Claim.client(self.client).finished.any?
   end
 
   #return status key
