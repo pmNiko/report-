@@ -2,6 +2,14 @@ class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy,
                                     :contact_to, :review, :finished]
 
+  def history
+    claim = Claim.find(params[:id])
+    client = claim.client
+    @claims = Claim
+      .client(client)
+      .order(created_at: :desc)
+  end
+
   def begin
     @claim = Claim.find(params[:id])
     @claim.begin
@@ -14,9 +22,7 @@ class ClaimsController < ApplicationController
     hour =  params["starts_at(4i)"].to_i
     min = params["starts_at(5i)"].to_i
     claim = Claim.find(params[:id])
-
     team = Team.find(claim.team.id)
-
     @claim_coordinated = Claim.new
 
     claim.to_coordinate(@claim_coordinated, team, hour, min, current_user)

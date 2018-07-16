@@ -71,3 +71,5 @@ gem 'fullcalendar.io-rails', '~> 3.9'
 gem "font-awesome-rails"
 #handle nested forms.
 gem "cocoon"
+#order
+gem 'acts_as_list'
