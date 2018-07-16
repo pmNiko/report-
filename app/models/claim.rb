@@ -42,10 +42,26 @@ class Claim < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+  def to_coordinate(claim, team, hour, min, current_user)
+    self.contactado!
+    claim.author = current_user
+    claim.team = team
+    hour_coordinated = Time.now.change({ hour: "#{hour}", min: "#{min}"})
+    claim.starts_at = hour_coordinated
+    claim.ticket = self.ticket
+    claim.client = self.client
+    claim.coordinado!
+    claim.kind = self.kind_key
+    claim.observation = "<< Previo: " + "#{self.observation} >>"
+    claim.save!
+  end
+
+  #return status key
   def status_key
     Claim.statuses[self.status]
   end
 
+  # => return kind key
   def kind_key
     Claim.kinds[self.kind]
   end
@@ -136,6 +152,7 @@ class Claim < ApplicationRecord
 
   # => scope claims day finished
   scope :finished, lambda { where("status != ?", 1) }
-
-
+  scope :client, -> (client_param) { where('client_param = ?', client) }
+  scope :client_number, -> (client_number) { where('client_number = ?', client) }
+  scope :client_sma, -> (client_sma) { where('client_sma = ?', client) }
 end

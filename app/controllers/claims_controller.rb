@@ -2,6 +2,14 @@ class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy,
                                     :contact_to, :review, :finished]
 
+  def history
+    claim = Claim.find(params[:id])
+    client = claim.client
+    @claims = Claim
+      .client(client)
+      .order(created_at: :desc)
+  end
+
   def begin
     @claim = Claim.find(params[:id])
     @claim.begin
@@ -11,34 +19,18 @@ class ClaimsController < ApplicationController
   end
 
   def coordinate
-    @claim = Claim.find(params[:id])
-    @claim.contactado!
-
-    @team = Team.find(@claim.team.id)
+    hour =  params["starts_at(4i)"].to_i
+    min = params["starts_at(5i)"].to_i
+    claim = Claim.find(params[:id])
+    team = Team.find(claim.team.id)
     @claim_coordinated = Claim.new
 
-    # params["starts_at(4i)"].to_i + 3
-    # temporal solution for the zone horarie
-    # capturate and create Datetime for cordinate new claims
-    somedate = DateTime.new(params["starts_at(1i)"].to_i,
-                        params["starts_at(2i)"].to_i,
-                        params["starts_at(3i)"].to_i,
-                        params["starts_at(4i)"].to_i + 3,
-                        params["starts_at(5i)"].to_i)
-
-    @claim_coordinated.author = current_user
-    @claim_coordinated.team = @team
-    @claim_coordinated.starts_at = somedate
-    @claim_coordinated.ticket = @claim.ticket
-    @claim_coordinated.client = @claim.client
-    @claim_coordinated.coordinado!
-    @claim_coordinated.kind = @claim.kind_key
-    @claim_coordinated.observation = "<< Previo: " + "#{@claim.observation} >>"
-    @claim_coordinated.save!
+    claim.to_coordinate(@claim_coordinated, team, hour, min, current_user)
 
     respond_to do |format|
       format.js
     end
+
   end
 
   def show
