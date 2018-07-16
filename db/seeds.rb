@@ -194,3 +194,141 @@ Truck.create!({
   :number => "26",
   :brand => "Partner"
   })
+
+#####################    TEAMS    #####################
+#
+team_01 = Team.new(
+  :date => "2018-07-15",
+  :created_at => "2018-07-15 23:55:32",
+  :updated_at => "2018-07-15 23:55:32",
+  :truck_id => 3,
+  :finished => false
+)
+team_01.user_ids=[2,3]
+team_01.save!
+
+##########
+team_02 = Team.new(
+  :date => "2018-07-15",
+  :created_at => "2018-07-15 23:55:32",
+  :updated_at => "2018-07-15 23:55:32",
+  :truck_id => 3,
+  :finished => false
+)
+team_02.user_ids=[4,5]
+team_02.save!
+
+##########
+team_03 = Team.new(
+  :date => "2018-07-15",
+  :created_at => "2018-07-15 23:55:32",
+  :updated_at => "2018-07-15 23:55:32",
+  :truck_id => 3,
+  :finished => false
+)
+team_03.user_ids=[6,7]
+team_03.save!
+
+
+#####################    CLAIMS    #####################
+#
+claim_01 = Claim.new(
+  :ticket => 1,
+  :client => 423555,
+  :created_at => "2018-07-15 23:55:32",
+  :updated_at => "2018-07-15 23:55:32",
+  :status => "pendiente",
+  :team_id => team_01.id,
+  :starts_at => nil,
+  :ends_at => nil,
+  :kind => "Reclamo",
+  :observation => nil,
+  :author_id => 12,
+
+)
+claim_01.save!
+
+##########
+claim_02 = Claim.new(
+  :ticket => 2,
+  :client => "sma_123",
+  :created_at => "2018-08-15 23:55:32",
+  :updated_at => "2018-08-15 23:55:32",
+  :status => "pendiente",
+  :team_id => team_01.id,
+  :starts_at => nil,
+  :ends_at => nil,
+  :kind => "Reclamo",
+  :observation => nil,
+  :author_id => 12,
+
+)
+claim_02.save!
+##########
+
+claim_03 = Claim.new(
+  :ticket => 3,
+  :client => 423555,
+  :created_at => "2018-09-15 23:55:32",
+  :updated_at => "2018-09-15 23:55:32",
+  :status => "pendiente",
+  :team_id => team_02.id,
+  :starts_at => nil,
+  :ends_at => nil,
+  :kind => "Reclamo",
+  :observation => nil,
+  :author_id => 12,
+
+)
+claim_03.save!
+##########
+
+claim_04 = Claim.new(
+  :ticket => 4,
+  :client => "sma_123",
+  :created_at => "2018-10-15 23:55:32",
+  :updated_at => "2018-10-15 23:55:32",
+  :status => "pendiente",
+  :team_id => team_02.id,
+  :starts_at => nil,
+  :ends_at => nil,
+  :kind => "Reclamo",
+  :observation => nil,
+  :author_id => 12,
+
+)
+claim_04.save!
+##########
+
+claim_05 = Claim.new(
+  :ticket => 5,
+  :client => 423555,
+  :created_at => "2018-11-15 23:55:32",
+  :updated_at => "2018-11-15 23:55:32",
+  :status => "pendiente",
+  :team_id => team_03.id,
+  :starts_at => nil,
+  :ends_at => nil,
+  :kind => "Reclamo",
+  :observation => nil,
+  :author_id => 12,
+
+)
+claim_05.save!
+##########
+claim_06 = Claim.new(
+  :ticket => 6,
+  :client => "sma_123",
+  :created_at => "2018-12-15 23:55:32",
+  :updated_at => "2018-12-15 23:55:32",
+  :status => "pendiente",
+  :team_id => team_03.id,
+  :starts_at => nil,
+  :ends_at => nil,
+  :kind => "Reclamo",
+  :observation => nil,
+  :author_id => 12,
+
+)
+claim_06.save!
+##########
