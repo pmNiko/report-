@@ -68,12 +68,16 @@
     .card-header.text-center Observation
     .card-body.p-0
       %table.table.table-hover.mb-0
-        %tbody
+        %tbody.text-center
           %tr
             %td.align-middle #{@claim.observation}
-  .card.border-info
-    .card-header.text-center Observation
-    .card-body.p-0
+- if @claim.contactar?
+  .card.border-success
+    .card-header.text-center To Coordinate
+    .card-body.p-0.text-center
+      %br
       = form_with url: coordinate_claim_path do |f|
         = f.time_select :starts_at
-        = f.submit
+      = button_tag(type: 'submit', class: "btn btn-primary") do
+        = fa_icon "flag", text: "Ok", right: true, class: "fa-lg"
+      %br
