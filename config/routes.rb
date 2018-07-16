@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :events
   resources :jobs
 
+  get "claims/history:id" => "claims#history", :as => 'history_claim'
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'
   resources :claims do
     member do

@@ -152,7 +152,7 @@ class Claim < ApplicationRecord
 
   # => scope claims day finished
   scope :finished, lambda { where("status != ?", 1) }
-  scope :client, -> (client_param) { where('client_param = ?', client) }
-  scope :client_number, -> (client_number) { where('client_number = ?', client) }
-  scope :client_sma, -> (client_sma) { where('client_sma = ?', client) }
+  scope :client, -> (client_param) { where('client = ?', client_param) }
+  scope :client_number, -> (client_number) { where('client = ?', client_number)}
+  scope :client_sma, -> (client_sma) { where('client = ?', client_sma) }
 end
