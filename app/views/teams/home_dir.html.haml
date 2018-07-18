@@ -4,8 +4,6 @@
     .col-4
     .col-8
       = render 'clock'
-  = link_to new_team_path, :remote => true do
-    = fa_icon "plus-square-o", text: "", right: true, class: "fa-lg"
   .new-team#teams
     %tbody
       = render @teams
