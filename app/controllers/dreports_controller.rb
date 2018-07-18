@@ -3,6 +3,7 @@ class DreportsController < ApplicationController
 
   def index
     @dreports = Dreport.all
+    @tickets = Ticket.all
   end
 
   def end_shift
