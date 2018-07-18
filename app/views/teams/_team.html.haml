@@ -33,8 +33,10 @@
                     class:"fa fa-trash fa-1x",                                                            |
                     data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
                     verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
-                  &nbsp
-                  %button{class: "fa fa-angle-double-down","aria-controls" => "team_#{team.id}", "aria-expanded" => "true", "data-target" => "#team#{team.id}", "data-toggle" => "collapse"}
+
+                  %span.btn.btn-default
+                    %i{class: "fa fa-angle-double-down","aria-controls" => "team_#{team.id}", "aria-expanded" => "true", "data-target" => "#team#{team.id}", "data-toggle" => "collapse"}
+
 
       .collapse{:id => ("team#{team.id}"), "aria-labelledby" => "heading#{team.id}", "data-parent" => "#accordion"}
         .card-body
@@ -71,8 +73,8 @@
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
                     &nbsp
-                    = link_to dreports_path do
-                      = fa_icon "history", class: "fa-1x"
+                    = link_to history_claim_path(claim) do
+                      = fa_icon "history", class: "fa-lg"
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:
