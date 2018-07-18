@@ -26,6 +26,7 @@ class ClaimsController < ApplicationController
     claim = Claim.find(params[:id])
     team = Team.find(claim.team.id)
     @claim_coordinated = Claim.new
+    Rails.logger.debug("My object: entro al metodo")
 
     claim.to_coordinate(@claim_coordinated, team, hour, min, current_user)
 
