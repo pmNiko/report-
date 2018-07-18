@@ -1,2 +1,37 @@
-- @dreports.each do |dreport|
-  %p= "Id: " + "#{dreport.id}"
+.container.text-center
+  .card-group
+
+    %tbody
+      - @dreports.each do |dreport|
+
+        .card-group.card-dreport
+          .card.border-info
+            .card-header.text-center
+              = dreport.users.first.email + ' - ' +  dreport.users.second.email
+              =', movil: ' + dreport.brand
+            .card-body.text-center.card-closed
+
+              .card-header.card-information-basic
+                %table
+                  %td.align-middle Cliente
+                  %td.align-middle "382577"
+                  %td.align-middle Estado
+                  %td.align-middle finalizado
+                  %td.align-middle Tipo de Reclamo
+
+              .card-container.card-jobs.card-jobs
+                .card-header
+                  %td.align-middle Cliente 1
+                  %td.align-middle
+                    %span.badge 10
+              .card-container.card-observation
+                .card-header
+                  %td.align-middle Cliente 1
+                  %td.align-middle Cliente 2
+
+            .card-body.card-news
+              %td.align-middle
+              Noticias
+              %p
+                = dreport.news
+
