@@ -1,6 +1,5 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [ :show, :edit, :update, :destroy,
-                                    :contact_to, :review, :finished]
+  before_action :set_claim, only: [ :show, :edit, :update, :destroy]
 
   def history
     claim = Claim.find(params[:id])
@@ -8,6 +7,8 @@ class ClaimsController < ApplicationController
     @claims = Claim
       .client(client)
       .order(created_at: :desc)
+      .limit(4)
+      .finished
   end
 
   def begin

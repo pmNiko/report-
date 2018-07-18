@@ -1,0 +1,31 @@
+.container.text-center
+  .card-group
+    .card.border-info
+      .card-header.text-center
+        %h6= "HISTORY OF  " + "#{@claims.first.client}"
+      - @claims.each do |claim|
+        .card-body.text-center
+          .card-header= "#{claim.date}" + " >> "+ claim_resposables(claim)
+          .card-body.p-0
+            %table.table.table-striped
+              %tbody
+                %tr
+                  %td.d-inline-block.col-3 Nº Ticket
+                  %td.d-inline-block.col-3 Type
+                  %td.d-inline-block.col-3 Concluded
+                  %td.d-inline-block.col-3 Action
+                %tr
+                  %td.d-inline-block.col-3 #{claim.ticket}
+                  %td.d-inline-block.col-3 #{claim.kind}
+                  %td.d-inline-block.col-3 #{claim.status}
+                  %td.d-inline-block.col-3
+                    = link_to claim_path(claim), :remote => true do
+                      = fa_icon "eye", right: true, class: "fa-lg"
+          .card-body.p-0
+            %table.table.table-hover.mb-0
+              %thead
+              %tbody
+                %tr.row.m-0
+                  %td.d-inline-block.col-12 #{claim.observation}
+
+= render 'dialog'

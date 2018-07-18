@@ -7,17 +7,17 @@ default: &default
 development:
   <<: *default
   database: report-_development
-  username: Niko
+  username: Nikolas
   password: nikolas89
 
 test:
   <<: *default
   database: report-_test
-  username: Niko
+  username: Nikolas
   password: nikolas89
 
 production:
   <<: *default
   database: report-_production
-  username: Niko
+  username: Nikolas
   password: <%= ENV['DREPORT_DATABASE_PASSWORD'] %>

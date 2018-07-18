@@ -70,6 +70,9 @@
                         = fa_icon "bolt", class: "fa-lg"
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
+                    &nbsp
+                    = link_to dreports_path do
+                      = fa_icon "history", class: "fa-1x"
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:

@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @users = User.all
+    @users = User.without_role(:admin)
     @type_events = Event.type_events.keys
   end
 
