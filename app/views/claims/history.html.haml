@@ -1,7 +1,8 @@
 .container.text-center
   .card-group
     .card.border-info
-      .card-header.text-center #{@claims.first.client}
+      .card-header.text-center
+        %h6= "HISTORY OF  " + "#{@claims.first.client}"
       - @claims.each do |claim|
         .card-body.text-center
           .card-header= "#{claim.date}" + " >> "+ claim_resposables(claim)
@@ -9,23 +10,20 @@
             %table.table.table-striped
               %tbody
                 %tr
-                  %td.align-middle Nº Ticket
-                  %td.align-middle Type
-                  %td.align-middle Concluded
-                  %td.align-middle Action
+                  %td.d-inline-block.col-3 Nº Ticket
+                  %td.d-inline-block.col-3 Type
+                  %td.d-inline-block.col-3 Concluded
+                  %td.d-inline-block.col-3 Action
                 %tr
-                  %td.align-middle #{claim.ticket}
-                  %td.align-middle #{claim.kind}
-                  %td.align-middle #{claim.status}
-                  %td.align-middle
+                  %td.d-inline-block.col-3 #{claim.ticket}
+                  %td.d-inline-block.col-3 #{claim.kind}
+                  %td.d-inline-block.col-3 #{claim.status}
+                  %td.d-inline-block.col-3
                     = link_to claim_path(claim), :remote => true do
                       = fa_icon "eye", right: true, class: "fa-lg"
-          .card-header
           .card-body.p-0
             %table.table.table-hover.mb-0
               %thead
-                %tr.row.m-0
-                  %th.d-inline-block.col-12 Observation
               %tbody
                 %tr.row.m-0
                   %td.d-inline-block.col-12 #{claim.observation}

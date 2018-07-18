@@ -1,6 +1,5 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [ :show, :edit, :update, :destroy,
-                                    :contact_to, :review, :finished]
+  before_action :set_claim, only: [ :show, :edit, :update, :destroy]
 
   def history
     claim = Claim.find(params[:id])
@@ -8,7 +7,7 @@ class ClaimsController < ApplicationController
     @claims = Claim
       .client(client)
       .order(created_at: :desc)
-      .limit(6)
+      .limit(4)
       .finished
   end
 
@@ -26,7 +25,6 @@ class ClaimsController < ApplicationController
     claim = Claim.find(params[:id])
     team = Team.find(claim.team.id)
     @claim_coordinated = Claim.new
-    Rails.logger.debug("My object: entro al metodo")
 
     claim.to_coordinate(@claim_coordinated, team, hour, min, current_user)
 
