@@ -8,31 +8,31 @@ class Ticket < ApplicationRecord
   #---------- Hash attribute´s ----------#
 
   enum status: {
-                pendiente: 1,en_curso: 2,
-                finalizado: 3,contactar: 4,revisar: 5
-              }
+    pendiente: 1,en_curso: 2,finalizado: 3,
+    contactar: 4,revisar: 5,coordinado: 6, contactado: 7
+  }
   enum kind: {
-              Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,
-              Cruzada: 6, Preventivo: 7, Relevamiento: 8,
-              Extencion: 9
-            }
+    Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,
+    Cruzada: 6, Preventivo: 7, Relevamiento: 8,
+    Extencion: 9
+  }
   # => item
   enum item: {
-              "BAJADA UN PAR": 5,
-              "JACK AMER. EMBUT.": 307,    "JACK AMER. EXTER.": 308,
-              "SPLITTER": 6,               "FILTRO ADSL": 7,
-              "APARATO TELEF.": 417,       "MODEM": 418,
-              "CABLE 2P AUTOPORT": 1,      "CABLE 4P AUTOPORT": 3,
-              "CABLE 2P C/GEL": 2,         "CABLE 4P C/GEL": 4,
-              "CAJA INTERC. 1P": 185,      "CAJA INTERC. 2P": 186,
-              "ANILLA 15mm": 147,          "ANILLA 32mm": 148,
-              "CABLE INTERNO": 11,         "CADENA POSTE": 172
-            }
+    "BAJADA UN PAR": 5,
+    "JACK AMER. EMBUT.": 307,    "JACK AMER. EXTER.": 308,
+    "SPLITTER": 6,               "FILTRO ADSL": 7,
+    "APARATO TELEF.": 417,       "MODEM": 418,
+    "CABLE 2P AUTOPORT": 1,      "CABLE 4P AUTOPORT": 3,
+    "CABLE 2P C/GEL": 2,         "CABLE 4P C/GEL": 4,
+    "CAJA INTERC. 1P": 185,      "CAJA INTERC. 2P": 186,
+    "ANILLA 15mm": 147,          "ANILLA 32mm": 148,
+    "CABLE INTERNO": 11,         "CADENA POSTE": 172
+  }
   # => point
   enum point: {
-              Central: 1, Primario: 2, Secundario: 3,
-              Bajada: 4, Domicilio: 5
-            }
+    Central: 1, Primario: 2, Secundario: 3,
+    Bajada: 4, Domicilio: 5
+  }
 
   #---------- Public Method´s ----------#
 

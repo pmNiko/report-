@@ -2,8 +2,7 @@ class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dreports = Dreport.all
-    @tickets = Ticket.all
+    @dreports = Dreport.limit(2)
   end
 
   def end_shift
