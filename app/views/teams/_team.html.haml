@@ -73,8 +73,9 @@
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
                     &nbsp
-                    = link_to history_claim_path(claim) do
-                      = fa_icon "history", class: "fa-lg"
+                    - if claim.has_history?
+                      = link_to history_claim_path(claim) do
+                        = fa_icon "history", class: "fa-lg"
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:

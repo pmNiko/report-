@@ -2,7 +2,14 @@
   .card-group
     .card.border-info
       .card-header.text-center
-        %h6= "HISTORY OF  " + "#{@claims.first.client}"
+        .row
+          .col-4
+          .col-4
+            %h6= "HISTORY OF  " + "#{@claims.first.client}"
+          .col-4
+            .float-right
+              = link_to :back do
+                = fa_icon "arrow-left", class: "fa-lg"
       - @claims.each do |claim|
         .card-body.text-center
           .card-header= "#{claim.date}" + " >> "+ claim_resposables(claim)
