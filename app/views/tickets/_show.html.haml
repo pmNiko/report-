@@ -58,3 +58,19 @@
                 - @qtys.each do |qty|
                   %tr.text-center
                     %td.align-middle= qty
+    .card.border-info
+      .card-body.text-center
+        .card-header Measures
+        - unless @measure_points.nil?
+          - points = @measure_points.count
+          - @measure_points.each do |point|
+            #accordion
+              .card
+                .card-header{:id => ("heading#{points}")}
+                  %h5.mb-0
+                    %button.btn.btn-outline-info.btn-sm{"aria-controls" => "measure#{points}", "aria-expanded" => "true", "data-target" => "#measure#{points}", "data-toggle" => "collapse"}
+                      = point
+                .collapse{:id => ("measure#{points}"), "aria-labelledby" => "heading#{points}", "data-parent" => "#accordion"}
+                  .card-body
+                    = @measure_logs.first
+              - points -= 1

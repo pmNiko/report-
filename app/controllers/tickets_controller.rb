@@ -6,6 +6,8 @@ class TicketsController < ApplicationController
     @jobs = @ticket.job_titles
     @items = @ticket.mat_items
     @qtys = @ticket.mat_qtys
+    @measure_points = @ticket.meas_points
+    @measure_logs = @ticket.meas_logs
   end
 
   def new
