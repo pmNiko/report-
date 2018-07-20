@@ -6,36 +6,132 @@
  @import "calendar";
  @import "font-awesome";
 
+//////// BODY ////////////////////////////////////////////////////////////
+body.container-fluid {
+    background-color: rgb(166, 172, 175);
+}
+
 body.container-fluid {
     background-repeat: no-repeat;
 }
 
-main {
-    //left: -5em;
+
+body.container-fluid {
+    color: white;
 }
+body a {
+    color: white;
+}
+
+//////// MODAL ////////////////////////////////////////////////////////////
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: rgba(26, 171, 164, 0.12);
+    background-clip: padding-box;
+    border: 2px solid rgba(1, 243, 255, 0.44);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+//////// SELEC2 ////////////////////////////////////////////////////////////
 
 span.select2-selection.select2-selection--multiple {
     background-color: black;
 }
 
 
-.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
-    background-color: rgba(26, 171, 164, 0.12);
+li.select2-selection__choice {
+    background-color: rgba(5, 130, 135, 0) !important;
+    border-color: rgba(220, 238, 245, 0) !important;
+    border-bottom: 1px solid #058387 !important;
 }
 
-.select2-container--default .select2-results__option[aria-selected=true] {
+.select2-results__option[aria-selected=true] {
     background-color: rgba(2, 247, 255, 0.35) !important;
 }
+
+input.select2-search__field {
+    border-bottom: 0.5px solid #058387 !important;
+}
+
 span.select2-selection.select2-selection--multiple {
   background-color: rgba(0, 0, 0, 0);
   border: none;
 }
 
-
-option {
-    background-color: rgba(249, 249, 249, 0);
+///Transpatentar el select
+span.select2-dropdown.select2-dropdown--below {
+  background-color: rgba(0, 0, 0, 0.76);
+}
+ul#select2-team_user_ids-results {
+  border: 2px solid rgba(86, 181, 115, 0.8);
+  background-color: rgba(118, 140, 140, 0.18);
 }
 
-select input, textarea {
-  background-color: rgb(7, 136, 142) !important;
+
+
+//////// SELEC ////////////////////////////////////////////////////////////
+select {
+  background-color: rgba(0, 0, 255, 0);
+  color: white;
+  border-color: rgba(30, 177, 210, 0);
+  border-bottom: 2.5px solid #068388;
+}
+
+select option {
+    background-color: rgba(5, 131, 136, 0.78);
+}
+select option:hover {
+    background-color: rgba(5, 131, 136, 0.78) !important;
+}
+
+//////// INPUT ////////////////////////////////////////////////////////////
+input {
+  background-color: rgba(26, 171, 164, 0.12);
+  color: white;
+  border-color: rgba(0, 0, 0, 0);
+  border-bottom-color: #0c8d94;
+}
+//////// CARD ////////////////////////////////////////////////////////////
+
+.bg-info {
+  background-color: rgba(26, 171, 164, 0.12) !important;
+}
+
+
+.card-header.border-primary.text-center {
+    border-color: rgba(12, 141, 148, 0) !important;
+    border-top-color: #0c8d94 !important;
+}
+
+.card-header {
+  background-color: rgba(26, 171, 164, 0.12) !important;
+  border: 2px solid rgba(1, 243, 255, 0.44);
+
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  border-radius: 0.25rem;
+  margin-bottom: 5px !important;
+  background-color: rgba(26, 171, 164, 0.12) !important;
+}
+
+//////// TABLE ////////////////////////////////////////////////////////////
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 1px solid #17a2b8;
+}
+
+.table th, .table td {
+  border-top: 1px solid #17a2b8;
 }
