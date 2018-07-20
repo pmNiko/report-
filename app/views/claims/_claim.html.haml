@@ -3,25 +3,27 @@
   %td= claim.ticket
   %td= claim.client
   %td
-    - if claim.en_curso?
-      = link_to edit_claim_path(claim), :remote => true do
-        = fa_icon "pencil-square-o", right: true, class: "fa-lg"
-    - elsif claim.revisar?
-      = link_to claim_path(claim), :remote => true do
-        = fa_icon "bolt", class: "fa-lg"
-    - elsif claim.contactar?
-      = link_to claim_path(claim), :remote => true do
-        = fa_icon "phone-square", class: "fa-lg"
-    - elsif claim.finalizado? || claim.contactado?
-      = link_to claim_path(claim), :remote => true do
-        = fa_icon "eye", right: true, class: "fa-lg"
-    - else
-      - if claim.coordinado?
-        - text_button = "#{claim.starts}"
+    %div.div-action
+      - if claim.en_curso?
+        = link_to edit_claim_path(claim), :remote => true do
+          = fa_icon "pencil-square-o", right: true, class: "fa-lg"
+      - elsif claim.revisar?
+        = link_to claim_path(claim), :remote => true do
+          = fa_icon "exclamation-circle", class: "fa-lg"
+      - elsif claim.contactar?
+        = link_to claim_path(claim), :remote => true do
+          = fa_icon "phone-square", class: "fa-lg"
+      - elsif claim.finalizado? || claim.contactado?
+        = link_to claim_path(claim), :remote => true do
+          = fa_icon "eye", right: true, class: "fa-lg"
       - else
-        - text_button = 'Begin'
-      = button_to text_button, begin_claim_path(claim), method: :post, remote: true,
-      :class => "btn btn-outline-success btn-sm"
-    - if claim.has_history?      
-      = link_to history_claim_path(claim) do
-        = fa_icon "history", class: "fa-lg"
+        - if claim.coordinado?
+          - text_button = "#{claim.starts}"
+        - else
+          - text_button = 'Begin'
+        = button_to text_button, begin_claim_path(claim), method: :post, remote: true,
+        :class => "btn btn-outline-success btn-sm"
+    %div.div-historial
+      - if claim.has_history?
+        = link_to history_claim_path(claim) do
+          = fa_icon "history", class: "fa-lg"
