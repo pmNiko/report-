@@ -204,26 +204,26 @@ class Ticket < ApplicationRecord
   # => load materials to ticket
   def load_materials(materials)
     mt = 1
-    materials.each do |maetrial|
+    materials.each do |material|
       case mt
       when 1
-        self.mat_item1 = maetrial.item
-        self.mat_qty_1 = maetrial.quantity
+        self.mat_item1 = material.item_key.to_s + " - " + material.item 
+        self.mat_qty_1 = material.quantity
       when 2
-        self.mat_item2 = maetrial.item
-        self.mat_qty_2 = maetrial.quantity
+        self.mat_item2 = material.item_key.to_s + " - " + material.item 
+        self.mat_qty_2 = material.quantity
       when 3
-        self.mat_item3 = maetrial.item
-        self.mat_qty_3 = maetrial.quantity
+        self.mat_item3 = material.item_key.to_s + " - " + material.item 
+        self.mat_qty_3 = material.quantity
       when 4
-        self.mat_item4 = maetrial.item
-        self.mat_qty_4 = maetrial.quantity
+        self.mat_item4 = material.item_key.to_s + " - " + material.item 
+        self.mat_qty_4 = material.quantity
       when 5
-        self.mat_item5 = maetrial.item
-        self.mat_qty_5 = maetrial.quantity
+        self.mat_item5 = material.item_key.to_s + " - " + material.item 
+        self.mat_qty_5 = material.quantity
       when 6
-        self.mat_item6 = maetrial.item
-        self.mat_qty_6 = maetrial.quantity
+        self.mat_item6 = material.item_key.to_s + " - " + material.item 
+        self.mat_qty_6 = material.quantity
       else
         #nothing
       end
