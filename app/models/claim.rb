@@ -31,13 +31,13 @@ class Claim < ApplicationRecord
   #---------- Hash attribute´s ----------#
 
   enum status: {
-                pendiente: 1,en_curso: 2,finalizado: 3,
-                contactar: 4,revisar: 5,coordinado: 6, contactado: 7
+                pendiente: 1, en_curso: 2, coordinado: 3, finalizado: 4,
+                revisar: 5, contactar: 6, contactado: 7
               }
   enum kind: {
               Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,
               Cruzada: 6, Preventivo: 7, Relevamiento: 8,
-              Extencion: 9
+              Extencion: 9, factibilidad: 10
             }
 
   #----------  --- Public Method´s  ---  ----------#
@@ -59,7 +59,7 @@ class Claim < ApplicationRecord
 
   # => returns true if your history is not empty
   def has_history?
-    Claim.client(self.client).finished.any?
+    Ticket.client(client).any?
   end
 
   #return status key
@@ -144,6 +144,7 @@ class Claim < ApplicationRecord
     destroy
   end
 
+
   #---------- Class method´s ----------#
 
   # => all status
@@ -157,8 +158,5 @@ class Claim < ApplicationRecord
   end
 
   # => scope claims day finished
-  scope :finished, lambda { where("status != ?", 1) }
-  scope :client, -> (client_param) { where('client = ?', client_param) }
-  scope :client_number, -> (client_number) { where('client = ?', client_number)}
-  scope :client_sma, -> (client_sma) { where('client = ?', client_sma) }
+  scope :concluded, lambda { where("status > ?", 3) }
 end

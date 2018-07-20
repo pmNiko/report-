@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :jobs
+  resources :tickets
 
   get "claims/history:id" => "claims#history", :as => 'history_claim'
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'

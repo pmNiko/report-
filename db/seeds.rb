@@ -202,7 +202,7 @@ team_01 = Team.new(
   :created_at => "2018-07-10 08:40:32",
   :updated_at => "2018-07-10 08:40:32",
   :truck_id => 2,
-  :finished => true
+  :finished => false
 )
 team_01.user_ids=[2,3]
 team_01.save!
@@ -213,7 +213,7 @@ team_02 = Team.new(
   :created_at => "2018-05-15 08:40:32",
   :updated_at => "2018-05-15 08:40:32",
   :truck_id => 4,
-  :finished => true
+  :finished => false
 )
 team_02.user_ids=[4,5]
 team_02.save!
@@ -224,7 +224,7 @@ team_03 = Team.new(
   :created_at => "2018-01-12 08:40:32",
   :updated_at => "2018-01-12 08:40:32",
   :truck_id => 3,
-  :finished => true
+  :finished => false
 )
 team_03.user_ids=[6,7]
 team_03.save!
@@ -332,3 +332,15 @@ claim_06 = Claim.new(
 )
 claim_06.save!
 ##########
+
+##########
+dreport_1 = Dreport.create!
+dreport_2 = Dreport.create!
+dreport_3 = Dreport.create!
+
+dreport_1.load_parameters(team_01)
+team_01.finalize
+dreport_2.load_parameters(team_02)
+team_01.finalize
+dreport_3.load_parameters(team_03)
+team_01.finalize

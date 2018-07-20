@@ -9,6 +9,21 @@ class Dreport < ApplicationRecord
   has_and_belongs_to_many :users
   #---------- Public Method´s ----------#
 
+  # => return data from responsables
+  def data_responsables
+    data = []
+    data << users.first.email
+    unless has_responsable?
+      data << users.second.email
+    end
+    return data
+  end
+
+  # => return true or false if contain only one responsable
+  def has_responsable?
+    users.count == 1
+  end
+
   # => load a team parameters to dreport
   def load_parameters(team)
     self.date = team.date
@@ -16,7 +31,7 @@ class Dreport < ApplicationRecord
     self.brand = team.truck.brand
     self.add_responsables(team)
 
-    claims = team.claims.finished
+    claims = team.claims.concluded
     unless claims.nil?
       self.association_tickets(claims)
     end
