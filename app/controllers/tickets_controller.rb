@@ -2,6 +2,10 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [ :show ]
 
   def show
+    @ticket = Ticket.find(params[:id])
+    @jobs = @ticket.job_titles
+    @items = @ticket.mat_items
+    @qtys = @ticket.mat_qtys
   end
 
   def new
