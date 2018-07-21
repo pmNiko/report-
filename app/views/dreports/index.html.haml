@@ -1,5 +1,10 @@
 .container.text-center
-  .card-group
+  .row
+    .col-4
+    .col-8
+      = render 'teams/clock'
+      %br
 
+  .card-group
     %tbody
       = render @dreports
