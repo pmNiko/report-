@@ -2,7 +2,7 @@ class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dreports = Dreport.limit(2)
+    @dreports = Dreport.today
   end
 
   def end_shift
@@ -15,7 +15,7 @@ class DreportsController < ApplicationController
   end
 
   def show
-    @dreports = Dreport.find(params[:id])
+    @dreport = Dreport.find(params[:id])
   end
 
   def current

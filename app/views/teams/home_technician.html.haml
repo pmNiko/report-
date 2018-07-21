@@ -6,5 +6,31 @@
       = render 'clock'
   .new-team#teams
     %tbody
-      - unless @team.nil?
+      - if !@dreport.nil?
+        .container.text-center
+          .card-group
+            %tbody
+              .card-group.card-dreport
+                .card.border-info
+                  .card-header.text-center= dreport_responsables(@dreport)
+                  .card-body.text-center
+                    .card-group
+                      .card.border-info
+                        .card.card-dreport-data
+                          - @dreport.tickets.each do |ticket|
+                            %table
+                              %td.align-middle Cliente :
+                              %td.align-middle= "#{ticket.client}"
+                              %td.align-middle Estado :
+                              %td.align-middle= "#{ticket.status}"
+                              %td.align-middle Tipo :
+                              %td.align-middle= "#{ticket.kind}"
+                            .card.card-dreport Observacion
+                            .card-body.p-0
+                              %p= "#{ticket.observation}"
+                  .card.card-dreport News
+                  .card-body
+                    %p Lorem ipsum...
+      - elsif !@team.nil?
         = render 'technician_team'
+      - else
