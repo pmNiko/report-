@@ -15,7 +15,7 @@ class DreportsController < ApplicationController
   end
 
   def show
-    @dreports = Dreport.find(params[:id])
+    @dreport = Dreport.find(params[:id])
   end
 
   def current
