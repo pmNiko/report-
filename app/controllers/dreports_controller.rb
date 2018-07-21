@@ -5,6 +5,15 @@ class DreportsController < ApplicationController
     @dreports = Dreport.today
   end
 
+  def close
+    news_param =  params["news"]
+    dreport = Dreport.find(params[:id])
+    dreport.to_close
+    dreport.news = news_param
+    dreport.save!
+    redirect_to technician_team_path
+  end
+
   def end_shift
     team = Team.find(params[:id])
     @dreport = Dreport.new

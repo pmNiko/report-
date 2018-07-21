@@ -22,7 +22,11 @@ Rails.application.routes.draw do
 
   get "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift_dreport'
   get "dreports/current" => "dreports#current", :as => 'current_dreport'
-  resources :dreports
+  resources :dreports do
+    member do
+      post 'close'
+    end
+  end
 
   root 'teams#home'
 
