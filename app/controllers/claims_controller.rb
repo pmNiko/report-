@@ -4,11 +4,11 @@ class ClaimsController < ApplicationController
   def history
     claim = Claim.find(params[:id])
     client = claim.client
-    @tickets = Ticket
+    tickets = Ticket
       .client(client)
-      .order(created_at: :asc)
       .limit(4)
       .concluded
+    @tickets = tickets.sort_by { |ticket| ticket.dreport.date }.reverse!
   end
 
   def begin
