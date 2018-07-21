@@ -21,14 +21,14 @@ class Event < ApplicationRecord
 
   # => color correspond to type event
   enum color_event_type: {
-    1 => "#1d521f",
-    2 => "#e788ff",
-    3 => "#8cbdff",
-    4 => "#8cbdff",
-    5 => "#a7cbff",
-    6 => "#a7cbff",
-    7 => "#a7cbff",
-    8 => "#a7cbff"
+    1 => "rgb(42, 99, 41);",
+    2 => "rgb(42, 99, 41);",
+    3 => " rgba(95, 12, 12, 0.81); ",
+    4 => "rgba(52, 50, 66, 0.9); ",
+    5 => "rgba(52, 50, 66, 0.9); ",
+    6 => "rgba(52, 50, 66, 0.9); ",
+    7 => "rgba(105, 115, 115, 0.74);",
+    8 => "rgba(105, 115, 115, 0.74);"
   }
 
 
