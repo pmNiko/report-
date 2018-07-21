@@ -33,3 +33,16 @@
 .card-container.card-jobs.card-jobs .card-header {
     height: 200%;
 }
+
+.card.card-dreport {
+    border-bottom: 1px solid #17a2b8;
+}
+
+.card.card-dreport-data {
+    align-items: center;
+    box-shadow: 0px 10px 15px 0px rgba(11, 137, 143, 0.59);
+}
+
+card-body.text-center .card-group {
+    margin-bottom: 5px;
+}
