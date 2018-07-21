@@ -74,5 +74,12 @@
               .collapse{:id => ("measure#{x}"), "aria-labelledby" => "heading#{x}", "data-parent" => "#accordion"}
                 .card-body
                   = @measure_logs[x]
-
             - x += 1
+.card-group
+  .card.border-info
+    .card-header.text-center Observation
+    .card-body.p-0
+      %table.table.table-hover.mb-0
+        %tbody.text-center
+          %tr
+            %td.align-middle #{@ticket.observation}
