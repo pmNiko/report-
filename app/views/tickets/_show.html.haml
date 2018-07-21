@@ -58,19 +58,33 @@
                 - @qtys.each do |qty|
                   %tr.text-center
                     %td.align-middle= qty
-    .card.border-info
-      .card-body.text-center
-        .card-header Measures
-        - unless @measure_points.nil?
-          - points = @measure_points.count
-          - @measure_points.each do |point|
-            #accordion
-              .card
-                .card-header{:id => ("heading#{points}")}
-                  %h5.mb-0
-                    %button.btn.btn-outline-info.btn-sm{"aria-controls" => "measure#{points}", "aria-expanded" => "true", "data-target" => "#measure#{points}", "data-toggle" => "collapse"}
-                      = point
-                .collapse{:id => ("measure#{points}"), "aria-labelledby" => "heading#{points}", "data-parent" => "#accordion"}
-                  .card-body
+  .card.border-info
+    .card-body.text-center
+      .card-header Measures
+      - unless @measure_points.nil?
+        - points = @measure_points.count
+        - @measure_points.each do |point|
+          #accordion
+            .card
+              .card-header{:id => ("heading#{points}")}
+                %h5.mb-0
+                  %button.btn.btn-outline-info.btn-sm{"aria-controls" => "measure#{points}", "aria-expanded" => "true", "data-target" => "#measure#{points}", "data-toggle" => "collapse"}
+                    = point
+              .collapse{:id => ("measure#{points}"), "aria-labelledby" => "heading#{points}", "data-parent" => "#accordion"}
+                .card-body
+                  - case points
+                  - when 1
                     = @measure_logs.first
-              - points -= 1
+                  - when 2
+                    = @measure_logs.second
+                  - when 3
+                    = @measure_logs.second
+                  - when 4
+                    = @measure_logs.first
+                  - when 5
+                    = @measure_logs.(point)
+                  - when 6
+                    = @measure_logs.(point)
+                  - else
+
+            - points -= 1

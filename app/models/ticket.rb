@@ -16,25 +16,6 @@ class Ticket < ApplicationRecord
     Cruzada: 6, Preventivo: 7, Relevamiento: 8,
     Extencion: 9, factibilidad: 10
   }
-  # => item
-  enum item: {
-    "BAJADA UN PAR": 5,
-    "JACK ": 99,    "JACK AMER. EXTER.": 308,
-    "SPLITTER": 6,               "FILTRO ADSL": 7,
-    "APARATO TELEF.": 417,       "MODEM": 418,
-    "CABLE 2P AUTOPORT": 1,      "CABLE 4P AUTOPORT": 3,
-    "CABLE 2P C/GEL": 2,         "CABLE 4P C/GEL": 4,
-    "CAJA INTERC. 1P": 185,      "CAJA INTERC. 2P": 186,
-    "ANILLA 15mm": 147,          "ANILLA 32mm": 148,
-    "CABLE INTERNO": 11,         "CADENA POSTE": 172
-  }
-
-  # => point
-  enum point: {
-    Central: 1, Primario: 2, Secundario: 3,
-    Bajada: 4, Domicilio: 5
-  }
-
 
 
   #---------- Public Method´s ----------#
@@ -207,22 +188,22 @@ class Ticket < ApplicationRecord
     materials.each do |material|
       case mt
       when 1
-        self.mat_item1 = material.item_key.to_s + " - " + material.item 
+        self.mat_item1 = material.item_key.to_s + " - " + material.item
         self.mat_qty_1 = material.quantity
       when 2
-        self.mat_item2 = material.item_key.to_s + " - " + material.item 
+        self.mat_item2 = material.item_key.to_s + " - " + material.item
         self.mat_qty_2 = material.quantity
       when 3
-        self.mat_item3 = material.item_key.to_s + " - " + material.item 
+        self.mat_item3 = material.item_key.to_s + " - " + material.item
         self.mat_qty_3 = material.quantity
       when 4
-        self.mat_item4 = material.item_key.to_s + " - " + material.item 
+        self.mat_item4 = material.item_key.to_s + " - " + material.item
         self.mat_qty_4 = material.quantity
       when 5
-        self.mat_item5 = material.item_key.to_s + " - " + material.item 
+        self.mat_item5 = material.item_key.to_s + " - " + material.item
         self.mat_qty_5 = material.quantity
       when 6
-        self.mat_item6 = material.item_key.to_s + " - " + material.item 
+        self.mat_item6 = material.item_key.to_s + " - " + material.item
         self.mat_qty_6 = material.quantity
       else
         #nothing
@@ -237,22 +218,22 @@ class Ticket < ApplicationRecord
     measures.each do |measure|
       case ms
       when 1
-        self.meas_p1 = measure.point_key
+        self.meas_p1 = measure.point
         self.meas_log1 = measure.log
       when 2
-        self.meas_p2 = measure.point_key
+        self.meas_p2 = measure.point
         self.meas_log2 = measure.log
       when 3
-        self.meas_p3 = measure.point_key
+        self.meas_p3 = measure.point
         self.meas_log3 = measure.log
       when 4
-        self.meas_p4 = measure.point_key
+        self.meas_p4 = measure.point
         self.meas_log4 = measure.log
       when 5
-        self.meas_p5 = measure.point_key
+        self.meas_p5 = measure.point
         self.meas_log5 = measure.log
       when 6
-        self.meas_p6 = measure.point_key
+        self.meas_p6 = measure.point
         self.meas_log6 = measure.log
       else
         #nothing

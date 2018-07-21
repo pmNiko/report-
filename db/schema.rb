@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_221108) do
+ActiveRecord::Schema.define(version: 2018_07_20_232207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,12 +132,6 @@ ActiveRecord::Schema.define(version: 2018_07_20_221108) do
     t.integer "mat_qty_4"
     t.integer "mat_qty_5"
     t.integer "mat_qty_6"
-    t.integer "meas_p1"
-    t.integer "meas_p2"
-    t.integer "meas_p3"
-    t.integer "meas_p4"
-    t.integer "meas_p5"
-    t.integer "meas_p6"
     t.text "meas_log1"
     t.text "meas_log2"
     t.text "meas_log3"
@@ -161,6 +155,12 @@ ActiveRecord::Schema.define(version: 2018_07_20_221108) do
     t.string "mat_item4"
     t.string "mat_item5"
     t.string "mat_item6"
+    t.string "meas_p1"
+    t.string "meas_p2"
+    t.string "meas_p3"
+    t.string "meas_p4"
+    t.string "meas_p5"
+    t.string "meas_p6"
     t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
   end
 
