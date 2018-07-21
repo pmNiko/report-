@@ -20,6 +20,11 @@ class Ticket < ApplicationRecord
 
   #---------- Public Method´s ----------#
 
+  # => returns true if your history is not empty
+  def has_history?
+    Ticket.client(client).any?
+  end
+  
   def item_key(item_param)
     Ticket.items[item_param]
   end
