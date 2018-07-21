@@ -63,28 +63,16 @@
       .card-header Measures
       - unless @measure_points.nil?
         - points = @measure_points.count
+        - x = 0
         - @measure_points.each do |point|
           #accordion
             .card
-              .card-header{:id => ("heading#{points}")}
+              .card-header{:id => ("heading#{x}")}
                 %h5.mb-0
-                  %button.btn.btn-outline-info.btn-sm{"aria-controls" => "measure#{points}", "aria-expanded" => "true", "data-target" => "#measure#{points}", "data-toggle" => "collapse"}
+                  %button.btn.btn-outline-info.btn-sm{"aria-controls" => "measure#{x}", "aria-expanded" => "true", "data-target" => "#measure#{x}", "data-toggle" => "collapse"}
                     = point
-              .collapse{:id => ("measure#{points}"), "aria-labelledby" => "heading#{points}", "data-parent" => "#accordion"}
+              .collapse{:id => ("measure#{x}"), "aria-labelledby" => "heading#{x}", "data-parent" => "#accordion"}
                 .card-body
-                  - case points
-                  - when 1
-                    = @measure_logs.first
-                  - when 2
-                    = @measure_logs.second
-                  - when 3
-                    = @measure_logs.second
-                  - when 4
-                    = @measure_logs.first
-                  - when 5
-                    = @measure_logs.first
-                  - when 6
-                    = @measure_logs.(point)
-                  - else
+                  = @measure_logs[x]
 
-            - points -= 1
+            - x += 1
