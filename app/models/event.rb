@@ -21,7 +21,7 @@ class Event < ApplicationRecord
 
   # => color correspond to type event
   enum color_event_type: {
-    1 => "#a0fd88",
+    1 => "#1d521f",
     2 => "#e788ff",
     3 => "#8cbdff",
     4 => "#8cbdff",
@@ -30,7 +30,7 @@ class Event < ApplicationRecord
     7 => "#a7cbff",
     8 => "#a7cbff"
   }
-  
+
 
 end
 
