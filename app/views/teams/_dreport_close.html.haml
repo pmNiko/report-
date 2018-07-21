@@ -9,16 +9,27 @@
               .card.border-info
                 .card.card-dreport-data
                   - @dreport.tickets.each do |ticket|
-                    %table
-                      %td.align-middle Cliente :
-                      %td.align-middle= "#{ticket.client}"
-                      %td.align-middle Estado :
-                      %td.align-middle= "#{ticket.status}"
-                      %td.align-middle Tipo :
-                      %td.align-middle= "#{ticket.kind}"
-                    .card.card-dreport Observacion
-                    .card-body.p-0
-                      %p= "#{ticket.observation}"
+                    .card-group
+                      .card.card-dreport-container
+                        .card.card-dreport-data
+                          %table
+                            %td.align-middle Cliente :
+                            %td.align-middle= "#{ticket.client}"
+                            %td.align-middle Estado :
+                            %td.align-middle= "#{ticket.status}"
+                            %td.align-middle Tipo :
+                            %td.align-middle= "#{ticket.kind}"
+                        .card.card-dreport
+                          .row
+                            .col-4
+                            .col-4
+                              %p Observation
+                            .col-4
+                              .float-right
+                                = link_to ticket_path(ticket), :remote => true do
+                                  = fa_icon "eye", right: true, class: "fa-lg"
+                        .card-body.p-0
+                          %p= "#{ticket.observation}"
 
           - if @dreport.close?
             .card.card-dreport News
