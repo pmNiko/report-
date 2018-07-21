@@ -73,3 +73,12 @@ form#new_event {
 textarea#event_description {
     background-color: rgba(7, 116, 122, 0.52);
 }
+
+
+/////// SHOW EVENT ////////////////////////////////////////////////////////////
+.card-group.card-event.card-event-show {
+    margin: auto;
+    width: 60%;
+    margin-top: 16em;
+}
+
