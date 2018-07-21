@@ -1,6 +1,6 @@
 .card-group.card-dreport
   .card.border-info
-    .card-header.text-center= dreport_responsables(dreport)
+    .card-header.text-center= dreport_responsables(dreport) + " #{dreport.brand} " + "#{dreport.truck}"
     %span.btn.btn-default
       %i{class: "fa fa-angle-double-down","aria-controls" => "dreport_#{dreport.id}", "aria-expanded" => "true", "data-target" => "#dreport#{dreport.id}", "data-toggle" => "collapse"}
 

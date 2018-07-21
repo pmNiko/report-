@@ -12,7 +12,7 @@
             %tbody
               .card-group.card-dreport
                 .card.border-info
-                  .card-header.text-center= dreport_responsables(@dreport)
+                  .card-header.text-center= dreport_responsables(@dreport) + " #{@dreport.brand} " + "#{@dreport.truck}"
                   .card-body.text-center
                     .card-group
                       .card.border-info
