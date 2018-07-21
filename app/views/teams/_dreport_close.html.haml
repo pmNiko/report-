@@ -5,10 +5,10 @@
         .card.border-info
           .card-header.text-center= dreport_responsables(@dreport) + " #{@dreport.brand} " + " #{@dreport.truck}"
           .card-body.text-center
-            .card-group
-              .card.border-info
-                .card.card-dreport-data
-                  - @dreport.tickets.each do |ticket|
+            - @dreport.tickets.each do |ticket|
+              .card-group
+                .card.card-dreport-container
+                  .card.card-dreport-data
                     %table
                       %td.align-middle Cliente :
                       %td.align-middle= "#{ticket.client}"
@@ -16,9 +16,9 @@
                       %td.align-middle= "#{ticket.status}"
                       %td.align-middle Tipo :
                       %td.align-middle= "#{ticket.kind}"
-                    .card.card-dreport Observacion
-                    .card-body.p-0
-                      %p= "#{ticket.observation}"
+                  .card.card-dreport Observacion
+                  .card-body.p-0
+                    %p= "#{ticket.observation}"
 
           - if @dreport.close?
             .card.card-dreport News
