@@ -46,18 +46,13 @@
             %tbody
               %tr
                 %td.align-middle Item
+                %td.align-middle Quantity
+                - q = 0
                 - @items.each do |item|
                   %tr.text-center
                     %td.align-middle= item
-        .card-group
-        .card-body.p-0
-          %table.table.table-hover.mb-0
-            %tbody
-              %tr
-                %td.align-middle Quantity
-                - @qtys.each do |qty|
-                  %tr.text-center
-                    %td.align-middle= qty
+                    %td.align-middle= @qtys[q]
+                  - q += 1
   .card.border-info
     .card-body.text-center
       .card-header Measures
