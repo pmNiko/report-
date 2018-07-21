@@ -16,7 +16,19 @@
                       %td.align-middle= "#{ticket.status}"
                       %td.align-middle Tipo :
                       %td.align-middle= "#{ticket.kind}"
-                  .card.card-dreport Observacion
+                  .card.card-dreport
+                    .row
+                      .col-4
+                      .col-4
+                        %p Observation
+                      .col-4
+                        .float-right
+                          = link_to ticket_path(ticket), :remote => true do
+                            = fa_icon "eye", right: true, class: "fa-lg"
+                          &nbsp
+                          - if ticket.has_history?
+                            = link_to history_ticket_path(ticket) do
+                              = fa_icon "history", class: "fa-lg"
                   .card-body.p-0
                     %p= "#{ticket.observation}"
 
