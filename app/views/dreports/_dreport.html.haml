@@ -29,9 +29,13 @@
                     .float-right
                       = link_to ticket_path(ticket), :remote => true do
                         = fa_icon "eye", right: true, class: "fa-lg"
+                      &nbsp
+                      - if ticket.has_history?
+                        = link_to history_ticket_path(ticket) do
+                          = fa_icon "history", class: "fa-lg"
               .card-body.p-0
                 %p= "#{ticket.observation}"
 
-    .card.card-dreport News
+    .card.card-dreport  News
     .card-body
       %p= "#{dreport.news}"

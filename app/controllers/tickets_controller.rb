@@ -1,6 +1,16 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [ :show ]
 
+  def history
+    ticket = Ticket.find(params[:id])
+    client = ticket.client
+    tickets = Ticket
+      .client(client)
+      .limit(4)
+      .concluded
+    @tickets = tickets.sort_by { |ticket| ticket.dreport.date }.reverse!
+  end
+
   def show
     @ticket = Ticket.find(params[:id])
     @jobs = @ticket.job_titles
