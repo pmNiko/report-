@@ -19,6 +19,18 @@
                     .card.card-dreport Observacion
                     .card-body.p-0
                       %p= "#{ticket.observation}"
-          .card.card-dreport News
-          .card-body
-            %p Lorem ipsum...
+
+          - if @dreport.close?
+            .card.card-dreport News
+            .card-body
+              %p= "#{@dreport.news}"
+          - else
+            .card.border-success
+              .card-header.text-center News
+              .card-body.p-0.text-center
+                %br
+                = form_with url: close_dreport_path(@dreport) do |f|
+                  = f.text_field :news
+                  = button_tag(type: 'submit', class: "btn btn-primary") do
+                    = fa_icon "paper-plane", text: "Send", right: true, class: "fa-lg"
+                %br

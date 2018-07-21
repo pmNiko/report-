@@ -4,14 +4,14 @@
     %tbody
       .card-group.card-dreport
         .card.border-info
-          .card-header.text-center= dreport_responsables(dreport) + " #{dreport.brand} " + "#{dreport.truck}"
+          .card-header.text-center= dreport_responsables(@dreport) +  "#{@dreport.brand}"  + "#{@dreport.truck}"
 
           .card-body.text-center
 
             .card-group
               .card.border-info
                 .card.card-dreport-data
-                  - dreport.tickets.each do |ticket|
+                  - @dreport.tickets.each do |ticket|
                     %table
                       %td.align-middle Cliente :
                       %td.align-middle= "#{ticket.client}"
@@ -25,6 +25,17 @@
 
 
 
-          .card.card-dreport News
-          .card-body
-            %p Lorem ipsum...
+          - if @dreport.close?
+            .card.card-dreport News
+            .card-body
+              %p= "#{@dreport.news}"
+          - else
+            .card.border-success
+              .card-header.text-center News
+              .card-body.p-0.text-center
+                %br
+                = form_with url: close_dreport_path(@dreport) do |f|
+                  = f.text_field :news
+                  = button_tag(type: 'submit', class: "btn btn-primary") do
+                    = fa_icon "paper-plane", text: "Send", right: true, class: "fa-lg"
+                %br
