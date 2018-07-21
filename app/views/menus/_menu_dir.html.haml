@@ -3,24 +3,26 @@
     %li{":class" => ""}
       current_class?(profile_path)&gt;
       %a{:href => "/teams"}
-        %i.fa.fa-line-chart{"aria-hidden" => "true"}
+        %i.fa.fa-line-chart{:title =>"Dashboard", "aria-hidden" => "true"}
+
     %li
       %a{:href => "/teams/home_dir"}
-        %i.fa.fa-search{"aria-hidden" => "true"}
+        %i.fa.fa-search{:title =>"Search tickets and reports", "aria-hidden" => "true"}
 
     - if current_page?(dir_team_path)
       %li
         = link_to new_team_path, :remote => true do
-          = fa_icon "users", text: "", right: true, class: "fa-lg"
+          = fa_icon "users", text: "",
+          right: true, class: "fa-lg", :title =>"New Team"
     - else
       %li
         %a{:href => "/teams/home_dir"}
-          %i.fa.fa-home{"aria-hidden" => "true"}
+          %i.fa.fa-home{:title =>"Home", "aria-hidden" => "true"}
 
     %li
       %a{:href => "/events"}
-        %i.fa.fa-calendar{"aria-hidden" => "true"}
+        %i.fa.fa-calendar{:title =>"Calendar", "aria-hidden" => "true"}
     %li
       %a{"data-method" => "delete", :href => "/users/sign_out"}
-        %i.fa.fa-power-off{"aria-hidden" => "true"}
+        %i.fa.fa-power-off{:title =>"Sing out", "aria-hidden" => "true"}
 #cn-overlay.cn-overlay
