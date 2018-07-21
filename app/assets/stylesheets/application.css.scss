@@ -90,12 +90,39 @@ select option:hover {
 }
 
 //////// INPUT ////////////////////////////////////////////////////////////
+
 input {
   background-color: rgba(26, 171, 164, 0.12);
   color: white;
   border-color: rgba(0, 0, 0, 0);
   border-bottom-color: #0c8d94;
 }
+
+textarea#claim_observation {
+    background-color: rgba(26, 171, 164, 0.12);
+    color: white;
+    border-color: rgba(0, 0, 0, 0);
+    border-bottom-color: #0c8d94;
+}
+
+.d-inline-block input {
+    background-color: rgba(26, 171, 164, 0.12);
+    color: white;
+    border-color: rgba(0, 0, 0, 0);
+    border-bottom-color: #0c8d94;
+}
+td.d-inline-block.col-3 input {
+    width: 150%;
+}
+
+.form-control:focus {
+    color: #ffffff;
+    background-color: rgba(24, 113, 109, 0.71);
+    border-color: #075f46;
+    /* outline: 0; */
+    /* box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); */
+}
+
 //////// CARD ////////////////////////////////////////////////////////////
 
 .bg-info {
@@ -134,4 +161,43 @@ input {
 
 .table th, .table td {
   border-top: 1px solid #17a2b8;
+}
+
+
+//////// PROGRES CLASS ////////////////////////////////////////////////////////////
+
+.progress {
+  background-color: rgba(233, 236, 239, 0.21) !important;
+}
+
+.progress-bar {
+  background-color: rgba(59, 8, 90, 0.65) !important;
+  animation: none;
+}
+
+.bg-success, .fixed-x0, .fixed-x1 {
+  background-color: #343a40 !important;
+  animation: none;
+}
+
+
+////////  LOGIN USER ////////////////////////////////////////////////////////////
+
+form#new_user {
+    background-color: rgba(62, 96, 109, 0.57) !important;
+}
+
+input#user_email {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+input#user_email:focus {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+input#user_password {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+input#user_password:focus {
+    background-color: rgba(0, 0, 0, 0.25) !important;
 }
