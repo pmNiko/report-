@@ -1,38 +1,25 @@
 .card-group.card-dreport
   .card.border-info
-    .card-header.text-center= "#{dreport.users.first.email}"
+    .card-header.text-center= dreport_responsables(@dreport)
 
     .card-body.text-center
 
       .card-group
         .card.border-info
           .card.card-dreport-data
-            %table
-              %td.align-middle Cliente :
-              %td.align-middle "382577"
-              %td.align-middle Estado :
-              %td.align-middle finalizado
-              %td.align-middle Tipo :
-              %td.align-middle Reclamo
-          .card.card-dreport Observacion
-          .card-body.p-0
-            %p Reclamo finalizado
+            - @dreport.tickets.each do |ticket|
+              %table
+                %td.align-middle Cliente :
+                %td.align-middle= "#{ticket.client}"
+                %td.align-middle Estado :
+                %td.align-middle= "#{ticket.status}"
+                %td.align-middle Tipo :
+                %td.align-middle= "#{ticket.kind}"
+              .card.card-dreport Observacion
+              .card-body.p-0
+                %p= "#{ticket.observation}"
 
 
-
-      .card-group
-        .card.border-info
-          .card.card-dreport-data
-            %table
-              %td.align-middle Cliente :
-              %td.align-middle "382577"
-              %td.align-middle Estado :
-              %td.align-middle finalizado
-              %td.align-middle Tipo :
-              %td.align-middle Reclamo
-          .card.card-dreport Observacion
-          .card-body.p-0
-            %p Reclamo finalizado
 
     .card.card-dreport News
     .card-body
