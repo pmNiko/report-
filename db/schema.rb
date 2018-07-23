@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_220542) do
+ActiveRecord::Schema.define(version: 2018_07_21_052452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_220542) do
     t.datetime "updated_at", null: false
     t.text "news"
     t.string "brand"
+    t.boolean "close", default: false
   end
 
   create_table "dreports_users", id: false, force: :cascade do |t|
@@ -124,12 +125,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_220542) do
     t.float "job_cod_4"
     t.float "job_cod_5"
     t.float "job_cod_6"
-    t.integer "mat_item1"
-    t.integer "mat_item2"
-    t.integer "mat_item3"
-    t.integer "mat_item4"
-    t.integer "mat_item5"
-    t.integer "mat_item6"
     t.text "observation"
     t.bigint "dreport_id"
     t.integer "mat_qty_1"
@@ -138,12 +133,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_220542) do
     t.integer "mat_qty_4"
     t.integer "mat_qty_5"
     t.integer "mat_qty_6"
-    t.integer "meas_p1"
-    t.integer "meas_p2"
-    t.integer "meas_p3"
-    t.integer "meas_p4"
-    t.integer "meas_p5"
-    t.integer "meas_p6"
     t.text "meas_log1"
     t.text "meas_log2"
     t.text "meas_log3"
@@ -159,6 +148,20 @@ ActiveRecord::Schema.define(version: 2018_07_09_220542) do
     t.string "author"
     t.integer "kind"
     t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "mat_item1"
+    t.string "mat_item2"
+    t.string "mat_item3"
+    t.string "mat_item4"
+    t.string "mat_item5"
+    t.string "mat_item6"
+    t.string "meas_p1"
+    t.string "meas_p2"
+    t.string "meas_p3"
+    t.string "meas_p4"
+    t.string "meas_p5"
+    t.string "meas_p6"
     t.index ["dreport_id"], name: "index_tickets_on_dreport_id"
   end
 
