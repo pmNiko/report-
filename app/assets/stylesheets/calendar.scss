@@ -13,17 +13,72 @@ div#calendar h2 {
     color: white;
 }
 
-button.btn.btn-primary {
-    background-color: rgba(19, 150, 17, 0.72) !important;
-    color: white;
-    border-color: rgba(93, 204, 37, 0.65);
-    margin: 5px;
-}
+
 
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(86, 255, 0, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(110, 88, 123, 0.85);
     background-color: azure;
     border-color: rgba(93, 204, 37, 0);
+}
+
+button.btn.btn-primary {
+    background-color: rgba(110, 88, 123, 0.85) !important;
+    color: white;
+    border-color: rgba(101, 37, 204, 0);
+    margin: 5px;
+    font-size: 1.1em;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    border-color: rgba(110, 88, 123, 0.85) !important;
+}
+
+
+td.fc-day.fc-sat.fc-today.alert.alert-info {
+    background-color: rgba(80, 35, 103, 0.44);
+    box-shadow: inset 0px 0px 15px 1px rgba(168,181,240,0.75);
+}
+
+.form-control {
+    background-color: rgb(5, 47, 49);
+    color: white;
+    border: none;
+}
+
+
+
+table.table-event {
+    width: 100%;
+
+    span.select2.select2-container.select2-container--default {
+        width: 100% !important;
+    }
+
+    td.td-event-1 {
+        width: 25%;
+    }
+}
+
+form#new_event input.btn.btn-outline-success.btn-sm {
+    width: 30%;
+    margin-top: 15px;
+    margin-bottom: -14px;
+}
+
+form#new_event {
+    margin-right: -1em;
+    margin-left: -1em;
+}
+textarea#event_description {
+    background-color: rgba(7, 116, 122, 0.52);
+}
+
+
+/////// SHOW EVENT ////////////////////////////////////////////////////////////
+.card-group.card-event.card-event-show {
+    margin: auto;
+    width: 60%;
+    margin-top: 16em;
 }
 

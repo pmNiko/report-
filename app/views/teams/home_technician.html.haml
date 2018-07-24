@@ -6,5 +6,8 @@
       = render 'clock'
   .new-team#teams
     %tbody
-      - unless @team.nil?
+      - if !@dreport.nil?
+        = render 'dreport_close'
+      - elsif !@team.nil?
         = render 'technician_team'
+      - else

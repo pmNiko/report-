@@ -1,42 +1,63 @@
-@media (min-width: 700px) {
-  body.container-fluid {
-    background-image: url("fondo_1366x768.jpg");
-    background-size: 100%;
+.div-action {
+    float: left;
+    width: 20%;
+}
+.div-historial {
+    float: left;
+    width: 20%;
+}
+
+@media (min-width: 1201px) {
+  .div-action {
+      margin-left: 30%;
   }
 }
+
+@media (min-width: 990px) and (max-width: 1200px) {
+  .div-historial {
+      left: 10%;
+  }
+}
+
+@media (min-width: 765px) and (max-width: 990px) {
+  .div-historial {
+      left: 20%;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 764px) {
+  .div-historial {
+      left: 50%;
+  }
+}
+
 @media (min-width: 400px) and (max-width: 700px) {
-  body.container-fluid {
-    background-image: url("fondo_1366x768.jpg");
-    background-size: 100% 250% ;
-  }
-  h4 {
-    display: none;
-  }
-  .card-header.bg-info {
-    display: none;
+  .div-historial {
+    left: 50%;
   }
 }
+
 
 @media (max-width: 400px) {
-
-  body.container-fluid {
-    background-image: url("fondo_564×317.jpg");
-    background-size: 200% 220%;
-    background-position-x: -25px;
+  .div-historial {
+    left: 110%;
   }
-
-  .card-header.bg-info {
-    display: none;
-  }
+}
 
 
-  #teams {
-    left: -10%;
-    width: 115%;
-  }
+///////////// LOAD TICKET /////////////////
+
+a.nav-item.nav-link.active.show {
+    background-color: rgba(5, 144, 99, 0.52) !important;
+    color: white;
 
 }
 
-span.select2-selection.select2-selection--multiple {
-    background-color: black;
+a.nav-item.nav-link {
+    color: white;
 }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    background-color: rgba(5, 144, 99, 0.52) !important;
+}
+

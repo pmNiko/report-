@@ -1,0 +1,71 @@
+.card-group.card-case {
+    margin-left: -9%;
+    margin-bottom: 5px;
+    margin-right: 10%;
+    float: left;
+    width: 49%;
+}
+.card-group.card-dreport {
+    margin-left: -9%;
+    margin-bottom: 5px;
+    margin-right: 10%;
+    float: left;
+    width: 49%;
+}
+
+
+.card-header.card-information-basic {
+    width: 70%;
+    float: left;
+    margin-left: -10px;
+}
+
+.card-container.card-observation {
+    margin-left: -10px;
+    float: left;
+    width: 70%;
+}
+
+.card-container.card-jobs.card-jobs {
+    width: 30%;
+    float: left;
+}
+.card-container.card-jobs.card-jobs .card-header {
+    height: 200%;
+}
+
+.card.card-dreport {
+    border-bottom: 1px solid #17a2b8;
+}
+
+.card.card-dreport-data {
+    align-items: center;
+    box-shadow: 0px 10px 15px 0px rgba(11, 137, 143, 0.59);
+}
+
+
+.card-body.text-center .card-group {
+    margin-bottom: 8px;
+}
+
+.card.card-dreport-container {
+    box-shadow: inset -8px -8px 10px -8px rgba(23, 162, 184, 0.8);
+}
+
+
+.card-group.card-dreport.card-dreport-show {
+    margin: auto;
+}
+
+
+
+textarea#news {
+    width: 70%;
+    background-color: rgba(14, 93, 93, 0.47);
+    color: white;
+}
+
+///////////////////////////////////////////////////////////
+.card.card-dreport .row .col-4 .float-right {
+    margin-right: 10px;
+}

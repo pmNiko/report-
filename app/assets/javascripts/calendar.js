@@ -27,7 +27,11 @@ $(document).on('turbolinks:load', function() {
     events: '/events.json',
 
     select: function(start, end) {
-      return newEvent(start, end);
+      if(true){
+        return newEvent(start, end);
+      }else{
+        return""
+      }
     },
 
     eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
@@ -50,8 +54,6 @@ newEvent = function(start_time, end_time){
       end_time: "" + end_time.format('YYYY-MM-DD'),
     }
   });
-
-  //$.getScript(event.new_url, function() {});
 };
 
 updateEvent = function(event) {

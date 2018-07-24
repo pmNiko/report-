@@ -1,24 +1,49 @@
 %p#notice= notice
-%p
-  %strong Type of Event:
-  = @event.type_event
-%p
-  %strong Users :
-  - @event.users.each do | user|
-    %br
-    = user.email 
+.card-group.card-event.card-event-show
+  .card.border-info
+    .card-body.text-center
+      .card-group
+        .card.card-event-container
+          .card.card-event-data
 
-%p
-  %strong Description :
-  = @event.description
-%p
-  %strong Start time :
-  = @event.star_time
-%p
-  %strong End time :
-  = @event.end_time
+            %table
+              %td.align-middle
+                %strong Type of Event
+              %td.align-middle
+                = @event.type_event
 
-= link_to 'Edit', edit_event_path(@event), remote: true
-= link_to ' Delete', @event, :method => :delete
-= link_to 'Back', events_path
+          .card.card-event-data
+            %table
+              %td.align-middle
+                %strong Users :
+              %td.align-middle
+                - @event.users.each do | user|
+                  = user.email
+
+          .card.card-event-data
+            %table
+              %tr
+                %td.align-middle
+                  %strong Start time
+                %td.align-middle
+                  %strong End time
+              %tr
+                %td.align-middle
+                  = @event.star_time
+                %td.align-middle
+                  = @event.end_time
+
+          .card.card-event-data
+            %table
+              %td.align-middle
+                %strong Description :
+              %td.align-middle
+                = @event.description
+
+          .card-body.p-0
+
+            = link_to 'Edit', edit_event_path(@event), remote: true, class: "btn btn-outline-success btn-sm  "
+            = link_to ' Delete', @event, :method => :delete, class: "btn btn-outline-danger btn-sm "
+            = link_to 'Back', events_path,class: "btn btn-outline-info btn-sm  "
+
 = render 'dialog'

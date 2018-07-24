@@ -1,2 +1,12 @@
-- @dreports.each do |dreport|
-  %p= "Id: " + "#{dreport.id}"
+.container.text-center
+  .row
+    .col-4
+    .col-8
+      = render 'teams/clock'
+      %br
+
+  .card-group
+    %tbody
+      = render @dreports
+      
+= render 'dialog'

@@ -1,0 +1,80 @@
+.card-group
+  .card.border-info
+    .card-header.text-center TICKET
+    .card-body.text-center
+      .card-header #{@ticket.date}   -   #{@ticket.starts}  -  #{@ticket.ends}
+      .card-body.p-0
+        %table.table.table-striped
+          %tbody
+            %tr
+              %td.align-middle Type
+              %td.align-middle Nº Ticket
+              %td.align-middle Client
+              %td.align-middle Concluded
+            %tr
+              %td.align-middle #{@ticket.kind}
+              %td.align-middle #{@ticket.number}
+              %td.align-middle #{@ticket.client}
+              %td.align-middle #{@ticket.status}
+      .card-header
+      .card-body.p-0
+        %table.table.table-hover.mb-0
+          %thead
+            %tr.row.m-0
+              %th.d-inline-block.col-8 Responsables
+              %th.d-inline-block.col-4 Author
+          %tbody
+            %tr.row.m-0
+              %td.d-inline-block.col-8= ticket_resposables(@ticket)
+              %td.d-inline-block.col-4 #{@ticket.author}
+
+.card-group
+  .card.border-info
+    .card-body.text-center
+      .card-header Jobs
+      .card-body.p-0
+        %table.table.table-hover.mb-0
+          %tbody
+            - @jobs.each do |job|
+              %tr
+                %td.align-middle= job
+      .card-header Materials
+      .card-group
+        .card-group
+        .card-body.p-0
+          %table.table.table-hover.mb-0
+            %tbody
+              %tr
+                %td.align-middle Item
+                %td.align-middle Quantity
+                - q = 0
+                - @items.each do |item|
+                  %tr.text-center
+                    %td.align-middle= item
+                    %td.align-middle= @qtys[q]
+                  - q += 1
+  .card.border-info
+    .card-body.text-center
+      .card-header Measures
+      - unless @measure_points.nil?
+        - points = @measure_points.count
+        - x = 0
+        - @measure_points.each do |point|
+          #accordion
+            .card
+              .card-header{:id => ("heading#{x}")}
+                %h5.mb-0
+                  %button.btn.btn-outline-info.btn-sm{"aria-controls" => "measure#{x}", "aria-expanded" => "true", "data-target" => "#measure#{x}", "data-toggle" => "collapse"}
+                    = point
+              .collapse{:id => ("measure#{x}"), "aria-labelledby" => "heading#{x}", "data-parent" => "#accordion"}
+                .card-body
+                  = @measure_logs[x]
+            - x += 1
+.card-group
+  .card.border-info
+    .card-header.text-center Observation
+    .card-body.p-0
+      %table.table.table-hover.mb-0
+        %tbody.text-center
+          %tr
+            %td.align-middle #{@ticket.observation}

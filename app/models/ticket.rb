@@ -8,33 +8,51 @@ class Ticket < ApplicationRecord
   #---------- Hash attribute´s ----------#
 
   enum status: {
-                pendiente: 1,en_curso: 2,
-                finalizado: 3,contactar: 4,revisar: 5
-              }
+    pendiente: 1, en_curso: 2, coordinado: 3, finalizado: 4,
+    revisar: 5, contactar: 6, contactado: 7
+  }
   enum kind: {
-              Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,
-              Cruzada: 6, Preventivo: 7, Relevamiento: 8,
-              Extencion: 9
-            }
-  # => item
-  enum item: {
-              "BAJADA UN PAR": 5,
-              "JACK AMER. EMBUT.": 307,    "JACK AMER. EXTER.": 308,
-              "SPLITTER": 6,               "FILTRO ADSL": 7,
-              "APARATO TELEF.": 417,       "MODEM": 418,
-              "CABLE 2P AUTOPORT": 1,      "CABLE 4P AUTOPORT": 3,
-              "CABLE 2P C/GEL": 2,         "CABLE 4P C/GEL": 4,
-              "CAJA INTERC. 1P": 185,      "CAJA INTERC. 2P": 186,
-              "ANILLA 15mm": 147,          "ANILLA 32mm": 148,
-              "CABLE INTERNO": 11,         "CADENA POSTE": 172
-            }
-  # => point
-  enum point: {
-              Central: 1, Primario: 2, Secundario: 3,
-              Bajada: 4, Domicilio: 5
-            }
+    Reclamo: 1, Instalacion: 2, Fibra: 3, Voip: 4, Wireless: 5,
+    Cruzada: 6, Preventivo: 7, Relevamiento: 8,
+    Extencion: 9, factibilidad: 10
+  }
+
 
   #---------- Public Method´s ----------#
+
+  # => returns true if your history is not empty
+  def has_history?
+    Ticket.client(client).any?
+  end
+  
+  def item_key(item_param)
+    Ticket.items[item_param]
+  end
+
+  # => return start hour claim
+  def starts
+    form_print(starts_at)
+  end
+
+  # => return end hour claim
+  def ends
+    form_print(ends_at)
+  end
+
+  # => return data from responsables
+  def data_responsables
+    dreport.data_responsables
+  end
+
+  # => return true if has a responsable
+  def has_responsable?
+    dreport.has_responsable?
+  end
+
+  # => date of ticket
+  def date
+    dreport.date_format
+  end
 
   # => load a claim
   def load_parameters(claim)
@@ -120,6 +138,25 @@ class Ticket < ApplicationRecord
 
   #---------- Private Method´s ----------#
 
+  # => Return hour:minutes unless tree condition:
+  # => 1.-> hour isn´t nil
+  # => 2.-> claim not be pendiente
+  # => 3.-> hour its different to hour default
+  def form_print(a_time)
+    return "#{hour(a_time)}"+" hs" unless a_time.nil? ||
+      pendiente? || time_default?(a_time)
+  end
+  # => hour default for comparison
+  def time_default?(a_time)
+    default = Time.now.change({ hour: 23, min: 59})
+    hour(default) == hour(a_time)
+  end
+
+  # => pretty print
+  def hour(a_time)
+    a_time.strftime("%R")
+  end
+
   # => load jobs to ticket
   def load_jobs(jobs)
     j = 1
@@ -153,26 +190,26 @@ class Ticket < ApplicationRecord
   # => load materials to ticket
   def load_materials(materials)
     mt = 1
-    materials.each do |maetrial|
+    materials.each do |material|
       case mt
       when 1
-        self.mat_item1 = maetrial.item_key
-        self.mat_qty_1 = maetrial.quantity
+        self.mat_item1 = material.item_key.to_s + " - " + material.item
+        self.mat_qty_1 = material.quantity
       when 2
-        self.mat_item2 = maetrial.item_key
-        self.mat_qty_2 = maetrial.quantity
+        self.mat_item2 = material.item_key.to_s + " - " + material.item
+        self.mat_qty_2 = material.quantity
       when 3
-        self.mat_item3 = maetrial.item_key
-        self.mat_qty_3 = maetrial.quantity
+        self.mat_item3 = material.item_key.to_s + " - " + material.item
+        self.mat_qty_3 = material.quantity
       when 4
-        self.mat_item4 = maetrial.item_key
-        self.mat_qty_4 = maetrial.quantity
+        self.mat_item4 = material.item_key.to_s + " - " + material.item
+        self.mat_qty_4 = material.quantity
       when 5
-        self.mat_item5 = maetrial.item_key
-        self.mat_qty_5 = maetrial.quantity
+        self.mat_item5 = material.item_key.to_s + " - " + material.item
+        self.mat_qty_5 = material.quantity
       when 6
-        self.mat_item6 = maetrial.item_key
-        self.mat_qty_6 = maetrial.quantity
+        self.mat_item6 = material.item_key.to_s + " - " + material.item
+        self.mat_qty_6 = material.quantity
       else
         #nothing
       end
@@ -186,22 +223,22 @@ class Ticket < ApplicationRecord
     measures.each do |measure|
       case ms
       when 1
-        self.meas_p1 = measure.point_key
+        self.meas_p1 = measure.point
         self.meas_log1 = measure.log
       when 2
-        self.meas_p2 = measure.point_key
+        self.meas_p2 = measure.point
         self.meas_log2 = measure.log
       when 3
-        self.meas_p3 = measure.point_key
+        self.meas_p3 = measure.point
         self.meas_log3 = measure.log
       when 4
-        self.meas_p4 = measure.point_key
+        self.meas_p4 = measure.point
         self.meas_log4 = measure.log
       when 5
-        self.meas_p5 = measure.point_key
+        self.meas_p5 = measure.point
         self.meas_log5 = measure.log
       when 6
-        self.meas_p6 = measure.point_key
+        self.meas_p6 = measure.point
         self.meas_log6 = measure.log
       else
         #nothing
@@ -229,5 +266,16 @@ class Ticket < ApplicationRecord
 
     @params.reject{ |parm| parm.nil? }
   end
+
+  #---------- Class method ----------#
+
+  #Items all
+  def self.itemss
+    items.keys
+  end
+
+  # => scope claims day finished
+  scope :concluded, lambda { where("status > ?", 3) }
+  scope :client, -> (client_param) { where('client = ?', client_param) }
 
 end

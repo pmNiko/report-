@@ -2,7 +2,16 @@ class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dreports = Dreport.all
+    @dreports = Dreport.today
+  end
+
+  def close
+    news_param =  params["news"]
+    dreport = Dreport.find(params[:id])
+    dreport.to_close
+    dreport.news = news_param
+    dreport.save!
+    redirect_to technician_team_path
   end
 
   def end_shift
@@ -15,7 +24,7 @@ class DreportsController < ApplicationController
   end
 
   def show
-
+    @dreport = Dreport.find(params[:id])
   end
 
   def current

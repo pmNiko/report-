@@ -1,9 +1,9 @@
 module DreportsHelper
   def dreport_responsables(dreport)
-    if dreport.responsable_2.nil?
-      dreport.responsable_1
+    if dreport.users.second.nil?
+      dreport.users.first.email
     else
-      dreport.responsable_1 + " - " + dreport.responsable_2
+      dreport.users.first.email + " - " + dreport.users.second.email
     end
   end
 

@@ -22,6 +22,7 @@ class TeamsController < ApplicationController
 
   def home_technician
     @user = current_user
+    @dreport = @user.dreports.today.first
     @team = @user.teams.today.first
   end
 

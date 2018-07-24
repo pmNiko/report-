@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :events
   resources :jobs
 
+  get "tickets/history:id" => "tickets#history", :as => 'history_ticket'
+  resources :tickets
+
   get "claims/history:id" => "claims#history", :as => 'history_claim'
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'
   resources :claims do
@@ -21,7 +24,11 @@ Rails.application.routes.draw do
 
   get "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift_dreport'
   get "dreports/current" => "dreports#current", :as => 'current_dreport'
-  resources :dreports
+  resources :dreports do
+    member do
+      post 'close'
+    end
+  end
 
   root 'teams#home'
 

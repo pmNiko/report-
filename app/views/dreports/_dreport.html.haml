@@ -1,0 +1,41 @@
+.card-group.card-dreport
+  .card.border-info
+    .card-header.text-center
+      = dreport_responsables(dreport) + " #{dreport.brand} " + "#{dreport.truck}"
+      %span.btn.btn-default
+      %i{class: "fa fa-angle-double-down ","aria-controls" => "dreport_#{dreport.id}", "aria-expanded" => "true", "data-target" => "#dreport#{dreport.id}", "data-toggle" => "collapse"}
+
+
+    .collapse{:id => ("dreport#{dreport.id}"), "aria-labelledby" => "heading#{dreport.id}", "data-parent" => "#accordion"}
+      .card-body.text-center
+
+        - dreport.tickets.each do |ticket|
+          .card-group
+            .card.card-dreport-container
+              .card.card-dreport-data
+                %table
+                  %td.align-middle Cliente :
+                  %td.align-middle= "#{ticket.client}"
+                  %td.align-middle Estado :
+                  %td.align-middle= "#{ticket.status}"
+                  %td.align-middle Tipo :
+                  %td.align-middle= "#{ticket.kind}"
+              .card.card-dreport
+                .row
+                  .col-4
+                  .col-4
+                    %p Observation
+                  .col-4
+                    .float-right
+                      = link_to ticket_path(ticket), :remote => true do
+                        = fa_icon "eye", right: true, class: "fa-lg"
+                      &nbsp
+                      - if ticket.has_history?
+                        = link_to history_ticket_path(ticket) do
+                          = fa_icon "history", class: "fa-lg"
+              .card-body.p-0
+                %p= "#{ticket.observation}"
+
+    .card.card-dreport  News
+    .card-body
+      %p= "#{dreport.news}"

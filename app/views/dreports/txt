@@ -1,0 +1,112 @@
+.container.text-center
+  .card-group
+
+    %tbody
+      - @dreports.each do |dreport|
+
+        .card-group.card-dreport
+          .card.border-info
+            .card-header.text-center
+              = dreport.users.first.email + ' - ' +  dreport.users.second.email
+              = 'movil: ' + "#{dreport.brand}"
+            .card-body.text-center.card-closed
+
+              .card-header.card-information-basic
+                %table
+                  %td.align-middle Cliente
+                  %td.align-middle "382577"
+                  %td.align-middle Estado
+                  %td.align-middle finalizado
+                  %td.align-middle Tipo de Reclamo
+
+              .card-container.card-jobs.card-jobs
+                .card-header
+                  %td.align-middle Cliente 1
+                  %td.align-middle
+                    %span.badge 10
+              .card-container.card-observation
+                .card-header
+                  %td.align-middle Cliente 1
+                  %td.align-middle Cliente 2
+
+            .card-body.card-news
+              %td.align-middle
+              Noticias
+              %p
+                = dreport.news
+
+
+
+
+
+                .card-group
+                  .card-group
+                    .card.border-info
+                      .card-header.text-center Parte Diario
+                      .card-body.text-center
+                        .card-header aaa
+                        .card-body.p-0
+                          %table.table.table-striped
+                            %tbody
+                              %tr
+                                %td.align-middle Type
+                              %tr
+                                %td.align-middle dddd
+                        .card-header
+                        .card-body.p-0
+                          %table.table.table-hover.mb-0
+                            %thead
+                              %tr.row.m-0
+                                %th.d-inline-block.col-8 Responsables
+                                %th.d-inline-block.col-4 Author
+                            %tbody
+                              %tr.row.m-0
+                                %td.d-inline-block.col-8 ggg
+                                %td.d-inline-block.col-4  ggg
+
+                      .card-header.text-center Parte Diario
+                      .card-body.text-center
+                        .card-header aaa
+                        .card-body.p-0
+                          %table.table.table-striped
+                            %tbody
+                              %tr
+                                %td.align-middle Type
+                              %tr
+                                %td.align-middle dddd
+                        .card-header
+                        .card-body.p-0
+                          %table.table.table-hover.mb-0
+                            %thead
+                              %tr.row.m-0
+                                %th.d-inline-block.col-8 Responsables
+                                %th.d-inline-block.col-4 Author
+                            %tbody
+                              %tr.row.m-0
+                                %td.d-inline-block.col-8 ggg
+                                %td.d-inline-block.col-4  ggg
+
+
+                  .card-group
+                    .card.border-info
+                      .card-header.text-center Parte Diario
+                      .card-body.text-center
+                        .card-header aaa
+                        .card-body.p-0
+                          %table.table.table-striped
+                            %tbody
+                              %tr
+                                %td.align-middle Type
+                              %tr
+                                %td.align-middle dddd
+                        .card-header
+                        .card-body.p-0
+                          %table.table.table-hover.mb-0
+                            %thead
+                              %tr.row.m-0
+                                %th.d-inline-block.col-8 Responsables
+                                %th.d-inline-block.col-4 Author
+                            %tbody
+                              %tr.row.m-0
+                                %td.d-inline-block.col-8 ggg
+                                %td.d-inline-block.col-4  ggg
