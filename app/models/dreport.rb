@@ -9,8 +9,8 @@ class Dreport < ApplicationRecord
   has_and_belongs_to_many :users
   #---------- Public Method´s ----------#
 
-  def close?
-    self.close == true
+  def a?
+    close
   end
 
   def to_close

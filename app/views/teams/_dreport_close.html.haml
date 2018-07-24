@@ -31,9 +31,7 @@
                               = fa_icon "history", class: "fa-lg"
                   .card-body.p-0
                     %p= "#{ticket.observation}"
-
-
-          - if @dreport.close?
+          - if @dreport.a?
             .card.card-dreport News
             .card-body
               %p= "#{@dreport.news}"
