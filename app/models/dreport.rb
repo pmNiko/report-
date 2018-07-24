@@ -9,11 +9,11 @@ class Dreport < ApplicationRecord
   has_and_belongs_to_many :users
   #---------- Public Method´s ----------#
 
-  def to_close
+  def to_close?
     self.close = true
     save
   end
-  
+
   # => return data from responsables
   def data_responsables
     data = []
