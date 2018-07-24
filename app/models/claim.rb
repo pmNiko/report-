@@ -47,7 +47,7 @@ class Claim < ApplicationRecord
     self.contactado!
     claim.author = current_user
     claim.team = team
-    hour_coordinated = Time.now.change({ hour: "#{hour}", min: "#{min}"})
+    hour_coordinated = Time.now.change({ hour: "#{hour + 3}", min: "#{min}"})
     claim.starts_at = hour_coordinated
     claim.ticket = self.ticket
     claim.client = self.client
