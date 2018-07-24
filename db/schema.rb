@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_21_052452) do
+ActiveRecord::Schema.define(version: 2018_07_24_043846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_21_052452) do
     t.datetime "updated_at", null: false
     t.text "news"
     t.string "brand"
-    t.boolean "close", default: false
+    t.boolean "closed", default: false
   end
 
   create_table "dreports_users", id: false, force: :cascade do |t|
