@@ -36,4 +36,36 @@
     width: 115%;
   }
 
+  body.container-fluid {
+    margin-left: 20px !important ;
+  }
+
+}
+
+@media (max-width: 585px){
+  main {
+    width: 100% !important ;
+    position: relative !important ;
+    padding: 0px !important ;
+    margin: 0px !important ;
+  }
+
+  body.container-fluid {
+    margin: 7px !important ;
+  }
+
+  th.th-ticket {
+    display: none;
+  }
+  td.th-ticket {
+    display: none;
+  }
+
+}
+
+
+.card-body {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding: 5px;
 }

@@ -124,14 +124,15 @@
                     = f.submit  @claim.new_record? ? "Create Claim" : "Close",
                     :class => "btn btn-outline-success btn-sm "
           #real-time.tab-pane.fade.show.active
-            .card
-              .card-body.p-0
-                .float-right
-                  = f.submit  @claim.new_record? ? "Create Claim" : "Contact to",
-                  :class => "btn btn-outline-info btn-sm "
-                .float-right
-                  = f.submit  @claim.new_record? ? "Create Claim" : "Review",
-                  :class => "btn btn-outline-danger btn-sm "
-                .float-right
-                  = f.submit  @claim.new_record? ? "Create Claim" : "Finished",
-                  :class => "btn btn-outline-success btn-sm "
+            .form-inline.justify-content-center
+              .card
+                .card-body.p-0
+                  .float-right
+                    = f.submit  @claim.new_record? ? "Create Claim" : "Contact to",
+                    :class => "btn btn-outline-info btn-sm "
+                  .float-right
+                    = f.submit  @claim.new_record? ? "Create Claim" : "Review",
+                    :class => "btn btn-outline-danger btn-sm "
+                  .float-right
+                    = f.submit  @claim.new_record? ? "Create Claim" : "Finished",
+                    :class => "btn btn-outline-success btn-sm "

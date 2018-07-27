@@ -23,7 +23,7 @@
         %thead
           %tr.bg-info
             %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
-            %th= fa_icon "ticket", text: "Ticket", class: "fa-lg"
+            %th.th-ticket= fa_icon "ticket", text: "Ticket", class: "fa-lg"
             %th= fa_icon "male", text: "Client", class: "fa-lg"
             %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
         %tbody#claims
@@ -36,9 +36,9 @@
       #{@team.percent}%
   %br
   - unless @team.finished?
-    .float-right
+    .end-shift
       %button_tag= link_to 'END SHIFT', shift_dreport_path(@team),
-      method: :get, :class => "btn btn-outline-success btn-sm "
+      method: :get, :class => "btn btn-outline-success btn-sm end-shift"
 
 
 = render 'dialog'
