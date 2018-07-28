@@ -17,6 +17,7 @@ class Event < ApplicationRecord
     Estudio: 6,
     Franco: 7,
     Vacaciones: 8,
+    Ticket: 9,
   }
 
   # => color correspond to type event
