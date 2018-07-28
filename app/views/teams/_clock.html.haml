@@ -1,15 +1,14 @@
 .widget
   .clock
     .box-hours
-      %div#hours.hours
-      ":"
-      %div#minutes.minutes
-      ":"
-      %div#seconds.seconds
+      %p#hours.hours
+      %p :
+      %p#minutes.minutes
+      %p :
     .box-seconds
       .padding-0
-      %p#ampm.ampm
-
+        %p#ampm.ampm
+      %p#seconds.seconds
   .date
     %p#weekendDay.weekendDay
     %p#day.day
