@@ -97,9 +97,21 @@
       .card-header.text-center
       .card-body.p-0
         %nav.nav.nav-tabs.nav-justified
-          %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#off-line"} Off-Line
           %a.nav-item.nav-link.active{"data-toggle" => "tab", :href => "#real-time"} Real Time
+          %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#off-line"} Off-Line
         .tab-content
+          #real-time.tab-pane.fade.show.active
+            .card
+              .card-body.p-0
+                .float-right
+                  = f.submit  @claim.new_record? ? "Create Claim" : "Contact to",
+                  :class => "btn btn-outline-info btn-sm "
+                .float-right
+                  = f.submit  @claim.new_record? ? "Create Claim" : "Review",
+                  :class => "btn btn-outline-danger btn-sm "
+                .float-right
+                  = f.submit  @claim.new_record? ? "Create Claim" : "Finished",
+                  :class => "btn btn-outline-success btn-sm "
           #off-line.tab-pane.fade
             .form-inline.justify-content-center
               .card
@@ -123,15 +135,3 @@
                   .float-right
                     = f.submit  @claim.new_record? ? "Create Claim" : "Close",
                     :class => "btn btn-outline-success btn-sm "
-          #real-time.tab-pane.fade.show.active
-            .card
-              .card-body.p-0
-                .float-right
-                  = f.submit  @claim.new_record? ? "Create Claim" : "Contact to",
-                  :class => "btn btn-outline-info btn-sm "
-                .float-right
-                  = f.submit  @claim.new_record? ? "Create Claim" : "Review",
-                  :class => "btn btn-outline-danger btn-sm "
-                .float-right
-                  = f.submit  @claim.new_record? ? "Create Claim" : "Finished",
-                  :class => "btn btn-outline-success btn-sm "

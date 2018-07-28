@@ -23,7 +23,8 @@
       %a{:href => "/events"}
         %i.fa.fa-calendar{:title =>"Calendar", "aria-hidden" => "true"}
     %li
-      = link_to edit_profile_path, :remote => true do
+      = link_to edit_profile_path(1), :remote => true do
         = fa_icon "user", text: "",
         right: true, class: "fa-lg", :title =>"Profile"
 #cn-overlay.cn-overlay
+= render 'dialog'

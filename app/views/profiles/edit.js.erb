@@ -2,19 +2,15 @@
 $('#dialog h3').html(" <i class='fa fa-user'></i>");
 
 // Render the new form
-$('.modal-body').html('<%= j render("form") %>');
+$('.modal-body').html('<%= j render("profile_form") %>');
 
 // Show the dynamic dialog
-$('#dialog_small').modal("show")
+$('#dialog').modal("show")
 
-// Set focus to the first element
-$('#dialog_small').on('shown.bs.modal', function () {
-    $('.first_input').focus()
-  });
 
 $('.container.text-center').css('visibility', 'hidden');
 
 
-$('#dialog_small').on('hidden.bs.modal', function () {
+$('#dialog').on('hidden.bs.modal', function () {
   $('.container.text-center').css('visibility', 'visible');
 });
