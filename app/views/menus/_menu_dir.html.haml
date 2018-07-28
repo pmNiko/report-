@@ -23,6 +23,7 @@
       %a{:href => "/events"}
         %i.fa.fa-calendar{:title =>"Calendar", "aria-hidden" => "true"}
     %li
-      %a{"data-method" => "delete", :href => "/users/sign_out"}
-        %i.fa.fa-power-off{:title =>"Sing out", "aria-hidden" => "true"}
+      = link_to edit_profile_path, :remote => true do
+        = fa_icon "user", text: "",
+        right: true, class: "fa-lg", :title =>"Profile"
 #cn-overlay.cn-overlay

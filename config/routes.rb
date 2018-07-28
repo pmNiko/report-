@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :trucks
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/profile/edit', to:'profiles#edit', as:'edit_profile'
+  patch '/profile', to: 'profiles#update'
   devise_for :users
+
   resources :events
   resources :jobs
 
