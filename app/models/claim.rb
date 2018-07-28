@@ -19,6 +19,7 @@ class Claim < ApplicationRecord
 
   # => relation 1:N  -  claim - materials
   has_many :materials
+  # Tell AR that an update can be model through another.
   accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
 
   # => relation 1:N  -  claim - measures
