@@ -22,6 +22,27 @@ class Team < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+  def claims_order_working
+    claims.working.order( 'priority ASC' )
+  end
+
+  def claims_order_pending
+    claims.pending.order( 'starts_at ASC' )
+  end
+
+  def claims_order_concluded
+    claims.concluded.order( 'priority ASC' )
+  end
+
+  def give_priority
+    order = 1
+    claims.each do |claim|
+      claim.priority = order
+      order += 1
+      claim.save
+    end
+  end
+
   # => Association author to claims
   def add_authors(current_user)
     claims.each do |claim|
@@ -91,7 +112,7 @@ class Team < ApplicationRecord
   end
 
   def finalize
-    self.finished = true    
+    self.finished = true
     save
   end
   def finished?

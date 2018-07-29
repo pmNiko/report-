@@ -52,6 +52,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.add_authors(current_user)
+    @team.give_priority
     respond_to do |format|
       if @team.save
         format.js
