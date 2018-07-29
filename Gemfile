@@ -73,3 +73,5 @@ gem "font-awesome-rails"
 gem "cocoon"
 #order
 gem 'acts_as_list'
+
+gem "pundit"

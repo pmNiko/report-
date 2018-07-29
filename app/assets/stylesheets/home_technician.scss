@@ -1,49 +1,24 @@
 .div-action {
-    float: left;
-    width: 20%;
+  float: left;
+  margin-right: 5px;
 }
 .div-historial {
-    float: left;
-    width: 20%;
+  float: left;
 }
 
-@media (min-width: 1201px) {
-  .div-action {
-      margin-left: 30%;
-  }
+td.td-action {
+  width: 130px;
+  padding: 0px;
+  padding-top: 5.5px;
 }
 
-@media (min-width: 990px) and (max-width: 1200px) {
-  .div-historial {
-      left: 10%;
-  }
+i.fa-lg.btn.btn-outline-info {
+    color: white;
 }
 
-@media (min-width: 765px) and (max-width: 990px) {
-  .div-historial {
-      left: 20%;
-  }
+.div-action .btn-outline-info {
+    margin-left: 5px;
 }
-
-@media (min-width: 700px) and (max-width: 764px) {
-  .div-historial {
-      left: 50%;
-  }
-}
-
-@media (min-width: 400px) and (max-width: 700px) {
-  .div-historial {
-    left: 50%;
-  }
-}
-
-
-@media (max-width: 400px) {
-  .div-historial {
-    left: 110%;
-  }
-}
-
 
 ///////////// LOAD TICKET /////////////////
 
@@ -61,3 +36,7 @@ a.nav-item.nav-link {
     background-color: rgba(5, 144, 99, 0.52) !important;
 }
 
+//////////// END SHIFT ////////////////////
+.end-shift {
+    width: 100%;
+}

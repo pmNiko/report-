@@ -1,3 +1,4 @@
+//rails server -e production -b 0.0.0.0 -p 8000
 /*
  *= require_tree .
  *= require_self
@@ -200,4 +201,14 @@ input#user_password {
 }
 input#user_password:focus {
     background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+
+//////////// BUTTON CLOSE MODAL ///////////////////////////////
+
+button.close.fa.fa-close {
+    background-color: rgba(1, 108, 113, 0.73);
+    color: white;
+    font-size: larger;
+    margin: 0%;
 }
