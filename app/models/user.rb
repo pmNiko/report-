@@ -21,5 +21,15 @@ class User < ApplicationRecord
   # => Relation N:M users - events
   has_and_belongs_to_many :events
 
+  # => Profile
+  has_one :profile, :dependent => :destroy
+
+  after_create :create_profile
+
+  def create_profile
+    Profile.create(user: self)
+  end
+
+
 
 end

@@ -19,6 +19,7 @@ class Claim < ApplicationRecord
 
   # => relation 1:N  -  claim - materials
   has_many :materials
+  # Tell AR that an update can be model through another.
   accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
 
   # => relation 1:N  -  claim - measures
@@ -47,7 +48,7 @@ class Claim < ApplicationRecord
     self.contactado!
     claim.author = current_user
     claim.team = team
-    hour_coordinated = Time.now.change({ hour: "#{hour}", min: "#{min}"})
+    hour_coordinated = Time.now.change({ hour: "#{hour + 3}", min: "#{min}"})
     claim.starts_at = hour_coordinated
     claim.ticket = self.ticket
     claim.client = self.client

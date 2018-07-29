@@ -76,7 +76,7 @@
     .card-header.text-center To Coordinate
     .card-body.p-0.text-center
       %br
-      = form_with url: coordinate_claim_path do |f|
+      = form_with url: coordinate_claim_path(@claim) do |f|
         = f.time_select :starts_at
         = button_tag(type: 'submit', class: "btn btn-primary") do
           = fa_icon "flag", text: "Ok", right: true, class: "fa-lg"

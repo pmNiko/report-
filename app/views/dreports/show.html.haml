@@ -21,7 +21,7 @@
                     %p= "#{ticket.observation}"
 
 
-          - if @dreport.close?
+          - if @dreport.closed?
             .card.card-dreport News
             .card-body
               %p= "#{@dreport.news}"
