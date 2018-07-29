@@ -5,13 +5,23 @@
         .card.border-info
           .card-header.text-center= dreport_responsables(@dreport) + " #{@dreport.brand} " + " #{@dreport.truck}"
           .card-body.text-center
-            - @dreport.tickets.each do |ticket|
+            - @dreport.tickets_order_start_at.each do |ticket|
               .card-group
                 .card.card-dreport-container
                   .card.card-dreport-data
-                    %table
-                      %td.d-inline-block.col-12
-                        = "#{ticket.client} " + " - " +" #{ticket.status} " + " - " + " #{ticket.kind}"
+                    %table.table.table-striped
+                      %thead
+                        %tr.row.m-0
+                          %th.d-inline-block.col-3 Client
+                          %th.d-inline-block.col-3 Status
+                          %th.d-inline-block.col-3 Type
+                          %th.d-inline-block.col-3 Hour
+                      %thead
+                        %tr.row.m-0
+                          %td.d-inline-block.col-3= "#{ticket.client}"
+                          %td.d-inline-block.col-3= "#{ticket.status}"
+                          %td.d-inline-block.col-3= "#{ticket.kind}"
+                          %td.d-inline-block.col-3= "#{ticket.starts}" + " - " + "#{ticket.starts}"
                   .card.card-dreport
                     .row
                       .col-8
@@ -19,11 +29,11 @@
                       .col-4
                         .float-right
                           = link_to ticket_path(ticket), :remote => true do
-                            = fa_icon "eye", right: true, class: "fa-lg"
+                            = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
                           &nbsp
                           - if ticket.has_history?
                             = link_to history_ticket_path(ticket) do
-                              = fa_icon "history", class: "fa-lg"
+                              = fa_icon "history", class: "fa-lg btn btn-outline-info"
                   .card-body.p-0
                     %p= "#{ticket.observation}"
           - if @dreport.closed?

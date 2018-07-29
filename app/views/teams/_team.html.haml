@@ -81,6 +81,7 @@
                     - if claim.has_history?
                       = link_to history_claim_path(claim) do
                         = fa_icon "history", class: "fa-lg btn btn-outline-info"
+            
             %tbody
             - unless team.claims.nil?
               - team.claims_order_pending.each do |claim|

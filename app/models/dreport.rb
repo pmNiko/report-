@@ -9,6 +9,10 @@ class Dreport < ApplicationRecord
   has_and_belongs_to_many :users
   #---------- Public Method´s ----------#
 
+  def tickets_order_start_at
+    tickets.order( 'starts_at ASC' )
+  end
+
   def closed?
     closed == true
   end

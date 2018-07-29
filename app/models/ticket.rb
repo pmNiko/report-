@@ -24,7 +24,7 @@ class Ticket < ApplicationRecord
   def has_history?
     Ticket.client(client).any?
   end
-  
+
   def item_key(item_param)
     Ticket.items[item_param]
   end
@@ -143,7 +143,7 @@ class Ticket < ApplicationRecord
   # => 2.-> claim not be pendiente
   # => 3.-> hour its different to hour default
   def form_print(a_time)
-    return "#{hour(a_time)}"+" hs" unless a_time.nil? ||
+    return "#{hour(a_time)}" unless a_time.nil? ||
       pendiente? || time_default?(a_time)
   end
   # => hour default for comparison

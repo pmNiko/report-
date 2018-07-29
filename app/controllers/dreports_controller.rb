@@ -22,7 +22,7 @@ class DreportsController < ApplicationController
     team.finalize
     redirect_to dreport_path(@dreport)
   end
-
+ 
   def show
     @dreport = Dreport.find(params[:id])
   end
