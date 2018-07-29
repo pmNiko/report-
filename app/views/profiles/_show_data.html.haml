@@ -18,13 +18,22 @@
                 %tr.row.m-0
                   %th.d-inline-block.col-12
                     - unless @profile.date_of_birth.nil?
-                      = @profile.date_of_birth
+                      = @profile.date_of_birth.strftime("%d/%m/%Y")
       .card.border-info
         .card-body.text-center
-          .card-header Measures
+          .card-header TECHNICAL DATA
           .card-body.p-0
             %table.table.table-striped
               %thead
                 %tr.row.m-0
-                  %th.d-inline-block.col-6 Point
-                  %th.d-inline-block.col-6 Log
+                  %th.d-inline-block.col-6 Area
+                  %th.d-inline-block.col-6 Rol
+                %tr.row.m-0
+                  %td.d-inline-block.col-6 Tecnica
+                  %td.d-inline-block.col-6
+                    - if @user.has_role? :technician
+                      = "Tecnico Soporte Exterior"
+                    - elsif @user.has_all_roles? :dir, :chief
+                      = " Jefe - Dir "
+                    - else
+                      = "Dir"
