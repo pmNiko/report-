@@ -1,0 +1,30 @@
+.card-group
+  .card
+    .card-header.text-center
+    .card-group
+      .card.border-info
+        .card-body.text-center
+          .card-header PERSONAL DATA
+          .card-body.p-0
+            %table.table.table-striped
+              %thead
+                %tr.row.m-0
+                  %th.d-inline-block.col-6
+                    - unless @profile.first_name.nil?
+                      = @profile.first_name
+                  %th.d-inline-block.col-6
+                    - unless @profile.last_name.nil?
+                      = @profile.last_name
+                %tr.row.m-0
+                  %th.d-inline-block.col-12
+                    - unless @profile.date_of_birth.nil?
+                      = @profile.date_of_birth
+      .card.border-info
+        .card-body.text-center
+          .card-header Measures
+          .card-body.p-0
+            %table.table.table-striped
+              %thead
+                %tr.row.m-0
+                  %th.d-inline-block.col-6 Point
+                  %th.d-inline-block.col-6 Log

@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = current_user.profile
+    @user = current_user
   end
 
   def update
