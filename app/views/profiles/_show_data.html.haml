@@ -9,16 +9,32 @@
             %table.table.table-striped
               %thead
                 %tr.row.m-0
-                  %th.d-inline-block.col-6
+                  %th.d-inline-block.col-6 Name
+                  %th.d-inline-block.col-6 Last Name
+              %thead
+                %tr.row.m-0
+                  %td.d-inline-block.col-6
                     - unless @profile.first_name.nil?
                       = @profile.first_name
-                  %th.d-inline-block.col-6
+                  %td.d-inline-block.col-6
                     - unless @profile.last_name.nil?
                       = @profile.last_name
+
+          .card-header DATE
+          .card-body.p-0
+            %table.table.table-striped
+              %thead
                 %tr.row.m-0
-                  %th.d-inline-block.col-12
+                  %th.d-inline-block.col-6 DNI
+                  %th.d-inline-block.col-6 Date of Birth
+                %tr.row.m-0
+                  %td.d-inline-block.col-6
+                    - unless @profile.dni.nil?
+                      = @profile.dni
+                  %td.d-inline-block.col-6
                     - unless @profile.date_of_birth.nil?
-                      = @profile.date_of_birth.strftime("%d/%m/%Y")
+                      = @profile.date_of_birth.strftime("%d - %m - %Y")
+
       .card.border-info
         .card-body.text-center
           .card-header TECHNICAL DATA
@@ -37,3 +53,21 @@
                       = " Jefe - Dir "
                     - else
                       = "Dir"
+          .card-header VEHICLE DATA
+          .card-body.p-0
+            %table.table.table-striped
+              %thead
+                %tr.row.m-0
+                  %th.d-inline-block.col-6 Current Vehicle
+                  %th.d-inline-block.col-6 Key
+                %tr.row.m-0
+                  %td.d-inline-block.col-6 Hilux Nº 21
+                  %td.d-inline-block.col-6
+                    - unless @profile.vehicle_key.nil?
+                      = @profile.vehicle_key
+
+.card-footer.text-muted
+  .card-header.text-center AUTHORIZE
+  .card-body.p-0.text-center
+    %br
+    %h6 COTESMA - Cooperativa Telefonica San Martin de los Andes
