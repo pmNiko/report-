@@ -76,7 +76,9 @@ class TeamsController < ApplicationController
 
   # DELETE /teams/1
   def destroy
-    @team.destroy_and_child
+    unless @team.working?
+      @team.destroy_and_child
+    end    
     respond_to do |format|
       format.js
     end

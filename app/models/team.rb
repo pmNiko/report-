@@ -22,6 +22,11 @@ class Team < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+
+  def working?
+    !claims.working.empty?
+  end
+
   def claims_order_working
     claims.working.order( 'priority ASC' )
   end

@@ -1,5 +1,4 @@
 class Claim < ApplicationRecord
-
   #---------- Validates ----------#
 
   validates :ticket, :client, :kind, presence: true
@@ -158,7 +157,6 @@ class Claim < ApplicationRecord
   def self.kindss
     kinds.keys
   end
-
   # => scope claims day finished
   scope :concluded, lambda { where("status > ?", 3) }
   scope :working, lambda { where("status = ?", 3) }

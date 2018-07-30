@@ -10,15 +10,25 @@
             %th.d-inline-block.col-3 Nº truck
             %th.d-inline-block.col-6 Responsables
         %tbody
-          %tr.row.m-0
-            %td.d-inline-block.col-3= f.date_field :date,
-              :title => "date", :value => Date.today,
-              :placeholder => 'dd/mm/yyyy',
-              :class => "form-control-datepicker text-center"
-            %td.d-inline-block.col-3= f.collection_select :truck_id,
-              @trucks, :id, :number, {include_blank: true}
-            %td.d-inline-block.col-6= f.collection_select :user_ids,
-              @users, :id, :email, {include_blank: true}, {multiple: true}
+          - if @team.working?
+            %tr.row.m-0
+              %td.d-inline-block.col-3= @team.date_format
+              %td.d-inline-block.col-3= team_truck(@team)
+              %td.d-inline-block.col-6= team_responsables(@team)
+
+
+          - else
+            %tr.row.m-0
+              %td.d-inline-block.col-3= f.date_field :date,
+                :title => "date", :value => Date.today,
+                :placeholder => 'dd/mm/yyyy',
+                :class => "form-control-datepicker text-center"
+              %td.d-inline-block.col-3= f.collection_select :truck_id,
+                @trucks, :id, :number, {include_blank: true}
+              %td.d-inline-block.col-6= f.collection_select :user_ids,
+                @users, :id, :email, {include_blank: true}, {multiple: true}
+
+
   .card
     .card-header.border-primary.text-center Ticket´s
     .card-body.text-center
@@ -31,7 +41,8 @@
             %th.d-inline-block.col-2 Trash
         %tbody
           = f.simple_fields_for :claims do |claim|
-            = render 'claim_fields', :f => claim
+            - if claim.object.pendiente?
+              = render 'claim_fields', :f => claim
       %button_tag
         = link_to_add_association ' ', f, :claims, class: 'fa fa-plus-square fa-lg'
   %br

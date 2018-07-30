@@ -3,7 +3,7 @@ module TeamsHelper
     if team.has_responsable?
       team.data_responsables.first
     else
-      team.data_responsables.first + " - " + team.data_responsables.second
+      team.data_responsables.first + "  " + team.data_responsables.second
     end
   end
 

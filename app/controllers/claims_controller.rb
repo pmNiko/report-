@@ -1,6 +1,7 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy]
 
+
   def history
     claim = Claim.find(params[:id])
     client = claim.client
