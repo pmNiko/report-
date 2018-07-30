@@ -22,23 +22,27 @@ class Team < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
-
+  # => return true if not empty
   def working?
     !claims.working.empty?
   end
 
+  # => return collection of claims working to order for priority ASC
   def claims_order_working
     claims.working.order( 'priority ASC' )
   end
 
+  # => return collection of claims pending to order for starts_at ASC
   def claims_order_pending
     claims.pending.order( 'starts_at ASC' )
   end
 
+  # => return collection of claims concluded to order for priority ASC
   def claims_order_concluded
     claims.concluded.order( 'priority ASC' )
   end
 
+  # => insert priority to claims collection
   def give_priority
     order = 1
     claims.each do |claim|

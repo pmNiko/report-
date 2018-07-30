@@ -159,6 +159,10 @@ class Claim < ApplicationRecord
   end
   # => scope claims day finished
   scope :concluded, lambda { where("status > ?", 3) }
+  # => scope claims working
   scope :working, lambda { where("status = ?", 3) }
+  # => scope claims pending
   scope :pending, lambda { where("status <= ?", 2) }
+
+
 end

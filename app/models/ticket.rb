@@ -25,6 +25,7 @@ class Ticket < ApplicationRecord
     Ticket.client(client).any?
   end
 
+  # => return item value
   def item_key(item_param)
     Ticket.items[item_param]
   end
@@ -85,14 +86,17 @@ class Ticket < ApplicationRecord
     save
   end
 
+  # => return starts_at format hour:minutes
   def start
     starts_at.strftime("%R")
   end
 
+  # => return ends_at format hour:minutes
   def end
   ends_at.strftime("%R")
   end
 
+  # => generate collection to job codes content
   def job_codes
     reject_nil(
       job_cod_1, job_cod_2, job_cod_3,
@@ -100,6 +104,7 @@ class Ticket < ApplicationRecord
     )
   end
 
+  # => generate collection to job titles content
   def job_titles
     reject_nil(
       job_title_1, job_title_2, job_title_3,
@@ -107,6 +112,7 @@ class Ticket < ApplicationRecord
     )
   end
 
+  # => generate collection to material items content
   def mat_items
     reject_nil(
       mat_item1, mat_item2, mat_item3,
@@ -114,6 +120,7 @@ class Ticket < ApplicationRecord
     )
   end
 
+  # => generate collection to job quantitys content
   def mat_qtys
     reject_nil(
       mat_qty_1, mat_qty_2, mat_qty_3,
@@ -121,6 +128,7 @@ class Ticket < ApplicationRecord
     )
   end
 
+  # => generate collection to measure points content
   def meas_points
     reject_nil(
       meas_p1, meas_p2, meas_p3,
@@ -128,6 +136,7 @@ class Ticket < ApplicationRecord
     )
   end
 
+  # => generate collection to measure logs content
   def meas_logs
     reject_nil(
       meas_log1, meas_log2, meas_log3,
@@ -253,7 +262,7 @@ class Ticket < ApplicationRecord
     self.save!
   end
 
-  #
+  # method for reject params nil to collection
   def reject_nil(parm1,parm2,parm3,parm4,parm5,parm6)
     #@not_nil = []
     @params = []
@@ -274,8 +283,9 @@ class Ticket < ApplicationRecord
     items.keys
   end
 
-  # => scope claims day finished
+  # => scope tickets day finished
   scope :concluded, lambda { where("status > ?", 3) }
+  # => scope tickets for client
   scope :client, -> (client_param) { where('client = ?', client_param) }
 
 end
