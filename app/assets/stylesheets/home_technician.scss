@@ -13,7 +13,8 @@ td.td-action {
 }
 
 i.fa-lg.btn.btn-outline-info {
-    color: white;
+  color: white;
+  width: 60px;
 }
 
 .div-action .btn-outline-info {
@@ -39,4 +40,8 @@ a.nav-item.nav-link {
 //////////// END SHIFT ////////////////////
 .end-shift {
     width: 100%;
+}
+
+td.td-responsibles {
+  padding-left: 10%;
 }

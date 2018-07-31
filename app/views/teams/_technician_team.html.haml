@@ -12,17 +12,16 @@
       %table.table
         %thead
           %tr
-            %th= fa_icon "truck", text: "Truck", right: true, class: "h_t_truck fa-lg"
-            %th= fa_icon "vcard-o", text: "Responsables", right: true, class: "h_t_responsables fa-lg"
+            %th= fa_icon "truck", text: "", right: true, class: "h_t_truck fa-lg"
+            %th= fa_icon "users", text: "", right: true, class: "h_t_users fa-lg"
         %tbody
           %tr
             %td= team_truck(@team)
-            %td= team_responsables(@team)
+            %td.td-responsibles{:align => "justify"}= team_responsables(@team)
     .card-body
       %table.table
         %thead
           %tr.bg-info
-            %th= fa_icon "file-text-o", text: "order", class: "fa-lg"
             %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
             %th.th-ticket= fa_icon "ticket", text: "Ticket", class: "fa-lg"
             %th= fa_icon "male", text: "Client", class: "fa-lg"

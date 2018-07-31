@@ -1,4 +1,4 @@
-.container.text-center
+.container.text-center.container-history
   .card-group
     .card.border-info
       .card-header.text-center
@@ -12,20 +12,23 @@
                 = fa_icon "arrow-left", class: "fa-lg"
       - @tickets.each do |ticket|
         .card-body.text-center
-          .card-header= "#{ticket.date}" + " >> "+ ticket_resposables(ticket)
+          .card-header
+            =ticket.date
+            %br
+            = ticket_resposables(ticket)
           .card-body.p-0
             %table.table.table-striped
               %tbody
                 %tr
-                  %td.d-inline-block.col-3 Nº Ticket
-                  %td.d-inline-block.col-3 Type
-                  %td.d-inline-block.col-3 Concluded
-                  %td.d-inline-block.col-3 Action
+                  %td Ticket
+                  %td Type
+                  %td Concluded
+                  %td Action
                 %tr
-                  %td.d-inline-block.col-3 #{ticket.number}
-                  %td.d-inline-block.col-3 #{ticket.kind}
-                  %td.d-inline-block.col-3 #{ticket.status}
-                  %td.d-inline-block.col-3
+                  %td #{ticket.number}
+                  %td #{ticket.kind}
+                  %td #{ticket.status}
+                  %td
                     = link_to ticket_path(ticket), :remote => true do
                       = fa_icon "eye", right: true, class: "fa-lg"
           .card-body.p-0
