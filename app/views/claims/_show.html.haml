@@ -81,3 +81,6 @@
         = button_tag(type: 'submit', class: "btn btn-primary") do
           = fa_icon "flag", text: "Ok", right: true, class: "fa-lg"
       %br
+.card-group
+  %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true"} cerrar

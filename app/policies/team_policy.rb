@@ -5,7 +5,7 @@ class TeamPolicy < ApplicationPolicy
   end
 
   def home_dir?
-    user.has_role? :dir
+    user.has_any_role?(:dir, :admin)
   end
 
   def home?
