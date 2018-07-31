@@ -2,10 +2,12 @@ class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize Dreport
     @dreports = Dreport.today
   end
 
   def close
+    authorize Dreport
     news_param =  params["news"]
     dreport = Dreport.find(params[:id])
     dreport.to_close
@@ -15,6 +17,7 @@ class DreportsController < ApplicationController
   end
 
   def end_shift
+    authorize Dreport
     team = Team.find(params[:id])
     @dreport = Dreport.new
     @dreport.save!
@@ -24,10 +27,12 @@ class DreportsController < ApplicationController
   end
 
   def show
+    authorize Dreport
     @dreport = Dreport.find(params[:id])
   end
 
   def current
+    authorize Dreport
     @dreport = current_user.dreports.last
   end
 

@@ -1,9 +1,12 @@
 #cn-wrapper.cn-wrapper
   %ul
-    %li{":class" => ""}
-      current_class?(profile_path)&gt;
-      %a{:href => "/teams/home_dir"}
-        %i.fa.fa-line-chart{:title =>"Dashboard", "aria-hidden" => "true"}
+    %li
+      %a{"data-method" => "delete", :href => "/users/sign_out"}
+        %i.fa.fa-power-off{:title =>"Sing out", "aria-hidden" => "true"}
+    //%li{":class" => ""}
+    //  current_class?(profile_path)&gt;
+    //  %a{:href => "/teams/home_dir"}
+    //    %i.fa.fa-line-chart{:title =>"Dashboard", "aria-hidden" => "true"}
 
     %li
       %a{:href => "/teams/home_dir"}

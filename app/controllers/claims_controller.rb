@@ -2,6 +2,7 @@ class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy]
 
   def history
+    authorize Claim
     claim = Claim.find(params[:id])
     client = claim.client
     tickets = Ticket
@@ -12,6 +13,7 @@ class ClaimsController < ApplicationController
   end
 
   def begin
+    authorize Claim
     @claim = Claim.find(params[:id])
     @claim.begin
     respond_to do |format|
@@ -20,6 +22,7 @@ class ClaimsController < ApplicationController
   end
 
   def coordinate
+    authorize Claim
     hour =  params["starts_at(4i)"].to_i
     min = params["starts_at(5i)"].to_i
     claim = Claim.find(params[:id])
@@ -35,14 +38,17 @@ class ClaimsController < ApplicationController
   end
 
   def show
+    authorize Claim
     @claim = Claim.find(params[:id])
   end
 
   def new
+    authorize Claim
     @claim = Claim.new
   end
 
   def edit
+    authorize Claim
     @statuses = Claim.statusess
     @items = Material.itemss
     @points = Measure.pointss
@@ -50,6 +56,7 @@ class ClaimsController < ApplicationController
   end
 
   def create
+    authorize Claim
     @claim = Claim.new(claim_params)
 
     respond_to do |format|
@@ -59,6 +66,7 @@ class ClaimsController < ApplicationController
   end
 
   def update
+    authorize Claim
     respond_to do |format|
       @claim.update(claim_params)
       if params[:commit] == 'Contact to'
@@ -82,6 +90,7 @@ class ClaimsController < ApplicationController
   end
 
   def destroy
+    authorize Claim
     @claim.destroy_and_child
     respond_to do |format|
       format.js
