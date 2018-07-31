@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   # => Profile
   has_one :profile, :dependent => :destroy
-
+  # => callback to create self 
   after_create :create_profile
 
   def create_profile

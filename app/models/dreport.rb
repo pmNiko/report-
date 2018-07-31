@@ -7,12 +7,20 @@ class Dreport < ApplicationRecord
 
   # => relation n:m dreports_users
   has_and_belongs_to_many :users
+
   #---------- Public Method´s ----------#
 
+  # => return collection of tickets order to starts_at ASC
+  def tickets_order_start_at
+    tickets.order( 'starts_at ASC' )
+  end
+
+  # => return true if self closed
   def closed?
     closed == true
   end
 
+  # => change status to closed true
   def to_close
     self.closed = true
     save

@@ -1,0 +1,27 @@
+.card-group
+  .card.border-info
+    .card-header.text-center
+      .row
+        .col-4
+        .col-4
+          %h4 CREDENTIAL
+        .col-4
+          .float-right
+            = link_to destroy_user_session_path, :method => :delete do
+              = fa_icon "power-off", class: "fa-2x"
+    .card-body.p-0
+      %nav.nav.nav-tabs.nav-justified
+        %a.nav-item.nav-link.active{"data-toggle" => "tab", :href => "#account"}
+          = fa_icon "address-card", class: "fa-2x"
+        %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#change"}
+          = fa_icon "edit", class: "fa-1x"
+        %spam.nav-item.nav-link
+          = link_to edit_user_registration_path, :remote => true do
+            = fa_icon "lock", class: "fa-1x"
+
+      .tab-content
+        #account.tab-pane.fade.show.active
+          = render 'show_data'
+
+        #change.tab-pane.fade
+          = render 'edit_data'

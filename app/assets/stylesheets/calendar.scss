@@ -35,6 +35,11 @@ button.btn.btn-primary {
 }
 
 
+td.fc-day.fc-today.alert.alert-info {
+    background-color: rgba(80, 35, 103, 0.44);
+    box-shadow: inset 0px 0px 15px 1px rgba(168,181,240,0.75);
+}
+
 .form-control {
     background-color: rgb(5, 47, 49);
     color: white;
@@ -75,10 +80,4 @@ textarea#event_description {
     margin: auto;
     width: 60%;
     margin-top: 16em;
-}
-
-
-td.fc-day.fc-today.alert.alert-info {
-    background-color: rgba(80, 35, 103, 0.44);
-    box-shadow: inset 0px 0px 15px 1px rgba(168,181,240,0.75);
 }

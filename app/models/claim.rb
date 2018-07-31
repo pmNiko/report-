@@ -1,5 +1,4 @@
 class Claim < ApplicationRecord
-
   #---------- Validates ----------#
 
   validates :ticket, :client, :kind, presence: true
@@ -32,7 +31,7 @@ class Claim < ApplicationRecord
   #---------- Hash attribute´s ----------#
 
   enum status: {
-                pendiente: 1, en_curso: 2, coordinado: 3, finalizado: 4,
+                pendiente: 1, coordinado: 2, en_curso: 3, finalizado: 4,
                 revisar: 5, contactar: 6, contactado: 7
               }
   enum kind: {
@@ -48,6 +47,7 @@ class Claim < ApplicationRecord
     self.contactado!
     claim.author = current_user
     claim.team = team
+    claim.priority = team.claims.last.priority + 1
     hour_coordinated = Time.now.change({ hour: "#{hour + 3}", min: "#{min}"})
     claim.starts_at = hour_coordinated
     claim.ticket = self.ticket
@@ -119,7 +119,7 @@ class Claim < ApplicationRecord
   # => 2.-> claim not be pendiente
   # => 3.-> hour its different to hour default
   def form_print(a_time)
-    return "#{hour(a_time)}"+" hs" unless a_time.nil? ||
+    return "#{hour(a_time)}" unless a_time.nil? ||
       pendiente? || time_default?(a_time)
   end
 
@@ -157,7 +157,12 @@ class Claim < ApplicationRecord
   def self.kindss
     kinds.keys
   end
-
   # => scope claims day finished
   scope :concluded, lambda { where("status > ?", 3) }
+  # => scope claims working
+  scope :working, lambda { where("status = ?", 3) }
+  # => scope claims pending
+  scope :pending, lambda { where("status <= ?", 2) }
+
+
 end

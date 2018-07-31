@@ -1,6 +1,7 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [ :show, :edit, :update, :destroy]
 
+  # => to render visit the client
   def history
     authorize Claim
     claim = Claim.find(params[:id])
@@ -12,6 +13,7 @@ class ClaimsController < ApplicationController
     @tickets = tickets.sort_by { |ticket| ticket.dreport.date }.reverse!
   end
 
+  # => start the activity
   def begin
     authorize Claim
     @claim = Claim.find(params[:id])
@@ -21,6 +23,7 @@ class ClaimsController < ApplicationController
     end
   end
 
+  # => coordinated to new claim and concludes the previous one
   def coordinate
     authorize Claim
     hour =  params["starts_at(4i)"].to_i
@@ -28,13 +31,10 @@ class ClaimsController < ApplicationController
     claim = Claim.find(params[:id])
     team = Team.find(claim.team.id)
     @claim_coordinated = Claim.new
-
     claim.to_coordinate(@claim_coordinated, team, hour, min, current_user)
-
     respond_to do |format|
       format.js
     end
-
   end
 
   def show
@@ -85,7 +85,8 @@ class ClaimsController < ApplicationController
       elsif params[:commit] == 'Close'
         @claim.finalizado!
       end
-      format.js
+      format.js { flash.now[:notice] = "Here is my flash notice" }
+
     end
   end
 

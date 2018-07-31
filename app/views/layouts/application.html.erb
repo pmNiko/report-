@@ -16,6 +16,11 @@
     </header>
     <main role="main">
       <%= render 'layouts/messages' %>
+      <div id="flash">
+        <% if notice.present? %>
+          <%= render partial: "shared/notice_banner" %>
+        <% end %>
+      </div>
       <%= yield %>
       <% if user_signed_in?%>
         <% if current_user.has_role? :dir or current_user.has_role? :admin%>

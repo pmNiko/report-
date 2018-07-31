@@ -5,18 +5,24 @@
         .card.border-info
           .card-header.text-center= dreport_responsables(@dreport) + " #{@dreport.brand} " + "#{@dreport.truck}"
           .card-body.text-center
-            - @dreport.tickets.each do |ticket|
+            - @dreport.tickets_order_start_at.each do |ticket|
               .card-group
                 .card.card-dreport-container
                   .card.card-dreport-data
-                    %table
-                      %td.align-middle Cliente :
-                      %td.align-middle= "#{ticket.client}"
-                      %td.align-middle Estado :
-                      %td.align-middle= "#{ticket.status}"
-                      %td.align-middle Tipo :
-                      %td.align-middle= "#{ticket.kind}"
-                  .card.card-dreport Observacion
+                    %table.table.table-striped
+                      %thead
+                        %tr.row.m-0
+                          %th.d-inline-block.col-3 Client
+                          %th.d-inline-block.col-3 Status
+                          %th.d-inline-block.col-3 Type
+                          %th.d-inline-block.col-3 Hour
+                      %thead
+                        %tr.row.m-0
+                          %td.d-inline-block.col-3= "#{ticket.client}"
+                          %td.d-inline-block.col-3= "#{ticket.status}"
+                          %td.d-inline-block.col-3= "#{ticket.kind}"
+                          %td.d-inline-block.col-3= "#{ticket.starts}" + " - " + "#{ticket.starts}"
+                  .card.card-dreport Observation
                   .card-body.p-0
                     %p= "#{ticket.observation}"
 

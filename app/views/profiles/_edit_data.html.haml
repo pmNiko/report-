@@ -1,0 +1,47 @@
+= form_for @profile do |ff|
+  .card-group
+    .card
+      .card-header.text-center
+      .card-group
+        .card.border-info
+          .card-body.text-center
+            .card-header PERSONAL DATA
+            .card-body.p-0
+              %table.table.table-striped
+                %thead
+                  %tr.row.m-0
+                    %th.d-inline-block.col-6 Name
+                    %th.d-inline-block.col-6 Last Name
+                %thead
+                  %tr.row.m-0
+                    %td.d-inline-block.col-6
+                      = ff.text_field :first_name, class: 'form-control text-center'
+                    %td.d-inline-block.col-6
+                      = ff.text_field :last_name, class: 'form-control text-center'
+
+            .card-header DATE
+            .card-body.p-0
+              %table.table.table-striped
+                %thead
+                  %tr.row.m-0
+                    %th.d-inline-block.col-6 DNI
+                    %th.d-inline-block.col-6 Date of Birth
+                  %tr.row.m-0
+                    %td.d-inline-block.col-6
+                      = ff.text_field :dni, class: 'form-control text-center'
+                    %td.d-inline-block.col-6
+                      = ff.date_field :date_of_birth, class: 'form-control-datepicker'
+
+
+          .card-header.text-center VEHICLE DATA
+          .card-body.p-0.text-center
+            %table.table.table-striped
+              %thead
+                %tr.row.m-0
+                  %td.d-inline-block.col-6 Vehicle Key
+                  %td.d-inline-block.col-6
+                    = ff.text_field :vehicle_key, class: 'form-control text-center'
+
+  .card.text-center
+    %p= ff.submit 'Save', :class => "btn btn-outline-success btn-sm "
+  

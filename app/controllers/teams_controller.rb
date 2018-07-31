@@ -60,6 +60,7 @@ class TeamsController < ApplicationController
     authorize Team
     @team = Team.new(team_params)
     @team.add_authors(current_user)
+    @team.give_priority
     respond_to do |format|
       if @team.save
         format.js
@@ -85,7 +86,9 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   def destroy
     authorize Team
-    @team.destroy_and_child
+    unless @team.working?
+      @team.destroy_and_child
+    end
     respond_to do |format|
       format.js
     end
