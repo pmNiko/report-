@@ -6,25 +6,25 @@
     %div.div-action
       - if claim.en_curso?
         = link_to edit_claim_path(claim), :remote => true do
-          = fa_icon "pencil-square-o", class: "fa-lg btn btn-outline-info "
+          = fa_icon "pencil-square-o", class: "fa-lg btn btn-primary "
 
       - elsif claim.revisar?
         = link_to claim_path(claim), :remote => true do
-          = fa_icon "exclamation-circle", class: "fa-lg btn btn-outline-info"
+          = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
       - elsif claim.contactar?
         = link_to claim_path(claim), :remote => true do
-          = fa_icon "phone-square", class: "fa-lg btn btn-outline-info"
+          = fa_icon "phone-square", class: "fa-lg btn btn-warning"
       - elsif claim.finalizado? || claim.contactado?
         = link_to claim_path(claim), :remote => true do
-          = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
+          = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
       - else
         - if claim.coordinado?
           - text_button = "#{claim.starts}"
         - else
           - text_button = 'Begin'
         = button_to text_button, begin_claim_path(claim), method: :post, remote: true,
-        :class => "btn btn-outline-success btn-sm"
+        :class => "btn btn-primary btn-sm"
     %div.div-historial
       - if claim.has_history?
         = link_to history_claim_path(claim) do
-          = fa_icon "history", class: "fa-lg btn btn-outline-info"
+          = fa_icon "history", class: "fa-lg btn btn-info"

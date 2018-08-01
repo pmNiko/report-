@@ -48,7 +48,7 @@ class Claim < ApplicationRecord
     claim.author = current_user
     claim.team = team
     claim.priority = team.claims.last.priority + 1
-    hour_coordinated = Time.now.change({ hour: "#{hour + 3}", min: "#{min}"})
+    hour_coordinated = Time.now.change({ hour: "#{hour}", min: "#{min}"})
     claim.starts_at = hour_coordinated
     claim.ticket = self.ticket
     claim.client = self.client
@@ -162,7 +162,7 @@ class Claim < ApplicationRecord
   # => scope claims working
   scope :working, lambda { where("status = ?", 3) }
   # => scope claims pending
-  scope :pending, lambda { where("status <= ?", 2) }
+  scope :pending, lambda { where("status < ?", 3) }
 
 
 end

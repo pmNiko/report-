@@ -15,11 +15,9 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-      <%= render 'layouts/messages' %>
-      <div id="flash">
-        <% if notice.present? %>
-          <%= render partial: "shared/notice_banner" %>
-        <% end %>
+
+      <div id="flash_hidden">
+        <%= render 'layouts/messages' %>
       </div>
       <%= yield %>
       <% if user_signed_in?%>

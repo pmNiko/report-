@@ -27,6 +27,7 @@ class TeamsController < ApplicationController
     @user = current_user
     @dreport = @user.dreports.today.first
     @team = @user.teams.today.first
+    @team.comprobation unless @team.nil?
   end
 
   def home_dir
@@ -63,10 +64,10 @@ class TeamsController < ApplicationController
     @team.give_priority
     respond_to do |format|
       if @team.save
-        format.js
+        format.js { flash.now[:notice] = "The team was created" }
       else
         #flash.now[:success] = "Error team create."
-        format.js
+        format.js { flash.now[:notice] = "Error create team" }
       end
     end
   end
@@ -76,10 +77,11 @@ class TeamsController < ApplicationController
   def update
     authorize Team
     @team.update(team_params)
+    @team.comprobation
     @team.add_authors(current_user)
     @team.save
     respond_to do |format|
-      format.js
+      format.js { flash.now[:notice] = "The team was updated" }
     end
   end
 
@@ -90,7 +92,7 @@ class TeamsController < ApplicationController
       @team.destroy_and_child
     end
     respond_to do |format|
-      format.js
+      format.js { flash.now[:notice] = "The team was destroy" }
     end
   end
 
