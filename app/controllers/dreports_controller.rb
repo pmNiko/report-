@@ -1,6 +1,10 @@
 class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
+  def search
+
+  end
+
   def index
     @dreports = Dreport.today
   end
@@ -15,7 +19,7 @@ class DreportsController < ApplicationController
     redirect_to technician_team_path
   end
 
-  # => finish day 
+  # => finish day
   def end_shift
     team = Team.find(params[:id])
     @dreport = Dreport.new

@@ -1,0 +1,18 @@
+// Add the dialog title
+$('#dialog h3').html("<i class='fa fa-search'></i> ");
+
+// Render the new form
+$('.modal-body').html('<%= j render("menus/search") %>');
+
+// Show the dynamic dialog
+$('#dialog').modal("show");
+$('.container.text-center').css('visibility', 'hidden');
+
+// Set focus to the first element
+$('#dialog').on('shown.bs.modal', function () {
+    $('.first_input').focus()
+  });
+
+$('#dialog').on('hidden.bs.modal', function () {
+  $('.container.text-center').css('visibility', 'visible');
+});

@@ -1,6 +1,10 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [ :show ]
 
+  def search
+    
+  end
+
   def history
     ticket = Ticket.find(params[:id])
     client = ticket.client

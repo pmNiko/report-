@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function () {
     ];
 
     var monthName = [
-      'january', 'February', 'March', 'April', 'May', 'June', 'Juli',
+      'january', 'February', 'March', 'April', 'May', 'June', 'July',
       'August', 'September', 'Octuber', 'November', 'Dicember'
     ];
 
