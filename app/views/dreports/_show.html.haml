@@ -3,7 +3,11 @@
     %tbody
       .card-group.card-dreport.card-dreport-show
         .card.border-info
-          .card-header.text-center= dreport_responsables(@dreport) + " #{@dreport.brand} " + "#{@dreport.truck}"
+          .card-header.text-center
+            = dreport_responsables(@dreport)
+            %br
+            = @dreport.brand
+            =@dreport.truck
           .card-body.text-center
             - @dreport.tickets_order_start_at.each do |ticket|
               .card-group

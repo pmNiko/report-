@@ -39,3 +39,37 @@ table.table-striped{
     padding: 0px;
     left: -10px;
 }
+
+///////////// Edit Ticket ////////////////
+td#trash_materials {
+  align-self: center;
+  right: 13px
+}
+td#trash_measures {
+  align-self: center;
+  right: -10px;
+}
+
+
+.modal-dialog.modal-lg form tr.row.m-0{
+
+  th.d-inline-block.col-5 {
+    left: 25px;
+  }
+  td.d-inline-block.col-3 {
+    margin-left: 10px;
+    margin-right: -10px;
+  }
+
+}
+
+/////////////// Button Close Show Temporal ///////////////
+.card-group button.close {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+span.btn.btn-outline-info.btn-sm.btn-close-show{
+  width: 100%;
+  margin-top: 10px;
+}

@@ -40,8 +40,15 @@ a.nav-item.nav-link {
 //////////// END SHIFT ////////////////////
 .end-shift {
     width: 100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 td.td-responsibles {
   padding-left: 10%;
+}
+// background of the cormir
+.modal.false.fade.show {
+    padding: 20%;
+    background-color: rgba(5, 47, 49, 0.62);
 }

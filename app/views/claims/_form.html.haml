@@ -51,10 +51,10 @@
           %table.table.table-striped
             %thead
               %tr.row.m-0
-                %th.d-inline-block.col-6 Item
+                %th.d-inline-block.col-5 Item
                 %th.d-inline-block.col-5 Quantity
-                %th.d-inline-block.col-1
-                  = fa_icon "trash", class: "fa-lg"
+                %th.d-inline-block.col-2
+                  = fa_icon "trash", class: "fa-lg" , style: "color: white"
             %tbody
               = f.simple_fields_for :materials do |material|
                 = render 'material_fields', :f => material
@@ -71,8 +71,8 @@
               %tr.row.m-0
                 %th.d-inline-block.col-4 Point
                 %th.d-inline-block.col-6 Log
-                %th.d-inline-block.col-1
-                  = fa_icon "trash", class: "fa-lg"
+                %th.d-inline-block.col-2
+                  = fa_icon "trash", class: "fa-lg" , style: "color: white"
             %tbody
               = f.simple_fields_for :measures do |measure|
                 = render 'measure_fields', :f => measure

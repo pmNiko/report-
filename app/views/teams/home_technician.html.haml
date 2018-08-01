@@ -4,7 +4,7 @@
   .new-team#teams
     %tbody
       - if !@dreport.nil?
-        = render 'dreport_close'
+        = render '/dreports/show'
       - elsif !@team.nil?
         = render 'technician_team'
       - else

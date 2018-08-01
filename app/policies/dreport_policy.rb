@@ -1,22 +1,22 @@
 class DreportPolicy < ApplicationPolicy
 
-  def index
+  def index?
     user.present?
   end
 
-  def close
+  def close?
     user.has_role? :technician
   end
 
-  def end_shift
+  def end_shift?
     user.has_role? :technician
   end
 
-  def show
+  def show?
     user.present?
   end
 
-  def current
+  def current?
     user.present?
   end
 
