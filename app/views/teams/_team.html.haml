@@ -27,15 +27,15 @@
               %td
                 - unless team.finished?
                   = link_to edit_team_path(team), :remote => true do
-                    = fa_icon "pencil-square-o", class: "fa-1x btn btn-outline-info"
+                    = fa_icon "pencil-square-o", class: "fa-1x btn btn-primary"
                   - unless team.working?
                     = link_to '', team, remote: true, :method => :delete,                                          |
-                      class:"fa fa-trash fa-1x btn btn-outline-danger",                                                            |
+                      class:"fa fa-trash fa-1x btn btn-danger",                                                            |
                       data: {confirm: "Delete: "+"[ Date:"+" #{team.date} ]-"+"[ Truck:"+" #{team.truck} ]", |
                       verify: "#{team.truck.number}", verify_text: "Type: " + " '#{team.truck.number}' " + "to confirm"}
 
                 %span.btn.btn-default
-                  %i{class: "fa fa-angle-double-down btn btn-outline-primary","aria-controls" => "team_#{team.id}", "aria-expanded" => "true", "data-target" => "#team#{team.id}", "data-toggle" => "collapse"}
+                  %i{class: "fa fa-angle-double-down btn btn-primary","aria-controls" => "team_#{team.id}", "aria-expanded" => "true", "data-target" => "#team#{team.id}", "data-toggle" => "collapse"}
 
 
       .collapse{:id => ("team#{team.id}"), "aria-labelledby" => "heading#{team.id}", "data-parent" => "#accordion"}
@@ -68,19 +68,19 @@
                       = fa_icon "wrench", class: "fa-lg"
                     - elsif claim.revisar?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
                     - elsif claim.contactar?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "phone-square", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "phone-square", class: "fa-lg btn btn-info"
                     - elsif claim.finalizado? || claim.contactado?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
+                        = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
                     &nbsp
                     - if claim.has_history?
                       = link_to history_claim_path(claim) do
-                        = fa_icon "history", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "history", class: "fa-lg btn btn-info"
 
             %tbody
             - unless team.claims.nil?
@@ -98,19 +98,19 @@
                       = fa_icon "wrench", class: "fa-lg"
                     - elsif claim.revisar?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
                     - elsif claim.contactar?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "phone-square", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "phone-square", class: "fa-lg btn btn-info"
                     - elsif claim.finalizado? || claim.contactado?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
+                        = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
                     &nbsp
                     - if claim.has_history?
                       = link_to history_claim_path(claim) do
-                        = fa_icon "history", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "history", class: "fa-lg btn btn-info"
             %tbody
             - unless team.claims.nil?
               - team.claims_order_concluded.each do |claim|
@@ -127,19 +127,19 @@
                       = fa_icon "wrench", class: "fa-lg"
                     - elsif claim.revisar?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-warning"
                     - elsif claim.contactar?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "phone-square", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "phone-square", class: "fa-lg btn btn-warning"
                     - elsif claim.finalizado? || claim.contactado?
                       = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
+                        = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
                     - else
                       = fa_icon "hourglass-start", class: "fa-lg"
                     &nbsp
                     - if claim.has_history?
                       = link_to history_claim_path(claim) do
-                        = fa_icon "history", class: "fa-lg btn btn-outline-info"
+                        = fa_icon "history", class: "fa-lg btn btn-info"
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:

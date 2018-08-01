@@ -1,1 +1,2 @@
-$('#claim_<%= @claim.id %>').replaceWith('<%= j render (@claim) %>')
+$('#claim_<%= @claim.id %>').replaceWith('<%= j render (@claim) %>');
+$("#flash_hidden").html('<%= j render partial: "layouts/messages" %>');

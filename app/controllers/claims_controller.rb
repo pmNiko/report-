@@ -17,7 +17,7 @@ class ClaimsController < ApplicationController
     @claim = Claim.find(params[:id])
     @claim.begin
     respond_to do |format|
-      format.js
+      format.js { flash.now[:notice] = "ticket in progress" }
     end
   end
 
@@ -30,7 +30,7 @@ class ClaimsController < ApplicationController
     @claim_coordinated = Claim.new
     claim.to_coordinate(@claim_coordinated, team, hour, min, current_user)
     respond_to do |format|
-      format.js
+      format.js { flash.now[:notice] = "the ticket was coordinated" }
     end
   end
 
@@ -77,7 +77,7 @@ class ClaimsController < ApplicationController
       elsif params[:commit] == 'Close'
         @claim.finalizado!
       end
-      format.js { flash.now[:notice] = "Here is my flash notice" }
+      format.js { flash.now[:notice] = "the ticket was updated" }
 
     end
   end
@@ -85,7 +85,7 @@ class ClaimsController < ApplicationController
   def destroy
     @claim.destroy_and_child
     respond_to do |format|
-      format.js
+      format.js 
     end
   end
 

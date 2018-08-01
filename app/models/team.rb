@@ -22,9 +22,21 @@ class Team < ApplicationRecord
 
   #----------  --- Public Method´s  ---  ----------#
 
+  def comprobation
+    order = claims.count + 1
+    claims.each do |claim|
+      if claim.priority.nil?
+        order +=1
+        claim.priority = order
+        claim.save
+      end
+    end
+
+  end
+
   # => return true if not empty
   def working?
-    !claims.working.empty?
+    !claims.working.empty? || !claims.concluded.empty?
   end
 
   # => return collection of claims working to order for priority ASC
@@ -34,7 +46,8 @@ class Team < ApplicationRecord
 
   # => return collection of claims pending to order for starts_at ASC
   def claims_order_pending
-    claims.pending.order( 'starts_at ASC' )
+    #claims.pending.order( 'starts_at ASC' )
+    claims.pending.sort_by { |claim| claim.priority }
   end
 
   # => return collection of claims concluded to order for priority ASC

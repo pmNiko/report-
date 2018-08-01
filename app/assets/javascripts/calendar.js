@@ -12,6 +12,7 @@
 
 $(document).on('turbolinks:load', function() {
   console.log('(document).turbolinks:load');
+  $('#flash_hidden').delay(8000).fadeOut();
   // Actions to do
   $('#calendar').fullCalendar({
     themeSystem: 'bootstrap4',
