@@ -103,6 +103,15 @@
     left: -20px;
     width: 114%;
   }
+
+  ////////////// CALENDAR ///////////////////////
+  .div-cloce-calendar{
+    display: none;
+  }
+
+  .fc-scroller.fc-day-grid-container {
+    height: 100% !important;
+  }
 }
 
 
