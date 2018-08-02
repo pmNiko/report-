@@ -9,14 +9,13 @@
     //    %i.fa.fa-line-chart{:title =>"Dashboard", "aria-hidden" => "true"}
 
     %li
-      %a{:href => "/teams/home_dir"}
-        %i.fa.fa-search{:title =>"Search tickets and reports", "aria-hidden" => "true"}
+      = link_to search_team_path, :remote => true do
+        = fa_icon "search", class: "fa-lg", :title =>"New Team"
 
     - if current_page?(dir_team_path)
       %li
         = link_to new_team_path, :remote => true do
-          = fa_icon "users", text: "",
-          right: true, class: "fa-lg", :title =>"New Team"
+          = fa_icon "users", class: "fa-lg", :title =>"New Team"
     - else
       %li
         %a{:href => "/teams/home_dir"}
@@ -27,6 +26,5 @@
         %i.fa.fa-calendar{:title =>"Calendar", "aria-hidden" => "true"}
     %li
       = link_to edit_profile_path, :remote => true do
-        = fa_icon "user", text: "",
-        right: true, class: "fa-lg", :title =>"Profile"
+        = fa_icon "user", class: "fa-lg", :title =>"Profile"
 #cn-overlay.cn-overlay

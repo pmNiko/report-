@@ -1,0 +1,21 @@
+.card-group
+  .card.border-info
+    .card-header.text-center
+      .row
+        .col-4
+        .col-4
+          %h6 Search
+        .col-4
+    .card-body.p-0
+      %nav.nav.nav-tabs.nav-justified
+        %a.nav-item.nav-link.active{"data-toggle" => "tab", :href => "#dreport"}
+          = fa_icon "calendar", class: "fa-2x"
+        %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#history"}
+          = fa_icon "address-book-o", class: "fa-2x"
+
+      .tab-content
+        #dreport.tab-pane.fade.show.active
+          = render '/menus/search_dreport'
+
+        #history.tab-pane.fade
+          = render '/menus/search_client'

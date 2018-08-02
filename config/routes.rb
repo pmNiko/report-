@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :jobs
 
   get "tickets/history:id" => "tickets#history", :as => 'history_ticket'
+  get "tickets/search" => "tickets#search", :as => 'search_ticket'
   resources :tickets
 
   get "claims/history:id" => "claims#history", :as => 'history_claim'
@@ -30,11 +31,12 @@ Rails.application.routes.draw do
 
   get "teams/home_dir" => "teams#home_dir", :as => 'dir_team'
   get "teams/home_technician" => "teams#home_technician", :as => 'technician_team'
-  get "teams/daily_report" => "teams#daily_report", :as => 'daily_report'
+  get "teams/search" => "teams#search", :as => 'search_team'
   resources :teams
 
   get "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift_dreport'
   get "dreports/current" => "dreports#current", :as => 'current_dreport'
+  get "dreports/search" => "dreports#search", :as => 'search_dreport'
   resources :dreports do
     member do
       post 'close'
