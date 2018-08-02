@@ -4,7 +4,12 @@
     background-size: 100% 100%;
     background-attachment: fixed;
   }
+
+  .container.text-center {
+    left: -4em !important;
+  }
 }
+
 @media (min-width: 400px) and (max-width: 700px) {
   body.container-fluid {
     background-image: url("fondo_1366x768.jpg");
@@ -16,6 +21,8 @@
   .card-header.bg-info {
     display: none;
   }
+
+
 }
 
 @media (max-width: 400px) {
@@ -43,6 +50,7 @@
 }
 
 @media (max-width: 585px){
+
   main {
     width: 100% !important ;
     position: relative !important ;
@@ -112,6 +120,15 @@
   .fc-scroller.fc-day-grid-container {
     height: 100% !important;
   }
+
+  ///////////// History /////////////////////
+  .container.text-center.container-history {
+    width: 102%;
+    margin: 0px;
+    padding: 0px;
+    left: -10px;
+  }
+
 }
 
 
