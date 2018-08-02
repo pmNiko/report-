@@ -43,8 +43,7 @@
           %table.table
             %thead
               %tr.bg-info
-                %th.d-inline-block.col-1= fa_icon "file-text-o", text: "Order", class: "fa-lg"
-                %th.d-inline-block.col-1= fa_icon "file-text-o", text: "Type", class: "fa-lg"
+                %th.d-inline-block.col-2= fa_icon "file-text-o", text: "Type", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "ticket", text: "Ticket", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "male", text: "Client", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "bolt", text: "Status", class: "fa-lg"
@@ -56,8 +55,7 @@
             - unless team.claims.nil?
               - team.claims_order_working.each do |claim|
                 %tr.text-center
-                  %td.d-inline-block.col-1= claim.priority
-                  %td.d-inline-block.col-1= claim.kind
+                  %td.d-inline-block.col-2= claim.kind
                   %td.d-inline-block.col-2= claim.ticket
                   %td.d-inline-block.col-2= claim.client
                   %td.d-inline-block.col-2= claim.status
@@ -86,8 +84,7 @@
             - unless team.claims.nil?
               - team.claims_order_pending.each do |claim|
                 %tr.text-center
-                  %td.d-inline-block.col-1= claim.priority
-                  %td.d-inline-block.col-1= claim.kind
+                  %td.d-inline-block.col-2= claim.kind
                   %td.d-inline-block.col-2= claim.ticket
                   %td.d-inline-block.col-2= claim.client
                   %td.d-inline-block.col-2= claim.status
@@ -115,8 +112,7 @@
             - unless team.claims.nil?
               - team.claims_order_concluded.each do |claim|
                 %tr.text-center
-                  %td.d-inline-block.col-1= claim.priority
-                  %td.d-inline-block.col-1= claim.kind
+                  %td.d-inline-block.col-2= claim.kind
                   %td.d-inline-block.col-2= claim.ticket
                   %td.d-inline-block.col-2= claim.client
                   %td.d-inline-block.col-2= claim.status
