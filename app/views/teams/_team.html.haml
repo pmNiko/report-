@@ -53,6 +53,9 @@
           %table.table.table-striped
             %tbody
             - unless team.claims.nil?
+              %tr.text-center
+                %td.d-inline-block.col-11
+                  Working
               - team.claims_order_working.each do |claim|
                 %tr.text-center
                   %td.d-inline-block.col-2= claim.kind
@@ -82,6 +85,9 @@
 
             %tbody
             - unless team.claims.nil?
+              %tr.text-center
+                %td.d-inline-block.col-11
+                  Pending
               - team.claims_order_pending.each do |claim|
                 %tr.text-center
                   %td.d-inline-block.col-2= claim.kind
@@ -110,6 +116,9 @@
                         = fa_icon "history", class: "fa-lg btn btn-info"
             %tbody
             - unless team.claims.nil?
+              %tr.text-center
+                %td.d-inline-block.col-11
+                  Concluded
               - team.claims_order_concluded.each do |claim|
                 %tr.text-center
                   %td.d-inline-block.col-2= claim.kind
