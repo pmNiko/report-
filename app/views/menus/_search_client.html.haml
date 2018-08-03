@@ -1,6 +1,7 @@
 .card-body.p-0.text-center
   %br
   = form_with url: search_ticket_path(@ticket) do |f|
-    = f.text_field :client
+    = f.text_field :nt
+    = f.text_field :sma
     = button_tag(type: 'submit', class: "btn btn-outline-success") do
       = fa_icon "paper-outline-plane", text: "Search", right: true, class: "fa-lg"
