@@ -16,19 +16,22 @@
                 %table.table.table-striped
                   %thead
                     %tr.row.m-0
+                      %th.d-inline-block.col-3 Nº Ticket
                       %th.d-inline-block.col-3 Client
-                      %th.d-inline-block.col-3 Status
-                      %th.d-inline-block.col-3 Type
-                      %th.d-inline-block.col-3 Hour
+                      %th.d-inline-block.col-2 Status
+                      %th.d-inline-block.col-2 Type
+                      %th.d-inline-block.col-2 Hour
                   %thead
                     %tr.row.m-0
+                      %td.d-inline-block.col-3= "#{ticket.number}"
                       %td.d-inline-block.col-3= "#{ticket.client}"
-                      %td.d-inline-block.col-3= "#{ticket.status}"
-                      %td.d-inline-block.col-3= "#{ticket.kind}"
-                      %td.d-inline-block.col-3= "#{ticket.starts}" + " - " + "#{ticket.starts}"
+                      %td.d-inline-block.col-2= "#{ticket.status}"
+                      %td.d-inline-block.col-2= "#{ticket.kind}"
+                      %td.d-inline-block.col-2= "#{ticket.starts}" + " " + "#{ticket.end}"
               .card.card-dreport
                 .row
-                  .col-8
+                  .col-4
+                  .col-4
                     %p Observation
                   .col-4
                     .float-right
