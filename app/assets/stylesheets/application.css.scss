@@ -7,6 +7,7 @@
  @import "calendar";
  @import "font-awesome";
 
+
 //////// BODY ////////////////////////////////////////////////////////////
 body.container-fluid {
     background-color: rgb(166, 172, 175);
@@ -213,3 +214,28 @@ button.close.fa.fa-close {
     font-size: larger;
     margin: 0%;
 }
+
+
+
+
+////////// ALERT //////////////////////////////////
+
+.alert.flash_hidden {
+  width: 40%;
+  float: left;
+  left:20%;
+}
+
+.alert.flash_hidden {
+  position:absolute;
+  right:0px;
+  width:100%;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -mos-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+.alert.flash_hidden:not(:checked) ~ #toggled-element {
+        right:-700px;
+    }

@@ -1,3 +1,4 @@
+= render 'dialog'
 .card-home-technicial
   .card
     .row
@@ -43,10 +44,9 @@
   %br
   - unless @team.finished?
     .end-shift
-      = link_to 'END SHIFT', shift_dreport_path(@team),method: :get,                                |
+      = link_to 'END SHIFT', shift_dreport_path(@team),method: :get, |
         :class => "btn btn-outline-success btn-sm end-shift",                                       |
         data: {confirm: "End Shift: "+"[ Date:"+" #{@team.date} ]-"+"[Truck:"+" #{@team.truck}]", |
         verify: "#{@team.truck.number}", verify_text: "Type: " + " '#{@team.truck.number}' " + "to confirm"}
 
 
-= render 'dialog'

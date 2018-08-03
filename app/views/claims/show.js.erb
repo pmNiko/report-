@@ -4,10 +4,9 @@ $('#dialog h3').html("");
 // Render the new form
 $('.modal-body').html('<%= j render("show") %>');
 
-var user = '<%= escape_javascript current_user.has_role? :admin %>';
-
 // Show the dynamic dialog
 $('#dialog').modal("show");
+
 $('.container.text-center').css('visibility', 'hidden');
 
 
