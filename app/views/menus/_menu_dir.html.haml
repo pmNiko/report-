@@ -9,8 +9,8 @@
     //    %i.fa.fa-line-chart{:title =>"Dashboard", "aria-hidden" => "true"}
 
     %li
-      = link_to search_team_path, :remote => true do
-        = fa_icon "search", class: "fa-lg", :title =>"New Team"
+      %a{"data-target" => "#myModal", "data-toggle" => "modal", :href => "#"}
+        %i.fa.fa-search
 
     - if current_page?(dir_team_path)
       %li
@@ -28,3 +28,26 @@
       = link_to edit_profile_path, :remote => true do
         = fa_icon "user", class: "fa-lg", :title =>"Profile"
 #cn-overlay.cn-overlay
+/ Modal
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &#215;
+        %h4#myModalLabel.modal-title Modal title
+      .modal-body
+        %div{:role => "tabpanel"}
+          / Nav tabs
+          %ul.nav.nav-tabs{:role => "tablist"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "uploadTab", "data-toggle" => "tab", :href => "#uploadTab", :role => "tab"} Upload
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "browseTab", "data-toggle" => "tab", :href => "#browseTab", :role => "tab"} Browse
+          / Tab panes
+          .tab-content
+            #uploadTab.tab-pane.active{:role => "tabpanel"} upload Tab
+            #browseTab.tab-pane{:role => "tabpanel"} browseTab
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary.save{:type => "button"} Save changes

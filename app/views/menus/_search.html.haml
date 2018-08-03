@@ -1,21 +1,23 @@
-.card-group
-  .card.border-info
-    .card-header.text-center
-      .row
-        .col-4
-        .col-4
-          %h6 Search
-        .col-4
-    .card-body.p-0
-      %nav.nav.nav-tabs.nav-justified
-        %a.nav-item.nav-link.active{"data-toggle" => "tab", :href => "#dreport"}
-          = fa_icon "calendar", class: "fa-2x"
-        %a.nav-item.nav-link{"data-toggle" => "tab", :href => "#history"}
-          = fa_icon "address-book-o", class: "fa-2x"
-
-      .tab-content
-        #dreport.tab-pane.fade.show.active
-          = render '/menus/search_dreport'
-
-        #history.tab-pane.fade
-          = render '/menus/search_client'
+/ Modal
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &#215;
+        %h4#myModalLabel.modal-title Modal title
+      .modal-body
+        %div{:role => "tabpanel"}
+          / Nav tabs
+          %ul.nav.nav-tabs{:role => "tablist"}
+            %li.active{:role => "presentation"}
+              %a{"aria-controls" => "uploadTab", "data-toggle" => "tab", :href => "#uploadTab", :role => "tab"} Upload
+            %li{:role => "presentation"}
+              %a{"aria-controls" => "browseTab", "data-toggle" => "tab", :href => "#browseTab", :role => "tab"} Browse
+          / Tab panes
+          .tab-content
+            #uploadTab.tab-pane.active{:role => "tabpanel"} upload Tab
+            #browseTab.tab-pane{:role => "tabpanel"} browseTab
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary.save{:type => "button"} Save changes
