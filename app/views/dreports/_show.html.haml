@@ -26,7 +26,19 @@
                           %td.d-inline-block.col-3= "#{ticket.status}"
                           %td.d-inline-block.col-3= "#{ticket.kind}"
                           %td.d-inline-block.col-3= "#{ticket.starts}" + " - " + "#{ticket.starts}"
-                  .card.card-dreport Observation
+                  .card.card-dreport
+                    .row
+                      .col-4
+                      .col-4
+                        %p Observation
+                      .col-4
+                        .float-right
+                          = link_to ticket_path(ticket), :remote => true do
+                            = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
+                          &nbsp
+                          - if ticket.has_history?
+                            = link_to history_ticket_path(ticket) do
+                              = fa_icon "history", class: "fa-lg btn btn-outline-info"
                   .card-body.p-0
                     %p= "#{ticket.observation}"
 
