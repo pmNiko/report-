@@ -41,7 +41,7 @@
                     - if ticket.has_history?
                       = link_to history_ticket_path(ticket) do
                         = fa_icon "history", class: "fa-lg btn btn-outline-info"
-
+                  .card-footer
 
           - if @dreport.closed?
             .card.card-dreport News

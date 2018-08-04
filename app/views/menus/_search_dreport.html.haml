@@ -1,0 +1,7 @@
+= form_with url: search_dreport_path(@dreport) do |f|
+  .card-body.p-0.text-center
+    %p Date
+    = f.date_field :date
+  .card-footer.text-center
+    = button_tag(type: 'submit', class: "btn btn-outline-success") do
+      = fa_icon "paper-plane", text: "Search", right: true, class: "fa-lg"
