@@ -27,7 +27,7 @@
                           %td.d-inline-block.col-3= "#{ticket.client}"
                           %td.d-inline-block.col-3= "#{ticket.kind}"
 
-                          %td.d-inline-block.col-2= "#{ticket.starts}" + " " + "#{ticket.end}"
+                          %td.d-inline-block.col-3= "#{ticket.starts}" + " " + "#{ticket.end}"
                   .card.card-dreport
                     .row
                       .col-4
@@ -39,11 +39,11 @@
                     %p= "#{ticket.observation}"
                   .card-footer
                     = link_to ticket_path(ticket), :remote => true do
-                      = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
+                      = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
                     &nbsp
                     - if ticket.has_history?
                       = link_to history_ticket_path(ticket) do
-                        = fa_icon "history", class: "fa-lg btn btn-info"
+                        = fa_icon "history", class: "fa-lg btn btn-outline-info"
 
           - if @dreport.closed?
             .card.card-dreport News
