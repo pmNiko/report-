@@ -1,0 +1,11 @@
+.text-center
+  .row
+    .col-4
+    .col-8
+      - unless @dreports.empty?
+        = @dreports.first.date_format
+      %br
+
+  .card-group
+    %tbody
+      = render @dreports
