@@ -1,7 +1,19 @@
 .card-body.p-0.text-center
   %br
-  = form_with url: search_ticket_path(@ticket) do |f|
-    = f.text_field :nt
-    = f.text_field :sma
-    = button_tag(type: 'submit', class: "btn btn-outline-success") do
-      = fa_icon "paper-outline-plane", text: "Search", right: true, class: "fa-lg"
+  = form_with url: search_ticket_path(Ticket.all.last), :remote => true do |f|
+    .card-body.p-0
+      %table.table.table-striped
+        %thead
+          %tr.row.m-0
+            %th.d-inline-block.col-6 Phone
+            %th.d-inline-block.col-6 Sma
+        %thead
+          %tr.row.m-0
+            %td.d-inline-block.col-6= f.number_field :nt, class: 'text-center'
+            %td.d-inline-block.col-6= f.number_field :sma, class: 'text-center'
+    .card-footer.p-0
+      = button_tag(type: 'submit', class: "btn btn-outline-success") do
+        = fa_icon "paper-outline-plane", text: "Search", right: true, class: "fa-lg"
+      %br
+
+= render "/layouts/dialog"

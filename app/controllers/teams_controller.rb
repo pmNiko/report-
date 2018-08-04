@@ -39,6 +39,7 @@ class TeamsController < ApplicationController
     authorize Team
     @teams = Team.today
     @user = current_user
+    @user = Ticket.new
   end
 
   def index

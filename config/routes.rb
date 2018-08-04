@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   resources :jobs
 
   get "tickets/history:id" => "tickets#history", :as => 'history_ticket'
-  get "tickets/search" => "tickets#search", :as => 'search_ticket'
-  resources :tickets
+  resources :tickets do
+    member do
+      post 'search'
+    end
+  end
 
   get "claims/history:id" => "claims#history", :as => 'history_claim'
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'
