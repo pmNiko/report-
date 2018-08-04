@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [ :show, :search ]
+  before_action :set_ticket, only: [ :show]
 
   def search
     nt = params["nt"]
@@ -34,9 +34,7 @@ class TicketsController < ApplicationController
     end
 
     @tickets = @ticket_all.sort_by { |ticket| ticket.dreport.date }.reverse!
-    respond_to do |format|
-      format.js
-    end
+
   end
 
   def history

@@ -9,7 +9,7 @@
     //    %i.fa.fa-line-chart{:title =>"Dashboard", "aria-hidden" => "true"}
 
     %li
-      = link_to search_team_path(@ticket), :remote => true do
+      = link_to search_team_path, :remote => true do
         = fa_icon "search", class: "fa-lg", :title =>"New Team"
 
     - if current_page?(dir_team_path)

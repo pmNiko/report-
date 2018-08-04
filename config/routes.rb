@@ -18,11 +18,8 @@ Rails.application.routes.draw do
   resources :jobs
 
   get "tickets/history:id" => "tickets#history", :as => 'history_ticket'
-  resources :tickets do
-    member do
-      post 'search'
-    end
-  end
+  post "tickets/search" => "tickets#search", :as => 'search_ticket'
+  resources :tickets
 
   get "claims/history:id" => "claims#history", :as => 'history_claim'
   post "claims/begin:id" => "claims#begin", :as => 'begin_claim'
@@ -39,7 +36,7 @@ Rails.application.routes.draw do
 
   get "dreports/end_shift:id" => "dreports#end_shift", :as => 'shift_dreport'
   get "dreports/current" => "dreports#current", :as => 'current_dreport'
-  get "dreports/search" => "dreports#search", :as => 'search_dreport'
+  post "dreports/search" => "dreports#search", :as => 'search_dreport'
   resources :dreports do
     member do
       post 'close'

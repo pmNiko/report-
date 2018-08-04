@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def search
-    @ticket = Ticket.new
+    @ticket = Ticket.all.last
     @dreport = Dreport.new
   end
 
