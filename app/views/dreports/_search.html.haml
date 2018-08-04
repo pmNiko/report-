@@ -1,11 +1,14 @@
 .text-center
   .row
     .col-4
-    .col-8
-      - unless @dreports.empty?
+    .col-4
+      - if !@dreports.empty?
         = @dreports.first.date_format
+      - else
+        %h6 There are no reports
+
       %br
 
   .card-group
-    %tbody
+    .card-body
       = render @dreports
