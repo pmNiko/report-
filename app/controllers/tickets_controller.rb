@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
     @client = nil
     if !nt.nil?
       @client = "#{nt}"
-      unless sma.nil?
+      unless sma != "sma_"
         @client = "#{@client}" + "  " +"#{sma}"
       end
     else
