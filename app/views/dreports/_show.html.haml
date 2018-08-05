@@ -17,32 +17,33 @@
                     %table.table.table-striped
                       %thead
                         %tr.row.m-0
+                          %th.d-inline-block.col-3 Nº ticket
                           %th.d-inline-block.col-3 Client
-                          %th.d-inline-block.col-3 Status
                           %th.d-inline-block.col-3 Type
                           %th.d-inline-block.col-3 Hour
                       %thead
                         %tr.row.m-0
+                          %td.d-inline-block.col-3= "#{ticket.number}"
                           %td.d-inline-block.col-3= "#{ticket.client}"
-                          %td.d-inline-block.col-3= "#{ticket.status}"
                           %td.d-inline-block.col-3= "#{ticket.kind}"
-                          %td.d-inline-block.col-3= "#{ticket.starts}" + " - " + "#{ticket.starts}"
+
+                          %td.d-inline-block.col-3= "#{ticket.starts}" + " " + "#{ticket.end}"
                   .card.card-dreport
                     .row
                       .col-4
                       .col-4
                         %p Observation
                       .col-4
-                        .float-right
-                          = link_to ticket_path(ticket), :remote => true do
-                            = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
-                          &nbsp
-                          - if ticket.has_history?
-                            = link_to history_ticket_path(ticket) do
-                              = fa_icon "history", class: "fa-lg btn btn-outline-info"
+
                   .card-body.p-0
                     %p= "#{ticket.observation}"
-
+                  .card-footer
+                    = link_to ticket_path(ticket), :remote => true do
+                      = fa_icon "eye", right: true, class: "fa-lg btn btn-outline-info"
+                    &nbsp
+                    - if ticket.has_history?
+                      = link_to history_ticket_path(ticket) do
+                        = fa_icon "history", class: "fa-lg btn btn-outline-info"
 
           - if @dreport.closed?
             .card.card-dreport News
@@ -56,6 +57,6 @@
                 = form_with url: close_dreport_path(@dreport) do |f|
                   = f.text_area :news
                   %br
-                  = button_tag(type: 'submit', class: "btn btn-outline-success") do
+                  = button_tag(type: 'submit', class: "btn btn-success") do
                     = fa_icon "paper-plane", text: "Send", right: true, class: "fa-lg"
                 %br

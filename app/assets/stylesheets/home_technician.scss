@@ -7,10 +7,21 @@
 }
 
 td.td-action {
-  width: 130px;
+  width: 25%;
   padding: 0px;
   padding-top: 5.5px;
 }
+@media (min-width: 586px) {
+  td.td-action {
+    width: 130px;
+  }
+}
+@media (max-width: 586px) {
+  td.td-action {
+    width: 28%;
+  }
+}
+
 
 i.fa-lg.btn.btn-outline-info {
   color: white;
@@ -44,11 +55,10 @@ a.nav-item.nav-link {
     margin-top: 10px;
 }
 
-td.td-responsibles {
-  padding-left: 10%;
-}
+
+
 // modal background confirm
 .modal.false.fade.show {
-    padding: 20%;
-    background-color: rgba(5, 47, 49, 0.62);
+  background-color: rgba(5, 47, 49, 0.62);
+  padding: 10%;
 }

@@ -1,9 +1,42 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [ :show ]
+  before_action :set_ticket, only: [ :show]
 
   def search
-    
+    nt = params["nt"]
+    sma = "sma_" + params["sma"]
+    tickets_nt = Ticket.client(nt)
+    tickets_sma = Ticket.client(sma)
+
+    @client = nil
+    if !nt.nil?
+      @client = "#{nt}"
+      unless sma.nil?
+        @client = "#{@client}" + "  " +"#{sma}"
+      end
+    else
+      unless sma.nil?
+        @client = "#{sma}"
+      end
+    end
+
+    @ticket_all = []
+
+    unless tickets_nt.empty?
+      tickets_nt.each do |ticket|
+        @ticket_all << ticket
+      end
+    end
+
+    unless tickets_sma.empty?
+      tickets_sma.each do |ticket|
+        @ticket_all << ticket
+      end
+    end
+
+    @tickets = @ticket_all.sort_by { |ticket| ticket.dreport.date }.reverse!
+
   end
+
 
   def history
     ticket = Ticket.find(params[:id])
@@ -57,7 +90,8 @@ class TicketsController < ApplicationController
         :kind,
         :observation,
         :job_1, :job_2, :job_3, :job_4, :job_5, :job_6,
-        :mat_1, :mat_2, :mat_3, :mat_4, :mat_5, :mat_6
+        :mat_1, :mat_2, :mat_3, :mat_4, :mat_5, :mat_6,
+        :nt, :sma
       )
     end
 end

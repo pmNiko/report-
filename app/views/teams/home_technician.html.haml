@@ -1,6 +1,13 @@
 = render 'dialog'
 .container.text-center
-  = render 'clock'
+  .widget
+    .date
+      %p#weekendDay.weekendDay
+      %p#day.day
+      %p of
+      %p#month.month
+      %p
+      %p#year.year
   .new-team#teams
     %tbody
       - if !@dreport.nil?

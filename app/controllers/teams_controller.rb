@@ -2,8 +2,6 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def search
-    @ticket = Ticket.new
-    @dreport = Dreport.new
   end
 
   def daily_report
@@ -39,6 +37,7 @@ class TeamsController < ApplicationController
     authorize Team
     @teams = Team.today
     @user = current_user
+    @user = Ticket.new
   end
 
   def index
