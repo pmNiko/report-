@@ -43,8 +43,7 @@
           %table.table
             %thead
               %tr.bg-info
-                %th.d-inline-block.col-1= fa_icon "file-text-o", text: "Order", class: "fa-lg"
-                %th.d-inline-block.col-1= fa_icon "file-text-o", text: "Type", class: "fa-lg"
+                %th.d-inline-block.col-2= fa_icon "file-text-o", text: "Type", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "ticket", text: "Ticket", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "male", text: "Client", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "bolt", text: "Status", class: "fa-lg"
@@ -52,103 +51,102 @@
                 %th.d-inline-block.col-1= fa_icon "clock-o", text: "End", class: "fa-lg"
                 %th.d-inline-block.col-2= fa_icon "cogs", text: "Actions", class: "fa-lg"
           %table.table.table-striped
-            %tbody
-            - unless team.claims.nil?
-              %tr.text-center
-                %td.d-inline-block.col-11
-                  Working
-              - team.claims_order_working.each do |claim|
+            - unless team.claims_order_working.empty?
+              %tbody
                 %tr.text-center
-                  %td.d-inline-block.col-1= claim.priority
-                  %td.d-inline-block.col-1= claim.kind
-                  %td.d-inline-block.col-2= claim.ticket
-                  %td.d-inline-block.col-2= claim.client
-                  %td.d-inline-block.col-2= claim.status
-                  %td.d-inline-block.col-1= claim.starts
-                  %td.d-inline-block.col-1= claim.ends
-                  %td.d-inline-block.col-2
-                    - if claim.en_curso?
-                      = fa_icon "wrench", class: "fa-lg"
-                    - elsif claim.revisar?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
-                    - elsif claim.contactar?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "phone-square", class: "fa-lg btn btn-info"
-                    - elsif claim.finalizado? || claim.contactado?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
-                    - else
-                      = fa_icon "hourglass-start", class: "fa-lg"
-                    &nbsp
-                    - if claim.has_history?
-                      = link_to history_claim_path(claim) do
-                        = fa_icon "history", class: "fa-lg btn btn-info"
+                  %td.d-inline-block.col-11
+                    Working
+                - team.claims_order_working.each do |claim|
+                  %tr.text-center
+                    %td.d-inline-block.col-2= claim.kind
+                    %td.d-inline-block.col-2= claim.ticket
+                    %td.d-inline-block.col-2= claim.client
+                    %td.d-inline-block.col-2= claim.status
+                    %td.d-inline-block.col-1= claim.starts
+                    %td.d-inline-block.col-1= claim.ends
+                    %td.d-inline-block.col-2
+                      - if claim.en_curso?
+                        = fa_icon "wrench", class: "fa-lg"
+                      - elsif claim.revisar?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
+                      - elsif claim.contactar?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "phone-square", class: "fa-lg btn btn-info"
+                      - elsif claim.finalizado? || claim.contactado?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
+                      - else
+                        = fa_icon "hourglass-start", class: "fa-lg"
+                      &nbsp
+                      - if claim.has_history?
+                        = link_to history_claim_path(claim) do
+                          = fa_icon "history", class: "fa-lg btn btn-info"
 
-            %tbody
-            - unless team.claims.nil?
-              %tr.text-center
-                %td.d-inline-block.col-11
-                  Pending
-              - team.claims_order_pending.each do |claim|
+
+            - unless team.claims_order_pending.empty?
+              %tbody
                 %tr.text-center
-                  %td.d-inline-block.col-1= claim.priority
-                  %td.d-inline-block.col-1= claim.kind
-                  %td.d-inline-block.col-2= claim.ticket
-                  %td.d-inline-block.col-2= claim.client
-                  %td.d-inline-block.col-2= claim.status
-                  %td.d-inline-block.col-1= claim.starts
-                  %td.d-inline-block.col-1= claim.ends
-                  %td.d-inline-block.col-2
-                    - if claim.en_curso?
-                      = fa_icon "wrench", class: "fa-lg"
-                    - elsif claim.revisar?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
-                    - elsif claim.contactar?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "phone-square", class: "fa-lg btn btn-info"
-                    - elsif claim.finalizado? || claim.contactado?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
-                    - else
-                      = fa_icon "hourglass-start", class: "fa-lg"
-                    &nbsp
-                    - if claim.has_history?
-                      = link_to history_claim_path(claim) do
-                        = fa_icon "history", class: "fa-lg btn btn-info"
-            %tbody
-            - unless team.claims.nil?
-              %tr.text-center
-                %td.d-inline-block.col-11
-                  Concluded
-              - team.claims_order_concluded.each do |claim|
+                  %td.d-inline-block.col-11
+                    Pending
+                - team.claims_order_pending.each do |claim|
+                  %tr.text-center
+                    %td.d-inline-block.col-2= claim.kind
+                    %td.d-inline-block.col-2= claim.ticket
+                    %td.d-inline-block.col-2= claim.client
+                    %td.d-inline-block.col-2= claim.status
+                    %td.d-inline-block.col-1= claim.starts
+                    %td.d-inline-block.col-1= claim.ends
+                    %td.d-inline-block.col-2
+                      - if claim.en_curso?
+                        = fa_icon "wrench", class: "fa-lg"
+                      - elsif claim.revisar?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "exclamation-circle", class: "fa-lg btn btn-info"
+                      - elsif claim.contactar?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "phone-square", class: "fa-lg btn btn-info"
+                      - elsif claim.finalizado? || claim.contactado?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
+                      - else
+                        = fa_icon "hourglass-start", class: "fa-lg"
+                      &nbsp
+                      - if claim.has_history?
+                        = link_to history_claim_path(claim) do
+                          = fa_icon "history", class: "fa-lg btn btn-info"
+
+            - unless team.claims_order_concluded.empty?
+              %tbody
                 %tr.text-center
-                  %td.d-inline-block.col-1= claim.priority
-                  %td.d-inline-block.col-1= claim.kind
-                  %td.d-inline-block.col-2= claim.ticket
-                  %td.d-inline-block.col-2= claim.client
-                  %td.d-inline-block.col-2= claim.status
-                  %td.d-inline-block.col-1= claim.starts
-                  %td.d-inline-block.col-1= claim.ends
-                  %td.d-inline-block.col-2
-                    - if claim.en_curso?
-                      = fa_icon "wrench", class: "fa-lg"
-                    - elsif claim.revisar?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "exclamation-circle", class: "fa-lg btn btn-warning"
-                    - elsif claim.contactar?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "phone-square", class: "fa-lg btn btn-warning"
-                    - elsif claim.finalizado? || claim.contactado?
-                      = link_to claim_path(claim), :remote => true do
-                        = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
-                    - else
-                      = fa_icon "hourglass-start", class: "fa-lg"
-                    &nbsp
-                    - if claim.has_history?
-                      = link_to history_claim_path(claim) do
-                        = fa_icon "history", class: "fa-lg btn btn-info"
+                  %td.d-inline-block.col-11
+                    Concluded
+                - team.claims_order_concluded.each do |claim|
+                  %tr.text-center
+                    %td.d-inline-block.col-2= claim.kind
+                    %td.d-inline-block.col-2= claim.ticket
+                    %td.d-inline-block.col-2= claim.client
+                    %td.d-inline-block.col-2= claim.status
+                    %td.d-inline-block.col-1= claim.starts
+                    %td.d-inline-block.col-1= claim.ends
+                    %td.d-inline-block.col-2
+                      - if claim.en_curso?
+                        = fa_icon "wrench", class: "fa-lg"
+                      - elsif claim.revisar?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "exclamation-circle", class: "fa-lg btn btn-warning"
+                      - elsif claim.contactar?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "phone-square", class: "fa-lg btn btn-warning"
+                      - elsif claim.finalizado? || claim.contactado?
+                        = link_to claim_path(claim), :remote => true do
+                          = fa_icon "eye", right: true, class: "fa-lg btn btn-info"
+                      - else
+                        = fa_icon "hourglass-start", class: "fa-lg"
+                      &nbsp
+                      - if claim.has_history?
+                        = link_to history_claim_path(claim) do
+                          = fa_icon "history", class: "fa-lg btn btn-info"
     .progress
       .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
         progress:

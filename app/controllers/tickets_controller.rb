@@ -37,6 +37,7 @@ class TicketsController < ApplicationController
 
   end
 
+
   def history
     ticket = Ticket.find(params[:id])
     client = ticket.client

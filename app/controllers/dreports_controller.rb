@@ -3,7 +3,11 @@ class DreportsController < ApplicationController
 
   def search
     date_param = params["date"]
-    @dreports = Dreport.date(date_param)
+    dreports_date = []
+    unless date_param.empty?
+      dreports_date = Dreport.date(date_param)
+    end
+    @dreports = dreports_date
   end
 
   def index

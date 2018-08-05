@@ -5,10 +5,9 @@ $('#dialog h3').html("");
 $('.modal-body').html('<%= j render("show") %>');
 
 
+$('.container.text-center').css('visibility', 'hidden');
 // Show the dynamic dialog
 $('#dialog').modal("show");
-$('.container.text-center').css('visibility', 'hidden');
-
 
 $('#dialog').on('hidden.bs.modal', function () {
   $('.container.text-center').css('visibility', 'visible');

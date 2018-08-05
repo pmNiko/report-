@@ -1,3 +1,4 @@
+= render 'dialog'
 .card-home-technicial
   .card
     .row
@@ -17,23 +18,41 @@
         %tbody
           %tr
             %td= team_truck(@team)
-            %td.td-responsibles{:align => "justify"}= team_responsables(@team)
+            %td.td-responsibles-movile{:align => "justify"}
+              = team_responsables(@team)
+            %td.td-responsibles-pc
+              = team_responsables(@team)
     .card-body
-      %table.table
+      %table.table.table-striped
         %thead
           %tr.bg-info
             %th= fa_icon "file-text-o", text: "Type", class: "fa-lg"
             %th.th-ticket= fa_icon "ticket", text: "Ticket", class: "fa-lg"
             %th= fa_icon "male", text: "Client", class: "fa-lg"
             %th= fa_icon "cogs", text: "Actions", class: "fa-lg"
-        %tbody
-          - unless @team.claims.nil?
+
+        - unless @team.claims_order_working.empty?
+          %tbody
+            %tr
+              %td
+              %td
+                Working
             = render @team.claims_order_working
-        %tbody#claims
-          - unless @team.claims.nil?
+
+        - unless @team.claims_order_pending.empty?
+          %tbody
+            %tr
+              %td
+              %td
+                Pending
             = render @team.claims_order_pending
-        %tbody
-          - unless @team.claims.nil?
+
+        - unless @team.claims_order_concluded.empty?
+          %tbody
+            %tr
+              %td
+              %td
+                Concluded
             = render @team.claims_order_concluded
   .progress
     .progress-bar.bg-default.progress-bar-striped.progress-bar-animated{:style => "width: 15%"}
@@ -43,10 +62,7 @@
   %br
   - unless @team.finished?
     .end-shift
-      = link_to 'END SHIFT', shift_dreport_path(@team),method: :get,                                |
+      = link_to 'END SHIFT', shift_dreport_path(@team),method: :get, |
         :class => "btn btn-outline-success btn-sm end-shift",                                       |
         data: {confirm: "End Shift: "+"[ Date:"+" #{@team.date} ]-"+"[Truck:"+" #{@team.truck}]", |
         verify: "#{@team.truck.number}", verify_text: "Type: " + " '#{@team.truck.number}' " + "to confirm"}
-
-
-= render 'dialog'

@@ -8,10 +8,6 @@
             %h6= "HISTORY EMPTY"
           - else
             %h6= "HISTORY OF  " + " #{@client}"
-        .col-4
-          .float-right
-            = link_to :back do
-              = fa_icon "arrow-left", class: "fa-lg"
     - @tickets.each do |ticket|
       .card-body.text-center
         .card-header= "#{ticket.date}" + " >> "+ ticket_resposables(ticket)
