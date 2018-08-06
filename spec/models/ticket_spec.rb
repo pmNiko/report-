@@ -7,3 +7,19 @@ describe Ticket, '#has_responsable?' do
   end
 
 end
+
+describe Ticket, '#item_key' do
+
+  it 'return item value' do
+
+  end
+
+end
+
+describe Ticket, '#load_parameters' do
+
+  it 'return load a claim' do
+
+  end
+
+end
