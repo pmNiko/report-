@@ -223,3 +223,23 @@ items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
   }
 }
 
+////////////// icon rotate //////////////
+div#cn-wrapper{
+
+  i.fa.fa-users.fa-lg {
+    transform: skew(0deg) rotate(90deg) scale(1) !important;
+  }
+  i.fa.fa-calendar {
+    transform: skew(0deg) rotate(50deg) scale(1) !important;
+  }
+  i.fa.fa-search {
+    transform: skew(0deg) rotate(130deg) scale(1) !important;
+  }
+  i.fa.fa-user.fa-lg {
+    transform: skew(0deg) rotate(10deg) scale(1) !important;
+  }
+  i.fa.fa-power-off {
+      transform: skew(0deg) rotate(170deg) scale(1) !important;
+  }
+}
+
