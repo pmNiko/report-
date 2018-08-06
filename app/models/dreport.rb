@@ -81,6 +81,8 @@ class Dreport < ApplicationRecord
     end
   end
 
-  # => scope teams today
+  # => scope dreport today
   scope :today, lambda { where('date = ?', Date.today) }
+  # => scope dreport today
+  scope :date, -> (date_param) { where('date = ?', date_param) }
 end

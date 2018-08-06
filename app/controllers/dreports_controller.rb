@@ -2,7 +2,12 @@ class DreportsController < ApplicationController
   before_action :set_dreport, only: [:show, :edit, :update, :destroy]
 
   def search
-
+    date_param = params["date"]
+    dreports_date = []
+    unless date_param.empty?
+      dreports_date = Dreport.date(date_param)
+    end
+    @dreports = dreports_date
   end
 
   def index
