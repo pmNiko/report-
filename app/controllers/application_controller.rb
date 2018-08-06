@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
     def user_not_authorized
       redirect_to root_path
-      flash[:alert]="No tiener los permisos para acceder a la pagina o realizar dicha accion"
+      flash[:alert]="Does not have access permissions"
     end
 
 end
