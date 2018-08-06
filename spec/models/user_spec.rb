@@ -1,9 +1,10 @@
 require 'rails_helper'
 
-describe User do
 
-end
+describe User, '#first_name' do
 
-describe 'Some string' do
+  it 'returns one item, the favorite gadget of the agent ' do
+
+  end
 
 end
